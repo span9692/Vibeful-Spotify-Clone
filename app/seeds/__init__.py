@@ -16,7 +16,7 @@ def seed():
     # seed_users()
     # seed_songs()
     # seed_playlists()
-    # seed_playlist_songs()
+    seed_playlist_songs()
     seed_follow_list()
     # Add other seed functions here
 
