@@ -11,3 +11,12 @@ class Song(db.Model):
     genre = db.Column(db.String(50), nullable=False)
 
     playlists = db.relationship('Playlist', back_populates='songs', secondary=playlist_songs)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'artist': self.artist,
+            'album': self.album,
+            'genre': self.genre
+        }
