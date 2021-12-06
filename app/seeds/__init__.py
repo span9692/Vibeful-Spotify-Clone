@@ -13,8 +13,8 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    #seed_users()
-    # seed_songs()
+    seed_users()
+    seed_songs()
     seed_playlists()
     seed_playlist_songs()
     seed_follow_list()
@@ -25,8 +25,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    # undo_songs()
-    # undo_playlists()
-    # undo_playlist_songs()
-    # undo_follow_list()
+    undo_songs()
+    undo_playlists()
+    undo_playlist_songs()
+    undo_follow_list()
     # Add other undo functions here
