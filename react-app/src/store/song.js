@@ -1,5 +1,3 @@
-const initialState = {};
-
 const GET_SONGS = 'songs/GET_SONGS'
 
 const showSongs = (data) => {
@@ -10,12 +8,19 @@ const showSongs = (data) => {
 }
 
 export const getSongs = () => async dispatch => {
-  
+  const songs = await fetch('/api/songs')
+  const data = await songs.json()
+  dispatch(showSongs(data))
 }
 
-export default function reducer(state = initialState, action) {
-    switch (action.type) {
-      default:
-        return state;
-    }
+export default function reducer(state = {}, action) {
+  let newState;
+  switch (action.type) {
+    case GET_SONGS:
+      newState = {...state};
+      action.data.songs.forEach(song => newState[song.id] = song)
+      return newState;
+    default:
+      return state;
   }
+}

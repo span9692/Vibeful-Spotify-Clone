@@ -1,14 +1,24 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { getSongs } from '../../store/song'
 
 function SongList() {
     const dispatch = useDispatch()
 
-    const songs = useSelector(state => state.song)
+    const songs = useSelector(state => Object.values(state.song))
+
+    useEffect(() => {
+        dispatch(getSongs())
+    }, [dispatch])
 
     return (
         <div>
-            Hello from songlist
+            HELLO FROM SONGLIST
+            {songs.map(song => (
+                <div>
+                    {song.title} -- {song.artist}
+                </div>
+            ))}
         </div>
     )
 }
