@@ -15,7 +15,7 @@ function SongList() {
         <div>
             HELLO FROM SONGLIST
             {songs.map(song => (
-                <div>
+                <div key={song.id}>
                     {song.title} -- {song.artist}
                 </div>
             ))}
