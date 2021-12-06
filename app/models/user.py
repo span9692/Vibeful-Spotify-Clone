@@ -7,7 +7,8 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -28,3 +29,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    playlists = db.relationship('Playlist', back_populates='users', cascade="all, delete-orphan")
+
+    follower = db.relationship('User', secondary=follow_list, secondaryjoin=(follow_list.c.follower_id == id), primaryjoin=(follow_list.c.followee_id == id), backref=db.backref('follow_list'))
