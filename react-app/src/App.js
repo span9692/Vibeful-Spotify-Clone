@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Splash from './components/Splash/Splash';
 import { authenticate } from './store/session';
+import SongList from './components/Songs';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,8 +36,11 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <Route path='/songs' exact={true}>
+          <SongList />
+        </Route>
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
