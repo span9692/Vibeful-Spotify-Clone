@@ -1,4 +1,5 @@
 from .db import db
+from .playlist_songs import playlist_songs
 
 class Playlist(db.Model):
     __tablename__ = 'playlists'
