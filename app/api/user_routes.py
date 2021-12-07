@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request, current_app
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User, follow_list, db
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
@@ -40,6 +40,11 @@ def user(id):
 def getFollowing(id):
     all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
 
+
+    # unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+
+    # print("--------------------------->", unfollow_user)
+
     following_list = {}
     for i in all_follows:
         following_list.setdefault(i[0], []).append(i[1])
@@ -61,28 +66,21 @@ def getFollowers(id):
 
 @user_routes.route('/<int:id>/dashboard', methods='DELETE')
 def unfollow(id):
-    all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
+    unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    print("ooooooooooooooooooo>>>>>>>>>>>",all_follows)
+    print("ooooooooooooooooooo>>>>>>>>>>>",unfollow_user)
 
-    db.session.delete(remove_follow_list)
+    db.session.delete(unfollow_user)
     sb.session.commit()
     return {"message": Unfollowed user}
 
 
-# @user_routes.route('/<int:id>/dashboard', methods='POST')
-# # @login_required
-# def follow(id):
-#     db_uri = current_app.config['SQLALCHEMY_DATABASE_URI']
-#     engine = create_engine(db_uri)
-#     metadata = MetaData(engine)
-#     metadata.reflect()
-#     table = metadata.tables['follow_list']
-#     Session = sessionmaker(bind=engine)
-#     session = Session()
-#     follows = session.query(table).filter_by(follower_id = id).all()
+@user_routes.route('/<int:id>/dashboard', methods='POST')
+# @login_required
+def follow(id):
+    follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-#     db.session.add(data)
-#     db.session(commit()
+    db.session.add(follow_user)
+    db.session(commit()
 
-#     return
+    return {"message": Followed user}
