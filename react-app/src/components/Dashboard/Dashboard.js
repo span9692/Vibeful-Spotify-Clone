@@ -11,8 +11,12 @@ const Dashboard = () => {
           <div className="dashboard-main-leftnav">
             <div className="d-m-leftnav-top">
               <ul>
-                <li>Search</li>
-                <li>Your library</li>
+                <li>
+                  <i class="fas fa-search"></i> Search
+                </li>
+                <li>
+                  <i class="fas fa-icons"></i>   Your library
+                </li>
               </ul>
             </div>
             <div className="d-m-leftnav-bot">
