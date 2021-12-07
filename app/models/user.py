@@ -32,11 +32,6 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    def follows_dict(self):
-        return {
-            "follower_id": self.follower_id,
-            "followee_id": self.followee_id
-        }
 
     playlists = db.relationship('Playlist', back_populates='users', cascade="all, delete-orphan")
 

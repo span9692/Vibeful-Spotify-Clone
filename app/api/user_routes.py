@@ -35,7 +35,42 @@ def get_followers(id):
         user_follower = User.query.get(follower.follower_id)
         user_followee = User.query.get(follower.followee_id)
         updated_follower = user_follower.to_dict()
-        updated_follower["owner"] = user_followee.first_name
+        updated_follower["followee_first_name"] = user_followee.first_name
+        updated_follower["followee_last_name"] = user_followee.last_name
         followers_list.append(updated_follower)
 
     return jsonify({"My Followers": followers_list})
+
+# @user_routes.route('/<int:id>/follows/<int:followerId>', methods='DELETE')
+@user_routes.route('/<int:id>/follows', methods='DELETE')
+# @login_required
+def unfollow(id,followerId):
+    db_uri = current_app.config['SQLALCHEMY_DATABASE_URI']
+    engine = create_engine(db_uri)
+    metadata = MetaData(engine)
+    metadata.reflect()
+    table = metadata.tables['follow_list']
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    data = session.query(table).filter_by(followee_id = id, follower_id = followerId).all()
+    db.session.delete(data)
+    db.session.commit()
+
+    return jsonify({"Message": "Unfollowed user"}), 200
+
+# @user_routes.route('/<int:id>/dashboard', methods='POST')
+# # @login_required
+# def follow(id):
+#     db_uri = current_app.config['SQLALCHEMY_DATABASE_URI']
+#     engine = create_engine(db_uri)
+#     metadata = MetaData(engine)
+#     metadata.reflect()
+#     table = metadata.tables['follow_list']
+#     Session = sessionmaker(bind=engine)
+#     session = Session()
+#     follows = session.query(table).filter_by(follower_id = id).all()
+
+#     db.session.add(data)
+#     db.session(commit()
+
+#     return
