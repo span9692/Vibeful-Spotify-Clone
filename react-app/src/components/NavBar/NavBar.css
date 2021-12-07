@@ -21,13 +21,13 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 5vw;
-    margin: 0 auto;
-    width: 100%;
+    width: 89%;
     max-width: 100%;
     box-shadow: none;
-    background-color:#e7b867;
+    background-color:#0d1230;
     position: absolute;
     top: 0px;
+    left: 5vw;
     height: 50px!important;
     overflow: hidden;
     z-index: 10;
@@ -36,16 +36,17 @@ nav {
 
 
 #sidebarMenu {
-    border-radius: 0px 0px 20px 20px;
-    min-width: 30%;
+    border-radius: 0px 0px 15px 15px;
+    min-width: 25%;
     position: absolute;
     text-align: center;
-    top: 50px;
-    right: 50px;
+    top: 45px;
+    right: 125px;
     transform: translateY(-900px);
     transition: transform 250ms ease-in-out;
-    background: #e7b867;
+    background: #5b3da2;
     padding-bottom: 2vh;
+    padding-top: 2vh;
 }
 
 input[type="checkbox"]:checked ~ #sidebarMenu {

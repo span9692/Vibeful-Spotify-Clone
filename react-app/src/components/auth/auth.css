@@ -1,0 +1,53 @@
+.loginForm {
+    color: #FFF;
+    font-family: 'Questrial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    height: 100%;
+}
+.loginForm label {
+    font-family: 'Questrial', sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #FFF;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding-top: 0.5vh;
+    padding-right: 2vw;
+}
+
+.loginForm input {
+    font-family: 'Questrial', sans-serif;
+    width: 50%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    border-radius: 20px;
+}
+
+.loginEmail, .loginPassword {
+    display: flex;
+    padding: 0vh 6vw 0vh 0vw;
+    justify-content: flex-end;
+}
+
+.loginForm button {
+    color: white;
+    text-decoration: none;
+    border: 2px white solid;
+    padding: 10px 15px;
+    text-align: center;
+    Text-decoration: none;
+    display: inline-block;
+    Font-size: 14px;
+    Transition: 0.3s;
+    Cursor: pointer;
+    background-color: #0d1230;
+}
