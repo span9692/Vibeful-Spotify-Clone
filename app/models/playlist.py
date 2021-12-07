@@ -11,3 +11,10 @@ class Playlist(db.Model):
     users = db.relationship('User', back_populates='playlists')
 
     songs = db.relationship('Song', back_populates='playlists', secondary=playlist_songs)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'playlist_name': self.playlist_name,
+            'owner_id': self.owner_id
+        }
