@@ -13,7 +13,6 @@ export default function reducer(state = {}, action) {
         case PLAY_SONG:
             newState = {...state}
             newState = action.data
-            console.log('newstate', newState)
             return newState;
         default:
             return state;

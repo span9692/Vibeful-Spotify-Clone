@@ -17,13 +17,20 @@ function SongList() {
         dispatch(playMusic(song))
     }
 
+    const addToLibrary = (song) => {
+        console.log('YOOOOO WE HERE')
+    }
+
     return (
         <div>
             HELLO FROM SONGLIST
             {songs.map(song => (
                 <div key={song.id}>
                     <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
+                    <button onClick={() => addToLibrary(song)}>Like</button>
+                    <button>Add to Playlist</button>
                 </div>
+
             ))}
             <Player />
         </div>
