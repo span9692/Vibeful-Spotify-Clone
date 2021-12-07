@@ -4,7 +4,7 @@
     flex-direction: column;
     margin-left: 2vw;
     margin-right: 2vw;
-    background: #000;
+    background: #0d1230;
     border-radius: 50px 50px 0px 0px;
     z-index: 10;
 
@@ -21,7 +21,7 @@
 }
 
 .dashboard-main {
-    background-color: #000;
+    background-color: #0d1230;
     min-height: 80vh;
     width: 100%;
     display: flex;
@@ -34,14 +34,37 @@
 
 /* topleft "Search" "YourLibrary" */
 .d-m-leftnav-top {
-    color:#aab4e8;
+    color:#FFF;
     font-weight: 100;
+    width: 100%;
+    font-size: 1vw;
+}
+
+.liner {
+    left:70px;
+    max-width: 10vw;
+    content: '';
+    height: 5px;
+    background: #0e1849;
+    margin: 5px 0px 0px auto;
 }
 
 .d-m-leftnav-top ul, .d-m-leftnav-bot ul {
     list-style-type: none;
 }
 
+.d-m-leftnav-bot ul {
+    padding-left: 2vw;
+    font-size: 0.9vw;
+    overflow: hidden;
+}
+
+.d-m-leftnav-bot li {
+    white-space: nowrap;
+    margin: 1vh 0;
+}
+
+/* playlists */
 .d-m-leftnav-bot {
     position: absolute;
     left: 2vw;
@@ -54,16 +77,16 @@
 
 /* overflow scrollbar css */
 .d-m-leftnav-bot::-webkit-scrollbar-thumb {
-    background-color:#404040;
+    background-color:#FFF;
     border-radius: 40px;
 }
 
+/* scrollbar track */
 .d-m-leftnav-bot::-webkit-scrollbar-track-piece {
-    background-color: white;
+    background-color: #0d1230;
 }
 
 .d-m-leftnav-bot::-webkit-scrollbar-track {
-    border: 1px solid #FFF;
     padding: 2px 0;
     background-color: #404040;
     border-radius: 40px;
@@ -74,18 +97,21 @@
 }
 
 
-/* maindashboard pane */
+/* main dashboard content */
 .dashboard-main-rightcontent {
-    background-color: rgb(14, 14, 14);
+    background-color: #0e1849;
+    color: #FFF;
     width: 100%;
     border-radius: 10px 0px 0px 0px;
   
 }
 
 .dashboard-bot-player {
-    background-color: red;
+    background-color: #0d1230;
     
 }
+
+
 
 /* dashboard "load" */
 

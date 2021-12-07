@@ -12,16 +12,17 @@ const Dashboard = () => {
             <div className="d-m-leftnav-top">
               <ul>
                 <li>
-                  <i class="fas fa-search"></i> Search
+                  <i className="fas fa-search"></i> Search
                 </li>
                 <li>
-                  <i class="fas fa-icons"></i>   Your library
+                  <i className="fas fa-icons"></i>   Your library
                 </li>
               </ul>
             </div>
+                <div className="liner"></div>
             <div className="d-m-leftnav-bot">
               <ul>
-                <li>Playlist 1</li>
+                <li>Playlist 1 1232312 2132 13213 </li>
                 <li>Playlist 2</li>
                 <li>Playlist 1</li>
                 <li>Playlist 2</li>

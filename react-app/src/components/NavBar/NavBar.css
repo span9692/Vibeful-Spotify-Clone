@@ -24,7 +24,7 @@ nav {
     width: 89%;
     max-width: 100%;
     box-shadow: none;
-    background-color:#000;
+    background-color:#0d1230;
     position: absolute;
     top: 0px;
     left: 5vw;
@@ -44,7 +44,7 @@ nav {
     right: 125px;
     transform: translateY(-900px);
     transition: transform 250ms ease-in-out;
-    background: #5b3da2;
+    background: #0e1849;
     padding-bottom: 2vh;
     padding-top: 2vh;
 }
