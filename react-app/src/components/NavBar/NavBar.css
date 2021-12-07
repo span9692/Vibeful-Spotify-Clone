@@ -1,0 +1,16 @@
+nav {
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.nav-container {
+    width: 100%;
+    padding: 2vh 0vw 2vh 0vw;
+    display: flex;
+    flex-direction: row;
+    gap: 25vw;
+}
+
+.nav-container > .link > a, a:visited {
+    color: #FFF;
+    text-decoration: none;
+}

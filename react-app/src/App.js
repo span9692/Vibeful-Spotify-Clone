@@ -36,18 +36,21 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/songs' exact={true}>
+        <Route path="/songs" exact={true}>
           <SongList />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <Splash />
+          <h1>Placeholder for dashboard</h1>
         </ProtectedRoute>
+        <Route path="/splash" exact={true}>
+          <Splash />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

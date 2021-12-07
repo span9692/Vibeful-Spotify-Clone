@@ -1,0 +1,5 @@
+.author-box {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+}

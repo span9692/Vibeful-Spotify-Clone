@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
 
@@ -11,25 +12,26 @@ const NavBar = () => {
   const guestSplash = (
     <>
       <nav>
-        <ul>
-          <li>
+        <div className="nav-container">
+          <div className="logo">
+          </div>
+          <div className="link">
             <NavLink to="/" exact={true} activeClassName="active">
               Home
             </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
-          </li>
-          <li>
+          </div>
+          <div classNAme="link">
+              <NavLink to="/login" exact={true} activeClassName="active">
+                Login
+              </NavLink>
+          </div>
+          <div className="link">
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink>
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
-      <h1>You are a guest!</h1>
     </>
   );
 
