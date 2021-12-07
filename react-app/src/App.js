@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Splash from './components/Splash/Splash';
 import { authenticate } from './store/session';
 import SongList from './components/Songs';
 
@@ -29,27 +30,30 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/songs' exact={true}>
+        <Route path="/songs" exact={true}>
           <SongList />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/" exact={true}>
+          <h1>Placeholder for dashboard</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/playlist' exact={true} >
           <h1>Playlist</h1>
         </ProtectedRoute>
+        <Route path="/splash" exact={true}>
+          <Splash />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

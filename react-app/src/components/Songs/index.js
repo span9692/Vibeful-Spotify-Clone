@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getSongs } from '../../store/song'
+import Player from '../Player'
 
 function SongList() {
     const dispatch = useDispatch()
@@ -19,6 +20,7 @@ function SongList() {
                     {song.title} -- {song.artist}
                 </div>
             ))}
+            <Player />
         </div>
     )
 }
