@@ -19,38 +19,28 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-@user_routes.route('/<int:id>/dashboard')
-# @login_required
-def get_followers(id):
-    followers = db.session.query(follow_list).filter_by(followee_id = id).all()
-    followers_list = []
-    for follower in followers:
-        user_follower = User.query.get(follower.follower_id)
-        user_followee = User.query.get(follower.followee_id)
-        updated_follower = user_follower.to_dict()
-        updated_follower["followee_first_name"] = user_followee.first_name
-        updated_follower["followee_last_name"] = user_followee.last_name
-        followers_list.append(updated_follower)
+# @user_routes.route('/<int:id>/dashboard')
+# # @login_required
+# def get_followers(id):
+#     followers = db.session.query(follow_list).filter_by(followee_id = id).all()
+#     followers_list = []
+#     for follower in followers:
+#         user_follower = User.query.get(follower.follower_id)
+#         user_followee = User.query.get(follower.followee_id)
+#         updated_follower = user_follower.to_dict()
+#         updated_follower["followee_first_name"] = user_followee.first_name
+#         updated_follower["followee_last_name"] = user_followee.last_name
+#         followers_list.append(updated_follower)
 
-    return jsonify({"My_Followers": followers_list})
+#     return jsonify({"My_Followers": followers_list})
 
-# @user_routes.route('/<int:id>/follows/<int:followerId>', methods='DELETE')
 
 
 @user_routes.route('/<int:id>/follows', methods=['GET'])
-# @login_required
 def unfollow(id):
     all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
 
     all_followees = db.session.query(follow_list).filter(follow_list.c.followee_id == id).all()
-    # print("----------------------->",all_follows)
-
-    # new_list = {str(each):each for each in all_follows}
-    # new_list = dict()
-    # for i in range(len(all_follows)):
-    #     print("basdsadsadasda", all_follows[i][1])
-    #     # list(new_list)[str(i)].append(i)
-
 
     new_list = {}
     for i in all_follows:
@@ -60,20 +50,6 @@ def unfollow(id):
 
 
     return new_list
-
-
-
-
-    # for followee in followees:
-    #     user_follower = User.query.get(follower.follower_id)
-    #     user_followee = User.query.get(follower.followee_id)
-    #     updated_followees = user_followee.to_dict()
-    #     updated_followees["followee_first_name"] = user_followee.first_name
-    #     updated_follower["followee_last_name"] = user_followee.last_name
-    #     followers_list.append(updated_follower)
-
-    # return jsonify({"My_Followers": followers_list})
-
 
 
     # data = db.session.query(follow_list).filter_by(followee_id = id, follower_id = followerId).all()
