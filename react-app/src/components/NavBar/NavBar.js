@@ -20,7 +20,7 @@ const NavBar = () => {
               Home
             </NavLink>
           </div>
-          <div classNAme="link">
+          <div className="link">
               <NavLink to="/login" exact={true} activeClassName="active">
                 Login
               </NavLink>
