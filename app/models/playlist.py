@@ -11,3 +11,4 @@ class Playlist(db.Model):
     users = db.relationship('User', back_populates='playlists')
 
     songs = db.relationship('Song', back_populates='playlists', secondary=playlist_songs)
+
