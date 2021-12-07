@@ -9,7 +9,7 @@ html, #root {
 }
 
 html, body {
-    overflow-x: hidden; /* slideout */
+    overflow: hidden; /* slideout */
 }
 
 body {

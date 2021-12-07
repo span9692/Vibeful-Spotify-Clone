@@ -11,6 +11,7 @@ def seed_playlists():
     playlist5 = Playlist(playlist_name='kpop', owner_id=3)
     playlist6 = Playlist(playlist_name='hard rap shit', owner_id=4)
     playlist7 = Playlist(playlist_name='emo', owner_id=4)
+    
 
 
     db.session.add(playlist1)

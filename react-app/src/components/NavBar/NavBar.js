@@ -1,14 +1,19 @@
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LoginForm from '../auth/LoginForm';
-import LogoutButton from '../auth/LogoutButton';
+import { logout } from '../../store/session';
 import './NavBar.css'
 
 const NavBar = () => {
 
   const user = useSelector((state) => state.session.user);
+
+  const dispatch = useDispatch();
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   const guestSplash = (
     <>
@@ -37,26 +42,31 @@ const NavBar = () => {
   );
 
   const userSplash = (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/" exact={true} activeClassName="active">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/users" exact={true} activeClassName="active">
-              Users
-            </NavLink>
-          </li>
-          <li>
-          <LogoutButton />
-          </li>
-        </ul>
-      </nav>
-      <h1>You are logged in!</h1>
-    </>
+    <nav className="dashboardDisappear">
+      <div class="header"></div>
+      <NavLink to="/home" exact={true} activeClassName="active">
+        <img
+          alt="logo"
+          className="logo"
+          src="https://cdn.discordapp.com/attachments/917541871457275925/917759128548569098/vibe_icon.png"
+        />
+      </NavLink>
+      <NavLink
+        to="/home"
+        exact={true}
+        activeClassName="active"
+        className="homeLink"
+      >
+        Home
+      </NavLink>
+      <a href onClick={onLogout}
+        exact={true}
+        activeClassName="active"
+        className="loginLink"
+      >
+        Logout
+      </a>
+    </nav>
   );
 
   return (
