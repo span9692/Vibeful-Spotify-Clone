@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request, current_app
 from flask_login import login_required
-from app.models import User, follow_list
+from app.models import User, follow_list, db
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
@@ -22,14 +22,7 @@ def user(id):
 @user_routes.route('/<int:id>/dashboard')
 # @login_required
 def get_followers(id):
-    db_uri = current_app.config['SQLALCHEMY_DATABASE_URI']
-    engine = create_engine(db_uri)
-    metadata = MetaData(engine)
-    metadata.reflect()
-    table = metadata.tables['follow_list']
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    followers = session.query(table).filter_by(followee_id = id).all()
+    followers = db.session.query(follow_list).filter_by(followee_id = id).all()
     followers_list = []
     for follower in followers:
         user_follower = User.query.get(follower.follower_id)
@@ -39,24 +32,55 @@ def get_followers(id):
         updated_follower["followee_last_name"] = user_followee.last_name
         followers_list.append(updated_follower)
 
-    return jsonify({"My Followers": followers_list})
+    return jsonify({"My_Followers": followers_list})
 
 # @user_routes.route('/<int:id>/follows/<int:followerId>', methods='DELETE')
-@user_routes.route('/<int:id>/follows', methods='DELETE')
-# @login_required
-def unfollow(id,followerId):
-    db_uri = current_app.config['SQLALCHEMY_DATABASE_URI']
-    engine = create_engine(db_uri)
-    metadata = MetaData(engine)
-    metadata.reflect()
-    table = metadata.tables['follow_list']
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    data = session.query(table).filter_by(followee_id = id, follower_id = followerId).all()
-    db.session.delete(data)
-    db.session.commit()
 
-    return jsonify({"Message": "Unfollowed user"}), 200
+
+@user_routes.route('/<int:id>/follows', methods=['GET'])
+# @login_required
+def unfollow(id):
+    all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
+
+    all_followees = db.session.query(follow_list).filter(follow_list.c.followee_id == id).all()
+    # print("----------------------->",all_follows)
+
+    # new_list = {str(each):each for each in all_follows}
+    # new_list = dict()
+    # for i in range(len(all_follows)):
+    #     print("basdsadsadasda", all_follows[i][1])
+    #     # list(new_list)[str(i)].append(i)
+
+
+    new_list = {}
+    for i in all_follows:
+        new_list.setdefault(i[0], []).append(i[1])
+
+    print("BINGBONGBINGONB", new_list)
+
+
+    return new_list
+
+
+
+
+    # for followee in followees:
+    #     user_follower = User.query.get(follower.follower_id)
+    #     user_followee = User.query.get(follower.followee_id)
+    #     updated_followees = user_followee.to_dict()
+    #     updated_followees["followee_first_name"] = user_followee.first_name
+    #     updated_follower["followee_last_name"] = user_followee.last_name
+    #     followers_list.append(updated_follower)
+
+    # return jsonify({"My_Followers": followers_list})
+
+
+
+    # data = db.session.query(follow_list).filter_by(followee_id = id, follower_id = followerId).all()
+    # db.session.delete(data)
+    # db.session.commit()
+
+    # return jsonify({"Message": "Unfollowed user"}), 200
 
 # @user_routes.route('/<int:id>/dashboard', methods='POST')
 # # @login_required
