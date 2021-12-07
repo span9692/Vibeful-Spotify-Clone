@@ -1,7 +1,6 @@
 import React from 'react';
 import './Splash.css';
 import Author from '../Author/Author.js'
-import NavBar from '../NavBar/NavBar';
 
 const Splash = () => {
 const stockImages = {
@@ -22,8 +21,8 @@ const stockImages = {
               </span>
             </div>
             <div className="main-content-text">
-                <a href="apple.com"><img className="appleBadge" src={`${stockImages.apple}`}/></a>
-                <a href="google.com"><img className="googleBadge" src={`${stockImages.google}`}/></a>
+                <a href="apple.com"><img alt="" className="appleBadge" src={`${stockImages.apple}`}/></a>
+                <a href="google.com"><img alt="" className="googleBadge" src={`${stockImages.google}`}/></a>
             </div>
             <div className="main-content-author">
               <Author />

@@ -52,7 +52,7 @@ function App() {
         <ProtectedRoute path='/playlist' exact={true} >
           <PlayList />
         </ProtectedRoute>
-        <Route path="/splash" exact={true}>
+        <Route path="/home" exact={true}>
           <Splash />
         </Route>
       </Switch>

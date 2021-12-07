@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import song from './song'
 import playlist from './playlist'
+import audio from './audio'
 
 const rootReducer = combineReducers({
   session,
   song,
-  playlist
+  playlist,
+  audio
 });
 
 
