@@ -1,5 +1,6 @@
 const GET_PLAYLISTS = 'playlists/GET_PLAYLISTS'
 const REMOVE_ONE_PLAYLIST = 'playlists/REMOVE_ONE_PLAYLIST';
+const ADD_ONE_PLAYLIST = 'playlists/ADD_ONE_PLAYLIST'
 
 //Define Action Creators
 const showPlaylists = (data) => {
@@ -14,7 +15,14 @@ const removeOnePlaylist = id => {
         type: REMOVE_ONE_PLAYLIST, 
         payload: id 
     };
-  };
+};
+
+const addOnePlaylist = payload => {
+    return {
+        type: ADD_ONE_PLAYLIST,
+        payload
+    }
+}
 
 // Define Thunk Creators
 export const getPlaylists = () => async dispatch => {
@@ -34,6 +42,19 @@ export const deletePlaylist = id => async dispatch => {
     }
   };
 
+  export const addPlaylist = playlist => async dispatch => {
+    const response = await fetch('/api/playlists', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(playlist),
+    });
+  
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addOnePlaylist(data.playlist));
+    }
+  };
+
 // Define reducer
 export default function reducer(state = {}, action) {
   let newState;
@@ -45,6 +66,9 @@ export default function reducer(state = {}, action) {
     case REMOVE_ONE_PLAYLIST:
       newState = { ...state };
       delete newState[action.payload];
+      return newState;
+    case ADD_ONE_PLAYLIST:
+      newState = { ...state, [action.payload.id]: action.payload};
       return newState;
     default:
       return state;
