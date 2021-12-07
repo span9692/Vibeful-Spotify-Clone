@@ -40,6 +40,14 @@
     font-size: 1vw;
 }
 
+/* topleft individual links/headlines */
+.d-m-leftnav-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vh;
+}
+
 .liner {
     left:70px;
     max-width: 10vw;
@@ -59,7 +67,7 @@
     overflow: hidden;
 }
 
-.d-m-leftnav-bot li {
+.d-m-leftnav-bot li, .d-m-leftnav-top li {
     white-space: nowrap;
     margin: 1vh 0;
 }
@@ -68,9 +76,9 @@
 .d-m-leftnav-bot {
     position: absolute;
     left: 2vw;
-    top: 150px;
+    top: 21vh;
     overflow-y: scroll;
-    height: 72.26vh;
+    height: 64vh;
     width: 14vw;
     color: #c6b8b8;
 }

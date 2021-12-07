@@ -1,0 +1,7 @@
+.rhap_container {
+    background-color: #0d1230!important;
+}
+.rhap_container * {
+    background-color: #0d1230;
+    color: #FFF;
+}
