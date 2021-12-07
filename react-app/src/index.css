@@ -8,7 +8,12 @@ html, #root {
     height: 100%; 
 }
 
+html, body {
+    overflow-x: hidden; /* slideout */
+}
+
 body {
+    padding: 0; /* slideout */
     height: 100%;
     margin: 0;
     background: linear-gradient(0.40turn, #292ca4, #fe749c);

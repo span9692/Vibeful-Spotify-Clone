@@ -1,9 +1,10 @@
 nav {
     font-family: 'Readex Pro', sans-serif;
+    max-width: 100%;
 }
 
 .nav-container {
-    width: 100%;
+    max-width: 100%;
     padding: 2vh 0vw 2vh 0vw;
     display: flex;
     flex-direction: row;
@@ -12,5 +13,109 @@ nav {
 
 .nav-container > .link > a, a:visited {
     color: #FFF;
+}
+
+/* slideout css */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color:#e7b867;
+    position: absolute;
+    top: 0px;
+    height: 50px!important;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 0px 0px 20px 20px;
+}
+
+
+#sidebarMenu {
+    border-radius: 0px 0px 20px 20px;
+    min-width: 30%;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    right: 50px;
+    transform: translateY(-900px);
+    transition: transform 250ms ease-in-out;
+    background: #e7b867;
+    padding-bottom: 2vh;
+}
+
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle { /* base class */
+    color: #FFF;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 80vw;
+    height: 22px;
+    width: 22px;
+}
+
+.homeLink {
+    color: #FFF;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    top: 15px;
+    left: 20vw;
     text-decoration: none;
+}
+
+.signupLink {
+    color: #FFF;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    top: 15px;
+    left: 52vw;
+    text-decoration: none;
+}
+
+.loginLink {
+    color: #FFF;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    top: 15px;
+    left: 81vw;
+    text-decoration: none;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
 }

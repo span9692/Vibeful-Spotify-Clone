@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import LoginForm from '../auth/LoginForm';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
@@ -12,24 +13,21 @@ const NavBar = () => {
   const guestSplash = (
     <>
       <nav>
-        <div className="nav-container">
-          <div className="logo">
-          </div>
-          <div className="link">
-            <NavLink to="/home" exact={true} activeClassName="active">
-              Home
-            </NavLink>
-          </div>
-          <div className="link">
-              <NavLink to="/login" exact={true} activeClassName="active">
-                Login
-              </NavLink>
-          </div>
-          <div className="link">
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
-          </div>
+        <div class="header"></div>
+        <NavLink to="/home" exact={true} activeClassName="active" className="homeLink">
+          Home
+        </NavLink>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+        <label for="openSidebarMenu" class="signupLink">
+          Signup
+        </label>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+        <label for="openSidebarMenu" class="loginLink">
+          Login
+        </label>
+
+        <div id="sidebarMenu">
+            <LoginForm />
         </div>
       </nav>
     </>
