@@ -73,15 +73,26 @@ input[type=checkbox] {
     width: 22px;
 }
 
+.logo {
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 10vw;
+    height: auto;
+    width: 50px;
+    
+}
+
 .homeLink {
     color: #FFF;
     cursor: pointer;
     position: absolute;
     z-index: 99;
     top: 15px;
-    left: 20vw;
+    left: 75vw;
     text-decoration: none;
 }
+
 
 .signupLink {
     color: #FFF;
@@ -89,7 +100,7 @@ input[type=checkbox] {
     position: absolute;
     z-index: 99;
     top: 15px;
-    left: 52vw;
+    left: 80vw;
     text-decoration: none;
 }
 
@@ -99,7 +110,7 @@ input[type=checkbox] {
     position: absolute;
     z-index: 99;
     top: 15px;
-    left: 81vw;
+    left: 85vw;
     text-decoration: none;
 }
 

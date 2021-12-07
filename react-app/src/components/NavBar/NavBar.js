@@ -14,6 +14,9 @@ const NavBar = () => {
     <>
       <nav>
         <div class="header"></div>
+        <NavLink to="/home" exact={true} activeClassName="active">
+        <img className="logo" src="https://cdn.discordapp.com/attachments/917541871457275925/917759128548569098/vibe_icon.png" />
+        </NavLink>
         <NavLink to="/home" exact={true} activeClassName="active" className="homeLink">
           Home
         </NavLink>
