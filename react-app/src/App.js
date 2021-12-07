@@ -48,7 +48,7 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <h1>Placeholder for dashboard</h1>
         </ProtectedRoute>
-        <Route path="/splash" exact={true}>
+        <Route path="/home" exact={true}>
           <Splash />
         </Route>
       </Switch>

@@ -24,9 +24,6 @@ const Author = () => {
       }
     ];
 
-    const authorInfo = Object.values(authors).map(value => 
-        <ul><li>{value}</li></ul>)
-
   return (
     <>
          {authors.map(each => 
