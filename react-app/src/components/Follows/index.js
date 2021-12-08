@@ -8,7 +8,7 @@ const Follows = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const follows = useSelector((state) => Object.values(state.follow));
-  //   console.log("THISBEDAFOLLOWS-------------->", follows);
+  console.log("THISBEDAFOLLOWS-------------->", follows);
 
   useEffect(() => {
     dispatch(showFollowing(id));
@@ -32,4 +32,3 @@ const Follows = () => {
 };
 
 export default Follows;
-

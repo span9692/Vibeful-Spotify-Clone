@@ -35,11 +35,13 @@ export const showFollowing = (id) => async (dispatch) => {
 };
 
 export const unfollowUser = (id) => async (dispatch) => {
+  console.log("*****DISBEDA----------> id", id);
   const res = await fetch(`/api/users/${id}/dashboard`, {
     method: "DELETE",
   });
-
+  console.log("******DISBEDA res------>", res);
   if (res.ok) {
+    console.log("******DISBEDA res.ok------>", res);
     dispatch(removeFollow(id));
   }
 };
@@ -69,6 +71,7 @@ export default function reducer(state = initialState, action) {
       return newState;
     case REMOVE_FOLLOW:
       newState = { ...state };
+      console.log("*******DISBEDA newState------->", newState[action.id]);
       delete newState[action.id];
       return newState;
     case ADD_FOLLOW:
