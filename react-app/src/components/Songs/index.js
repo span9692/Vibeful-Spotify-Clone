@@ -16,10 +16,10 @@ function SongList() {
     const currentUserLibrary = playlists.filter(el => el.owner_id == userId && el.playlist_name == 'Library')[0]
     const playlist_songs = useSelector(state => state.playlist_song)
 
-    console.log('playlistsssssssssssss', playlists)
-    console.log('currentUserLibraryyyyyyyyyyyyyyy', currentUserLibrary)
-    console.log('songggggggggggggggggggggggggggg', songs)
-    console.log('playlist songgggggggggggsssssssssss', playlist_songs)
+    console.log('playlists', playlists)
+    console.log('currentUserLibraryy', currentUserLibrary)
+    console.log('songggg', songs)
+    console.log('playlist songggs', playlist_songs)
 
 
 
@@ -56,9 +56,9 @@ function SongList() {
             <br></br>
             HELLO FROM SONGLIST
             {songs.map(song => (
-                <div key={song.id}>
+                <div key={song?.id}>
                     <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
-                    {playlist_songs[currentUserLibrary.id].includes(song.id) ?
+                    {playlist_songs[currentUserLibrary.id].includes(song?.id) ?
                     <button onClick={() => removeLibrarySong(song)}>Unlike</button> :
                     <button onClick={() => addLibrarySong(song)}>Like</button> 
                     }
