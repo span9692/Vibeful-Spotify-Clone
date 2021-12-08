@@ -56,7 +56,7 @@ function SongList() {
             <br></br>
             HELLO FROM SONGLIST
             {songs.map(song => (
-                <div key={song?.id}>
+                <div key={song.id}>
                     <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
                     {playlist_songs[currentUserLibrary.id].includes(song?.id) ?
                     <button onClick={() => removeLibrarySong(song)}>Unlike</button> :

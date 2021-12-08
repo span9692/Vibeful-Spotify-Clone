@@ -1,5 +1,6 @@
 const GET_LIBRARY_SONG = 'playlist_songs/GET_LIBRARY_SONG'
 const ADD_LIBRARY_SONG_PLAYLIST = 'playlist_songs/ADD_LIBRARY_SONG_PLAYLIST'
+const REMOVE_LIBRARY_SONG_PLAYLIST = 'playlist_songs/REMOVE_LIBRARY_SONG_PLAYLIST'
 
 const getLibrarySong = data => {
     return {
@@ -11,6 +12,13 @@ const getLibrarySong = data => {
 const addToLibrarySongPlaylist = data => {
     return {
         type: ADD_LIBRARY_SONG_PLAYLIST,
+        data
+    }
+}
+
+const removeFromLibrarySongPlaylist = data => {
+    return {
+        type: REMOVE_LIBRARY_SONG_PLAYLIST,
         data
     }
 }
@@ -39,6 +47,11 @@ export const removeFromLibrary = (song, currentUserLibrary) => async dispatch =>
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ song, currentUserLibrary })
     })
+    if (response.ok) {
+        const data = await response.json()
+        console.log('WE BACK IN DA THUNK DATA~~~~', data)
+        dispatch(removeFromLibrarySongPlaylist(data))
+    }
 }
 
 
@@ -51,9 +64,12 @@ export default function reducer(state = {}, action) {
             return newState
         case ADD_LIBRARY_SONG_PLAYLIST:
             newState = {...state}
-            console.log('IN THE REDUCER, newState', newState)
             newState[action.data["listId"]].push(action.data["musicId"])
-            console.log('IN THE REDUCER, UPDATED newState', newState)
+            return newState
+        case REMOVE_LIBRARY_SONG_PLAYLIST:
+            newState = {...state}
+            let index = newState[action.data['listId']].indexOf(action.data["musicId"])
+            newState[action.data['listId']].splice(index, 1)
             return newState
         default:
             return state;
