@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from 'react-redux';
 import Playlist from "../Playlists/Playlist"
+import Library from "../Library/Library"
 import Player from '../Player/index'
 import "./Dashboard.css";
 
 const Dashboard = () => {
-
-  const user = useSelector((state) => state.session.user);
 
   return (
     <>
@@ -15,7 +13,7 @@ const Dashboard = () => {
         <div className="dashboard-main">
           <div className="dashboard-main-leftnav">
             <div className="d-m-leftnav-top">
-              
+
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
@@ -47,7 +45,7 @@ const Dashboard = () => {
             <Playlist />
           </div>
           <div className="dashboard-main-rightcontent">
-            Welcome {user.first_name}!
+            <Library />
           </div>
         </div>
         <div className="dashboard-bot-player"><Player /></div>

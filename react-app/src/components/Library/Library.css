@@ -1,0 +1,20 @@
+.library_profile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.library_profile_left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.userProfile {
+    width: 250px;
+    height: auto;
+}
