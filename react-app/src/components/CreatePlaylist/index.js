@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const CreatePlaylist = () => {
   
-  const [name, setName] = useState('');
+  const [playlist_name, setPlaylist_name] = useState('');
   const [errors, setErrors] = useState([]);
   const history = useHistory()
   const dispatch = useDispatch();
@@ -19,53 +19,50 @@ const CreatePlaylist = () => {
     return <Redirect to="/" />;
   }
   
-  const id = sessionUser.id
+  const owner_id = sessionUser.id
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    const payload = {
-      name,
-      ownerId: id,
-      state,
-      city,
-      address,
-      imgUrl,
-      description
+    console.log('!!!!$%$%', owner_id)
+    const playlist = {
+      playlist_name: 'Untitled Playlist',
+      owner_id: owner_id
     };
-    //dispatch(addSpot(payload));
-    dispatch(addPlaylist(payload)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors)
-        } 
-      } 
-    );
+
+
+    let newPlaylist = await dispatch(addPlaylist(playlist))
+    // .catch(
+    //   async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) {
+    //       setErrors(data.errors)
+    //     } 
+    //   } 
+    // );
 
     
-    if (name, state, city, address, description) {
-      history.push('/mySpots');
-    }
+    // if (playlist_name) {
+    //   history.push('/playlist');
+    // }
     
   };
 
   
 
   return (
-    <div className='div-wrapper'>
-      <h3 className='header'>Add A Spot</h3>
+    <div>
+      <h3>Add A Playlist</h3>
       <form onSubmit={handleSubmit} >
-      <div>
+      {/* <div>
           <label>
             <input
-              className = 'login-input'
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              placeholder='Spot Name'
+              onChange={(e) => setPlaylist_name(e.target.value)}
+              value={playlist_name}
+              placeholder='Playlist Name'
             />
           </label>
-        </div>
+        </div> */}
         {/* <div>
           <label>
             <input
@@ -76,66 +73,16 @@ const CreatePlaylist = () => {
             />
           </label>
         </div> */}
-        <div>
-          <label>
-            <input
-              className = 'login-input'
-              onChange={(e) => setState(e.target.value)}
-              value={state}
-              placeholder='State'
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              className = 'login-input'
-              onChange={(e) => setCity(e.target.value)}
-              value={city}
-              placeholder='City'
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              className = 'login-input'
-              onChange={(e) => setAddress(e.target.value)}
-              value={address}
-              placeholder='Address'
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              className = 'login-input'
-              onChange={(e) => setImgUrl(e.target.value)}
-              value={imgUrl}
-              placeholder='Image URL'
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              className = 'login-input'
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              placeholder='Spot Description'
-            />
-          </label>
-        </div>
-        <button className='button-login' type='submit'>
-          Add Spot
+        <button type='submit'>
+          Create New Playlist
         </button>
       </form>
       <ul>
         {errors.map((error, idx) => (
-          <li className='error-text' key={idx}>{error}</li>
+          <li key={idx}>{error}</li>
         ))}
       </ul>
     </div>
   );
 };
-export default CreateSpot;
+export default CreatePlaylist;
