@@ -42,27 +42,13 @@ def getFollowing(id):
     all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
 
 
-
     # print("````CURRENTUSER-------->>>>>>>>>>>>>>", current_user.to_dict())
     # currentUser = current_user.to_dict()
     # print("````THISBEDA CURRENT USER ----------->", currentUser["id"])
 
-    unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+    # unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    print("````DISBEDA UNFOLLOW_USER--------------------------->", unfollow_user)
-
-
-
-
-    # unfollow_user = db.session.query(follow_list).filter(follow_list.c.followee_id == id ).first()
-
-    # print("----->DISBEDA UNFOLLOW_USER", unfollow_user)
-    # currentUser = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id).first()
-    # print("------->DISBEDA CURRENT_USER", currentUser)
-
-
-
-
+    # print("````DISBEDA UNFOLLOW_USER--------------------------->", unfollow_user)
 
 
     following_list = {}
@@ -86,34 +72,26 @@ def getFollowers(id):
 
 
 
-
-
-
-@user_routes.route('/<int:id>/dashboard', methods='DELETE')
+@user_routes.route('/<int:id>/dashboard', methods=['DELETE'])
 @login_required
 def unfollow(id):
     unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    print("ooooooooooooooooooo>>>>>>>>>>>",unfollow_user)
+    print("**********DISBEDA UNFOLLOW_USER***********",unfollow_user)
 
     db.session.delete(unfollow_user)
-    sb.session.commit()
+    db.session.commit()
 
-    # return jsonify({'message': f'Unfollowed user {id} '}), 200
-
-    return user(id)
+    return jsonify({'message': f'Unfollowed user {id} '}), 200
 
 
-@user_routes.route('/<int:id>/dashboard', methods='POST')
+
+@user_routes.route('/<int:id>/dashboard', methods=['POST'])
 @login_required
 def follow(id):
     follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
     db.session.add(follow_user)
-    db.session(commit()
+    db.session.commit()
 
-
-    return user(id)
-    # return {
-    #     "message": "successful"
-    # }
+    return jsonify({'message': f'Unfollowed user {id} '}), 200
