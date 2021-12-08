@@ -74,7 +74,7 @@
 
 /* playlists */
 .d-m-leftnav-bot {
-    position: absolute;
+    /* position: absolute; */
     left: 2vw;
     top: 21vh;
     overflow-y: scroll;
