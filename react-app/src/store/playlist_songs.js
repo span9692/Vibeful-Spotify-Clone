@@ -1,36 +1,43 @@
-const ADD_LIBRARY_SONG = 'playlist_songs/ADD_LIBRARY_SONG'
+const GET_LIBRARY_SONG = 'playlist_songs/GET_LIBRARY_SONG'
 
-const newLibrarySong = data => {
+const getLibrarySong = data => {
     return {
-        type: ADD_LIBRARY_SONG,
+        type: GET_LIBRARY_SONG,
         data
     }
 }
 
+export const getLibrary = () => async dispatch => {
+    const response = await fetch('/api/playlist_song/')
+    const data = await response.json()
+    dispatch(getLibrarySong(data))
+}
+
 export const addToLibrary = (song, currentUserLibrary) => async dispatch => {
-    console.log(song, 'this is the songggggggggggg')
-    console.log(currentUserLibrary, 'this is the currentUserLibrary')
     const response = await fetch('/api/playlist_song/', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({song, currentUserLibrary})
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ song, currentUserLibrary })
     })
 }
 
 export const removeFromLibrary = (song, currentUserLibrary) => async dispatch => {
-    console.log(song, 'this is the songggggggggggg')
-    console.log(currentUserLibrary, 'this is the currentUserLibrary')
     const response = await fetch('/api/playlist_song/delete', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({song, currentUserLibrary})
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ song, currentUserLibrary })
     })
 }
+
 
 export default function reducer(state = {}, action) {
     let newState;
     switch (action.type) {
-      default:
-        return state;
+        case GET_LIBRARY_SONG:
+            newState = {...state}
+            newState = action.data
+            return newState
+        default:
+            return state;
     }
-  }
+}

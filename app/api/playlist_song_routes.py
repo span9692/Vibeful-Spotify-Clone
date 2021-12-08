@@ -5,6 +5,16 @@ from sqlalchemy import insert, delete
 playlist_songs_routes = Blueprint('playlist_songs', __name__)
 
 
+@playlist_songs_routes.route('/')
+def getLibrarySong():
+    allPlaylistSongs = db.session.query(playlist_songs).all()
+    
+    playlistSong = {}
+    for i in allPlaylistSongs:
+        playlistSong.setdefault(i[0], []).append(i[1])
+
+    return playlistSong
+
 @playlist_songs_routes.route('/', methods=['POST'])
 def newSongtoLibrary():
     data = request.get_json()
