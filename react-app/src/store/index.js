@@ -5,12 +5,14 @@ import song from "./song";
 import playlist from "./playlist";
 import audio from "./audio";
 import follow from "./follow";
+import playlist_song from "./playlist_songs";
 
 const rootReducer = combineReducers({
   session,
   song,
   playlist,
   audio,
+  playlist_song,
   follow,
 });
 
