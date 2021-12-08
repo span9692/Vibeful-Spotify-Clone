@@ -11,6 +11,8 @@ import Splash from './components/Splash/Splash';
 import Dashboard from './components/Dashboard/Dashboard';
 import { authenticate } from './store/session';
 import SongList from './components/Songs';
+import PlayList from './components/Playlist';
+import CreatePlaylist from './components/CreatePlaylist';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +50,15 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <Dashboard />
+        </ProtectedRoute>
+        <ProtectedRoute path='/playlist' exact={true} >
+          <PlayList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/addplaylist' exact={true} >
+          <CreatePlaylist />
+        </ProtectedRoute>
+        <ProtectedRoute path='/playlist/:playlistId' exact={true} >
+          <CreatePlaylist />
         </ProtectedRoute>
         <Route path="/home" exact={true}>
           <Splash />
