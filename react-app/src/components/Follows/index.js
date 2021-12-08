@@ -8,7 +8,7 @@ const Follows = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const follows = useSelector((state) => Object.values(state.follow));
-//   console.log("THISBEDAFOLLOWS-------------->", follows);
+  //   console.log("THISBEDAFOLLOWS-------------->", follows);
 
   useEffect(() => {
     dispatch(showFollowing(id));
@@ -24,6 +24,7 @@ const Follows = () => {
       {follows.map((follow) => (
         <div key={follow.id}>
           {follow.follower_id} -- {follow.followee_id}
+          <button onClick={() => handleDelete(follow.id)}>Unfollow user</button>
         </div>
       ))}
     </div>
@@ -32,6 +33,3 @@ const Follows = () => {
 
 export default Follows;
 
-/* <button onClick={() => handleDelete(follow.id)}>
-                    Unfollow user
-                    </button> */

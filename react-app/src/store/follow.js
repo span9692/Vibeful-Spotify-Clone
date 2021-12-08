@@ -16,10 +16,10 @@ const removeFollow = (id) => {
   };
 };
 
-const addFollow = (id) => {
+const addFollow = (payload) => {
   return {
     type: ADD_FOLLOW,
-    id,
+    payload,
   };
 };
 
@@ -56,7 +56,7 @@ export const followUser = (id) => async (dispatch) => {
   }
 };
 
-const initialState = { myFollows: [] };
+const initialState = { myFollows: [], follows: [] };
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -69,10 +69,11 @@ export default function reducer(state = initialState, action) {
       return newState;
     case REMOVE_FOLLOW:
       newState = { ...state };
-      delete newState[action.id.id];
+      delete newState[action.id];
       return newState;
     case ADD_FOLLOW:
-      newState = { ...state, [action.id.id]: action.id };
+      newState = { ...state };
+      newState.follows.push(action.payload);
       return newState;
     default:
       return state;
