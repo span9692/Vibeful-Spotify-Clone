@@ -2,10 +2,10 @@ const GET_FOLLOWINGS = "follows/GET_FOLLOWINGS";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOWS";
 const ADD_FOLLOW = "follows/ADD_FOLLOWS";
 
-const showFollowings = (payload) => {
+const showFollowings = (follows) => {
   return {
     type: GET_FOLLOWINGS,
-    payload,
+    follows,
   };
 };
 
@@ -25,7 +25,7 @@ const addFollow = (payload) => {
 
 export const showFollowing = (id) => async (dispatch) => {
   // console.log("THISISTHEID------------------>", id);
-  const res = await fetch(`/api/users/${id}/follows`);
+  const res = await fetch(`/api/users/${id}/dashboard`);
   // console.log("----------->", res);
   if (res.ok) {
     const data = await res.json();
@@ -67,7 +67,7 @@ export default function reducer(state = initialState, action) {
       // console.log("THISISTHEACTION----------->", action);
       // console.log("THISISTHESTATE-------------->", state);
       newState = { ...state };
-      newState.myFollows = action.payload;
+      newState.myFollows = action.follows;
       return newState;
     case REMOVE_FOLLOW:
       newState = { ...state };
