@@ -1,0 +1,51 @@
+.addToPlaylistBtn {
+    background-color: black;
+    color: white;
+    padding: 5px 6px;
+    position:relative;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .addToPlaylistBtn:hover, .addToPlaylistBtn:focus {
+    background-color: #232627;
+  }
+  
+  .dropdownBtn {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .asdf {
+      position: relative;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content p {
+    color: black;
+    padding: 0px 6px;
+    margin: 0px 6px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdownBtn p:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+
+  .addtoplaylist {
+    cursor: pointer;
+  }
+
+  .addtoplaylist:hover {
+    background-color: #ddd;
+  }
