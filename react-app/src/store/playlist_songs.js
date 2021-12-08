@@ -29,7 +29,6 @@ export const addToLibrary = (song, currentUserLibrary) => async dispatch => {
     })
     if (response.ok) {
         const data = await response.json()
-        console.log('DATA!!! BACK FROM THE BACKEND', data)
         dispatch(addToLibrarySongPlaylist(data))
     }
 }
