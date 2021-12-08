@@ -41,7 +41,6 @@ function SongList() {
       {songs.map((song) => (
         <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs}/>
       ))}
-      <Player />
     </div>
   );
 }

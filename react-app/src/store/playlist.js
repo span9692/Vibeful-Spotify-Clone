@@ -54,7 +54,6 @@ export const addPlaylist = playlist => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(playlist),
     });
-    console.log('POST response', response)
     if (response.ok) {
         const data = await response.json();
         dispatch(addOnePlaylist(data));
@@ -63,7 +62,6 @@ export const addPlaylist = playlist => async dispatch => {
 
 
 export const updatePlaylist = data => async (dispatch) => {
-    console.log('!!DATA SENT TO THUNK CREATOR!!', data)
     const response = await fetch(`/api/playlists/${data.id}`, {
       method: 'PUT',
       headers: {
@@ -71,19 +69,13 @@ export const updatePlaylist = data => async (dispatch) => {
       },
       body: JSON.stringify(data)
     });
-    console.log('response',response)
-    // if (response.ok) {
-        console.log('response OK')
-          const playlist = await response.json();
-          dispatch(updateOnePlaylist(playlist));
-          return playlist;
+
         
-    // if (response.ok) {
-    //     console.log('response OK')
-    //   const playlist = await response.json();
-    //   dispatch(updateOnePlaylist(playlist));
-    //   return playlist;
-    // }
+    if (response.ok) {
+      const playlist = await response.json();
+      dispatch(updateOnePlaylist(playlist));
+      return playlist;
+    }
   };
 
 const initialState = {};
@@ -103,7 +95,7 @@ export default function reducer(state = initialState, action) {
       newState = { ...state, [action.id]: action};
       return newState;
       case UPDATE_ONE_PLAYLIST:
-        newState = { ...state, [action.id]: { action } }
+        newState = { ...state, [action.payload.id]: action.payload }
         return newState;
     default:
       return state;

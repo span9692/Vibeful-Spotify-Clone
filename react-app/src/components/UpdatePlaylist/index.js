@@ -6,7 +6,6 @@ import { updatePlaylist } from '../../store/playlist';
 const EditPlaylistForm = ({ playlistId }) => {
   const playlist = useSelector(state => state.playlist[playlistId]);
   const dispatch = useDispatch();
-    console.log('>>>>>>>>>>>', playlist)
    const [playlist_name, setPlaylistName] = useState(playlist.playlist_name);
 
    const updateName = (e) => setPlaylistName(e.target.value);
@@ -19,7 +18,6 @@ const EditPlaylistForm = ({ playlistId }) => {
       ...playlist,
       playlist_name
     };
-    console.log('!! PAYLOAD SENT FROM FRONTEND TO THUNK!!', payload)
     const updatedName = await dispatch(updatePlaylist(payload));
 
   };

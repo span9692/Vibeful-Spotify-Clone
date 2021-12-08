@@ -14,6 +14,7 @@ import SongList from "./components/Songs";
 import PlayList from "./components/Playlist";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Follows from "./components/Follows";
+import Player from "./components/Player";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -68,6 +70,8 @@ function App() {
           <Follows />
         </Route>
       </Switch>
+      <Player/>
+      
     </BrowserRouter>
   );
 }
