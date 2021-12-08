@@ -48,7 +48,7 @@ const Dashboard = () => {
             <Library />
           </div>
         </div>
-        <div className="dashboard-bot-player"><Player /></div>
+        {/* <div className="dashboard-bot-player"><Player /></div> */}
       </div>
     </>
   );

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getSongs } from '../../store/song'
 import { playMusic } from '../../store/audio'
 import { addToLibrary, getLibrary, removeFromLibrary } from '../../store/playlist_songs'
-import Player from '../Player'
 import { getPlaylists } from '../../store/playlist'
 import AddToPlaylist from '../AddSongtoPlaylist'
 
@@ -70,7 +69,6 @@ function SongList() {
                 </div>
 
             ))}
-            <Player />
         </div>
     )
 }
