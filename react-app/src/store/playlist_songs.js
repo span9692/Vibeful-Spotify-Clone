@@ -23,7 +23,7 @@ export const addToLibrary = (song, currentUserLibrary) => async dispatch => {
 
 export const removeFromLibrary = (song, currentUserLibrary) => async dispatch => {
     const response = await fetch('/api/playlist_song/delete', {
-        method: 'POST',
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ song, currentUserLibrary })
     })

@@ -1,61 +1,49 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getSongs } from '../../store/song'
-import { playMusic } from '../../store/audio'
 import { addToLibrary, getLibrary, removeFromLibrary } from '../../store/playlist_songs'
 import Player from '../Player'
-import { getPlaylists } from '../../store/playlist'
+import IndivSong from './IndivSong'
+import { getPlaylists } from '../../store/playlist';
+import { getSongs } from "../../store/song";
 
 function SongList() {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const songs = useSelector(state => Object.values(state.song))
-    const userId = useSelector(state => state.session.user.id)
-    const playlists = useSelector(state => Object.values(state.playlist))
-    const currentUserLibrary = playlists.filter(el => el.owner_id == userId && el.playlist_name == 'Library')[0]
+  const songs = useSelector((state) => Object.values(state.song));
+  const userId = useSelector((state) => state.session.user.id);
+  const playlists = useSelector((state) => Object.values(state.playlist));
+  const currentUserLibrary = playlists.filter(
+    (el) => el.owner_id == userId && el.playlist_name == "Library"
+  )[0];
+  const playlist_songs = useSelector((state) => state.playlist_song);
+  const newUserLibrary = {...currentUserLibrary}
 
-    console.log('playlistsssssssssssss', playlists)
-    console.log('currentUserLibraryyyyyyyyyyyyyyy', currentUserLibrary)
+  useEffect(() => {
+    dispatch(getSongs());
+    dispatch(getPlaylists());
+    dispatch(getLibrary());
+  }, [dispatch]);
 
-
-
-    useEffect(() => {
-        dispatch(getSongs())
-        dispatch(getPlaylists())
-        dispatch(getLibrary())
-    }, [dispatch])
-
-    const play = (song) => {
-        dispatch(playMusic(song))
+  if (currentUserLibrary) {
+    if (!([currentUserLibrary.id] in playlist_songs)) {
+      playlist_songs[currentUserLibrary.id] = [];
     }
+  }
 
-    
-    const addLibrarySong = (song) => {
-        dispatch(addToLibrary(song, currentUserLibrary))
-    }
-
-    const removeLibrarySong = (song) => {
-        dispatch(removeFromLibrary(song, currentUserLibrary))
-    }
-
-    
-    return (
-        <div>
-            HELLO FROM SONGLIST
-            {songs.map(song => (
-                <div key={song.id}>
-                    <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
-                    {/* {checkLibrarySongExists(song) ? "100" : "3"} */}
-                    {/* {false ? "100" : "3"} */}
-                    <button onClick={() => addLibrarySong(song)}>Like</button>
-                    <button onClick={() => removeLibrarySong(song)}>Unlike</button>
-                    <button>Add to Playlist</button>
-                </div>
-
-            ))}
-            <Player />
-        </div>
-    )
+  return (
+    <div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      HELLO FROM SONGLIST
+      {songs.map((song) => (
+        <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs}/>
+      ))}
+      <Player />
+    </div>
+  );
 }
 
 export default SongList;

@@ -57,7 +57,6 @@ export const addPlaylist = playlist => async dispatch => {
     console.log('POST response', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('>>>>>>>>', data)
         dispatch(addOnePlaylist(data));
     }
 };
