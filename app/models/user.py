@@ -32,6 +32,7 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
+
     playlists = db.relationship('Playlist', back_populates='users', cascade="all, delete-orphan")
 
     follower = db.relationship('User', secondary=follow_list, secondaryjoin=(follow_list.c.follower_id == id), primaryjoin=(follow_list.c.followee_id == id), backref=db.backref('follow_list'))
