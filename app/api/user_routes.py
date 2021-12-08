@@ -19,20 +19,83 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+
+
 @user_routes.route('/<int:id>/dashboard')
 # @login_required
 def get_followers(id):
-    followers = db.session.query(follow_list).filter_by(followee_id = id).all()
-    followers_list = []
-    for follower in followers:
-        user_follower = User.query.get(follower.follower_id)
-        user_followee = User.query.get(follower.followee_id)
-        updated_follower = user_follower.to_dict()
-        updated_follower["followee_first_name"] = user_followee.first_name
-        updated_follower["followee_last_name"] = user_followee.last_name
-        followers_list.append(updated_follower)
+    follows = db.session.query(follow_list).filter_by(followee_id = id).all()
 
-    return jsonify({"followers": followers_list})
+    followings = db.session.query(follow_list).filter_by(follower_id = id).all()
+
+    print("************** FOLLOWS", follows)
+    print("************** FOLLOWING", followings)
+
+    followers_list = []
+    following_list = []
+
+    for follow in follows:
+        user_follower = User.query.get(follow.follower_id)
+        followers_list.append(user_follower.to_dict())
+
+    print("------------> followers_list", followers_list)
+
+    for following in  followings:
+        user_following = User.query.get(following.followee_id)
+        following_list.append(user_following.to_dict())
+
+    print("------------> following_list", following_list)
+
+    return {"followers": followers_list, "following": following_list}
+
+# @user_routes.route('/<int:id>/dashboard')
+# # @login_required
+# def get_followers(id):
+#     follows = db.session.query(follow_list).filter_by(followee_id = id).all()
+
+#      followings = db.session.query(follow_list).filter_by(follower_id = id).all()
+
+#     followers_list = []
+#     following_list = []
+#     for follow in follows:
+#         user_follower = User.query.get(follow.follower_id)
+#         user_followee = User.query.get(follow.followee_id)
+#         updated_follower = user_follower.to_dict()
+#         updated_follower["followee_first_name"] = user_followee.first_name
+#         updated_follower["followee_last_name"] = user_followee.last_name
+#         followers_list.append(updated_follower)
+
+
+#     for following in  followings:
+#         user_follower = User.query.get(following.follower_id)
+#         user_followee = User.query.get(following.followee_id)
+#         updated_followee = user_followee.to_dict()
+#         updated_followee["follower_first_name"] = user_follower.first_name
+#         updated_followee["follower_last_name"] = user_follower.last_name
+#         following_list.append(updated_followee)
+
+#     return jsonify({"followers": followers_list, "following": following_list})
+
+
+# @user_routes.route('/<int:id>/dashboard')
+# # @login_required
+# def get_followers(id):
+#     followers = db.session.query(follow_list).filter_by(followee_id = id).all()
+#     followers_list = []
+#     for follower in followers:
+#         user_follower = User.query.get(follower.follower_id)
+#         user_followee = User.query.get(follower.followee_id)
+#         updated_follower = user_follower.to_dict()
+#         updated_follower["followee_first_name"] = user_followee.first_name
+#         updated_follower["followee_last_name"] = user_followee.last_name
+#         followers_list.append(updated_follower)
+
+#     return jsonify({"followers": followers_list})
+
+
+
+
+
 
 
 
