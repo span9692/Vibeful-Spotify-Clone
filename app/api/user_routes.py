@@ -28,8 +28,8 @@ def get_followers(id):
 
     followings = db.session.query(follow_list).filter_by(follower_id = id).all()
 
-    print("************** FOLLOWS", follows)
-    print("************** FOLLOWING", followings)
+    # print("************** FOLLOWS", follows)
+    # print("************** FOLLOWING", followings)
 
     followers_list = []
     following_list = []
@@ -38,13 +38,13 @@ def get_followers(id):
         user_follower = User.query.get(follow.follower_id)
         followers_list.append(user_follower.to_dict())
 
-    print("------------> followers_list", followers_list)
+    # print("------------> followers_list", followers_list)
 
     for following in  followings:
         user_following = User.query.get(following.followee_id)
         following_list.append(user_following.to_dict())
 
-    print("------------> following_list", following_list)
+    # print("------------> following_list", following_list)
 
     return {"followers": followers_list, "following": following_list}
 
@@ -54,7 +54,7 @@ def get_followers(id):
 def unfollow(id):
     unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    print("**********DISBEDA UNFOLLOW_USER***********",unfollow_user)
+    # print("**********DISBEDA UNFOLLOW_USER***********",unfollow_user)
 
     db.session.delete(unfollow_user)
     db.session.commit()
@@ -62,12 +62,37 @@ def unfollow(id):
     return jsonify({'message': f'Unfollowed user {id} '}), 200
 
 
+
+
+
 @user_routes.route('/<int:id>/dashboard', methods=['POST'])
 @login_required
 def follow(id):
-    follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+    data = request.get_json()
 
-    db.session.add(follow_user)
+    db.session.execute(follow_list.insert().values(follower_id=current_user.id), followee_id=id)
+
+
     db.session.commit()
 
-    return jsonify({'message': f'Unfollowed user {id} '}), 200
+
+    return "Followed User!"
+
+
+
+
+
+
+
+
+
+
+# @user_routes.route('/<int:id>/dashboard', methods=['POST'])
+# @login_required
+# def follow(id):
+#     follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+
+#     db.session.add(follow_user)
+#     db.session.commit()
+
+#     return jsonify({'message': f'Unfollowed user {id} '}), 200
