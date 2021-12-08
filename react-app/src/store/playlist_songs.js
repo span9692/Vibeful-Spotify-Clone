@@ -49,7 +49,6 @@ export const removeFromLibrary = (song, currentUserLibrary) => async dispatch =>
     })
     if (response.ok) {
         const data = await response.json()
-        console.log('WE BACK IN DA THUNK DATA~~~~', data)
         dispatch(removeFromLibrarySongPlaylist(data))
     }
 }
