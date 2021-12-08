@@ -41,6 +41,11 @@ function SongList() {
         dispatch(removeFromLibrary(song, currentUserLibrary))
     }
 
+    if (currentUserLibrary) {
+        if (!([currentUserLibrary.id] in playlist_songs)) {
+            playlist_songs[currentUserLibrary.id] = []
+        }
+    }
     
     return isLoaded && (
         <div>
@@ -53,8 +58,6 @@ function SongList() {
             {songs.map(song => (
                 <div key={song?.id}>
                     <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
-                    {song?.id}
-                    and
                     {playlist_songs[currentUserLibrary.id].includes(song.id) ?
                     <button onClick={() => removeLibrarySong(song)}>Unlike</button> :
                     <button onClick={() => addLibrarySong(song)}>Like</button> 
