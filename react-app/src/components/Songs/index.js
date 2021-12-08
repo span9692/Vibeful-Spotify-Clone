@@ -5,6 +5,7 @@ import { playMusic } from '../../store/audio'
 import { addToLibrary, getLibrary, removeFromLibrary } from '../../store/playlist_songs'
 import Player from '../Player'
 import { getPlaylists } from '../../store/playlist'
+import AddToPlaylist from '../AddSongtoPlaylist'
 
 function SongList() {
     const dispatch = useDispatch()
@@ -56,13 +57,16 @@ function SongList() {
             <br></br>
             HELLO FROM SONGLIST
             {songs.map(song => (
-                <div key={song?.id}>
+                <div key={song.id}>
                     <button onClick={() => play(song)}>{song.title} -- {song.artist}</button>
                     {playlist_songs[currentUserLibrary.id].includes(song?.id) ?
                     <button onClick={() => removeLibrarySong(song)}>Unlike</button> :
                     <button onClick={() => addLibrarySong(song)}>Like</button> 
                     }
-                    <button>Add to Playlist</button>
+                    <AddToPlaylist />
+                    {/* <div className='add_to_playlist_dropdown'>
+                        <button>Add to Playlist</button>
+                    </div> */}
                 </div>
 
             ))}
