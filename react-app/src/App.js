@@ -56,7 +56,7 @@ function App() {
         <Route path="/home" exact={true}>
           <Splash />
         </Route>
-        <Route path="/follows" exact={true}>
+        <Route path="/users/:id/follows" exact={true}>
           <Follows />
         </Route>
       </Switch>

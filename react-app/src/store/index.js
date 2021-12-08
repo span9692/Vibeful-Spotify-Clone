@@ -4,14 +4,14 @@ import session from "./session";
 import song from "./song";
 import playlist from "./playlist";
 import audio from "./audio";
-import follows from "./follows";
+import follow from "./follow";
 
 const rootReducer = combineReducers({
   session,
   song,
   playlist,
   audio,
-  follows,
+  follow,
 });
 
 let enhancer;
