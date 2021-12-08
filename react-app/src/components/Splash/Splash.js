@@ -1,8 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './Splash.css';
 import Author from '../Author/Author.js'
+import Dashboard from '../Dashboard/Dashboard.js'
 
 const Splash = () => {
+
+const user = useSelector((state) => state.session.user);
+
+if (user) {
+  return <Dashboard />
+  // return <Redirect to="/" />;
+}
+
 const stockImages = {
   google:
     "https://cdn.discordapp.com/attachments/917541871457275925/917571215416246283/google-play-badge.png",
