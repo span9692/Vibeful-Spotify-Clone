@@ -25,6 +25,11 @@ const addOnePlaylist = payload => {
     }
 }
 
+const updateOnePlaylist = payload => ({
+    type: UPDATE_ONE_PLAYLIST,
+    payload
+})
+
 // Define Thunk Creators
 export const getPlaylists = () => async dispatch => {
   const playlists = await fetch('/api/playlists')
@@ -49,12 +54,39 @@ export const addPlaylist = playlist => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(playlist),
     });
+    console.log('POST response', response)
     if (response.ok) {
         const data = await response.json();
         console.log('>>>>>>>>', data)
         dispatch(addOnePlaylist(data));
     }
 };
+
+
+export const updatePlaylist = data => async (dispatch) => {
+    console.log('!!DATA SENT TO THUNK CREATOR!!', data)
+    const response = await fetch(`/api/playlists/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    console.log('response',response)
+    // if (response.ok) {
+        console.log('response OK')
+          const playlist = await response.json();
+          dispatch(updateOnePlaylist(playlist));
+          return playlist;
+        
+    // if (response.ok) {
+    //     console.log('response OK')
+    //   const playlist = await response.json();
+    //   dispatch(updateOnePlaylist(playlist));
+    //   return playlist;
+    // }
+  };
+
 const initialState = {};
 // Define reducer
 export default function reducer(state = initialState, action) {
@@ -69,9 +101,11 @@ export default function reducer(state = initialState, action) {
       delete newState[action.payload];
       return newState;
     case ADD_ONE_PLAYLIST:
-      console.log('!!!!!!!newState playlist', action)
       newState = { ...state, [action.id]: action};
       return newState;
+      case UPDATE_ONE_PLAYLIST:
+        newState = { ...state, [action.id]: { action } }
+        return newState;
     default:
       return state;
   }

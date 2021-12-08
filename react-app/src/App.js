@@ -56,6 +56,9 @@ function App() {
         <ProtectedRoute path='/addplaylist' exact={true} >
           <CreatePlaylist />
         </ProtectedRoute>
+        <ProtectedRoute path='/playlist/:playlistId' exact={true} >
+          <CreatePlaylist />
+        </ProtectedRoute>
         <Route path="/home" exact={true}>
           <Splash />
         </Route>

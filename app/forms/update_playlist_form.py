@@ -6,4 +6,4 @@ from wtforms.validators import DataRequired, ValidationError
 
 class UpdatePlaylistForm(FlaskForm):
     playlist_name = StringField('playlist_name')
-    owner_id = IntegerField('owner_id')
+    # owner_id = IntegerField('owner_id')
