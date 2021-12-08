@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPlaylists, deletePlaylist, updatePlaylist } from '../../store/playlist'
@@ -26,11 +27,9 @@ const Playlist = () => {
             <ul className='ul'>
               {playlists?.map(playlist => (playlist.owner_id === sessionUser?.id?
                   <li key={playlist.id}>
-                      {playlist.playlist_name}
+                    <NavLink  to={`/playlist/${playlist.id}`}>{playlist.playlist_name}</NavLink>
                   </li>
-                  
-                  : null
-                      
+                  : null 
                   ))}
             </ul>
               {/* <ul>
