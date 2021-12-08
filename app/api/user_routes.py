@@ -41,7 +41,6 @@ def user(id):
 def getFollowing(id):
     all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
 
-
     # print("````CURRENTUSER-------->>>>>>>>>>>>>>", current_user.to_dict())
     # currentUser = current_user.to_dict()
     # print("````THISBEDA CURRENT USER ----------->", currentUser["id"])
