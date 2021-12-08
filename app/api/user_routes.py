@@ -37,13 +37,33 @@ def user(id):
 
 
 @user_routes.route('/<int:id>/follows', methods=['GET'])
+@login_required
 def getFollowing(id):
     all_follows = db.session.query(follow_list).filter(follow_list.c.follower_id == id).all()
 
 
-    # unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    # print("--------------------------->", unfollow_user)
+    # print("````CURRENTUSER-------->>>>>>>>>>>>>>", current_user.to_dict())
+    # currentUser = current_user.to_dict()
+    # print("````THISBEDA CURRENT USER ----------->", currentUser["id"])
+
+    unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+
+    print("````DISBEDA UNFOLLOW_USER--------------------------->", unfollow_user)
+
+
+
+
+    # unfollow_user = db.session.query(follow_list).filter(follow_list.c.followee_id == id ).first()
+
+    # print("----->DISBEDA UNFOLLOW_USER", unfollow_user)
+    # currentUser = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id).first()
+    # print("------->DISBEDA CURRENT_USER", currentUser)
+
+
+
+
+
 
     following_list = {}
     for i in all_follows:
@@ -54,6 +74,7 @@ def getFollowing(id):
 
 
 @user_routes.route('/<int:id>/follows', methods=['GET'])
+@login_required
 def getFollowers(id):
     all_followees = db.session.query(follow_list).filter(follow_list.c.followee_id == id).all()
 
@@ -64,22 +85,35 @@ def getFollowers(id):
     return follower_list
 
 
-# @user_routes.route('/<int:id>/dashboard', methods='DELETE')
-# def unfollow(id):
-#     unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-#     print("ooooooooooooooooooo>>>>>>>>>>>",unfollow_user)
 
-#     db.session.delete(unfollow_user)
-#     sb.session.commit()
-#     return jsonify({'message': f'Unfollowed user {id} '}), 200
 
-# @user_routes.route('/<int:id>/dashboard', methods='POST')
-# # @login_required
-# def follow(id):
-#     follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-#     db.session.add(follow_user)
-#     db.session(commit()
+@user_routes.route('/<int:id>/dashboard', methods='DELETE')
+@login_required
+def unfollow(id):
+    unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-#        return jsonify({'message': f'Followed user {id} '}), 200
+    print("ooooooooooooooooooo>>>>>>>>>>>",unfollow_user)
+
+    db.session.delete(unfollow_user)
+    sb.session.commit()
+
+    # return jsonify({'message': f'Unfollowed user {id} '}), 200
+
+    return user(id)
+
+
+@user_routes.route('/<int:id>/dashboard', methods='POST')
+@login_required
+def follow(id):
+    follow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
+
+    db.session.add(follow_user)
+    db.session(commit()
+
+
+    return user(id)
+    # return {
+    #     "message": "successful"
+    # }
