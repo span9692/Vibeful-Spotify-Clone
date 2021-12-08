@@ -18,3 +18,5 @@ class Playlist(db.Model):
             'playlist_name': self.playlist_name,
             'owner_id': self.owner_id
     }
+
+    
