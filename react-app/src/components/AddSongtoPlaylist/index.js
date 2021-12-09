@@ -31,23 +31,17 @@ function AddToPlaylist({ song, playlists, currentUserLibrary }) {
     }
 
     const addToUserPlaylist = (song, playlistId) => {
-        console.log('playlistId!!!!!!!!!!!!!!!!!!!!!', playlistId)
-        console.log('song!!!!!!!!!!!!!!!!!!!!!', song)
         dispatch(addPlaylistSong(song, playlistId))
     }
 
     return (
         <div className='dropdownBtn'>
             <button className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}>Add to Playlist</button>
-            {/* <div className='asdf'> added this so dropdown-content's positioning would be relative to this div */}
-                
-                    {usersPlaylist.map(playlist=> (
-                        <div className='asdf'> 
-                            <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
-                        </div>
-                    ))}
-                {/* </div> */}
-            {/* </div> */}
+                <div id='playlistDropdown' className='dropdown-content'>
+                {usersPlaylist.map(playlist=> (
+                    <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
+                ))}
+                </div>
         </div>
     )
 }
