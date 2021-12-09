@@ -2,6 +2,10 @@ const GET_LIBRARY_SONG = 'playlist_songs/GET_LIBRARY_SONG'
 const ADD_LIBRARY_SONG_PLAYLIST = 'playlist_songs/ADD_LIBRARY_SONG_PLAYLIST'
 const REMOVE_LIBRARY_SONG_PLAYLIST = 'playlist_songs/REMOVE_LIBRARY_SONG_PLAYLIST'
 
+const GET_PLAYLIST_SONG = 'playlist_songs/GET_PLAYLIST_SONG'
+const ADD_PLAYLIST_SONG = 'playlist_songs/ADD_PLAYLIST_SONG'
+const REMOVE_PLAYLIST_SONG = 'playlist_songs/REMOVE_PLAYLIST_SONG'
+
 const getLibrarySong = data => {
     return {
         type: GET_LIBRARY_SONG,
@@ -53,6 +57,18 @@ export const removeFromLibrary = (song, currentUserLibrary) => async dispatch =>
     }
 }
 
+export const addPlaylistSong = (song, playlistId) => async dispatch => {
+    const response = await fetch('/api/playlist_song/newSong', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({song,playlistId})
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(addToLibrarySongPlaylist(data))
+    }
+}
+
 
 export default function reducer(state = {}, action) {
     let newState;
@@ -63,6 +79,9 @@ export default function reducer(state = {}, action) {
             return newState
         case ADD_LIBRARY_SONG_PLAYLIST:
             newState = {...state}
+            if (!(action.data["listId"] in newState)) {
+                newState[action.data["listId"]] = []
+            }
             newState[action.data["listId"]].push(action.data["musicId"])
             return newState
         case REMOVE_LIBRARY_SONG_PLAYLIST:

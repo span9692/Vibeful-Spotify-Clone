@@ -39,7 +39,7 @@ function SongList() {
       <br></br>
       HELLO FROM SONGLIST
       {songs.map((song) => (
-        <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs}/>
+        <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
       ))}
     </div>
   );

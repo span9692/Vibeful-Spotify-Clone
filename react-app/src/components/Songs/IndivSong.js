@@ -8,17 +8,17 @@ import {
 import { getSongs } from "../../store/song";
 import { playMusic } from "../../store/audio";
 import { getPlaylists } from "../../store/playlist";
+import AddToPlaylist from "../AddSongtoPlaylist";
 
 
-function IndivSong({song, currentUserLibrary, playlist_songs}) {
-
+function IndivSong({song, currentUserLibrary, playlist_songs, playlists}) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getSongs());
-    dispatch(getPlaylists());
-    dispatch(getLibrary());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getSongs());
+  //   dispatch(getPlaylists());
+  //   dispatch(getLibrary());
+  // }, [dispatch]);
 
   const play = (song) => {
     dispatch(playMusic(song));
@@ -37,7 +37,7 @@ function IndivSong({song, currentUserLibrary, playlist_songs}) {
       <button onClick={() => play(song)}>
         {song.title} -- {song.artist}
       </button>
-          {
+      {
       playlist_songs[currentUserLibrary.id]
         ? [
             playlist_songs[currentUserLibrary.id].includes(song.id) ? (
@@ -49,9 +49,8 @@ function IndivSong({song, currentUserLibrary, playlist_songs}) {
             ),
           ]
         : null
-    }
-
-      <button>Add to Playlist</button>
+      }
+      <AddToPlaylist song={song} playlists={playlists} currentUserLibrary={currentUserLibrary}/>
     </div>
   );
 }
