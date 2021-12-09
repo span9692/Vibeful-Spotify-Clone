@@ -28,3 +28,10 @@ def removeSongFromLibrary():
     db.session.execute(playlist_songs.delete().where(playlist_songs.c.playlist_id==data['currentUserLibrary']['id']).where(playlist_songs.c.song_id==data['song']['id']))
     db.session.commit()
     return {"listId":data['currentUserLibrary']['id'], "musicId":data['song']['id']}    
+
+@playlist_songs_routes.route('/newSong', methods=['POST'])
+def newPlaylistSong():
+    data = request.get_json()
+    db.session.execute(playlist_songs.insert().values(playlist_id=data['playlistId'], song_id=data['song']['id']))
+    db.session.commit()
+    return {"listId":data['playlistId'], "musicId":data['song']['id']}

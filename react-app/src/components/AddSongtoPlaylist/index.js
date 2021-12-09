@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { addPlaylistSong } from '../../store/playlist_songs'
 import './addSongtoPlaylist.css'
 
 function AddToPlaylist({ song, playlists, currentUserLibrary }) {
@@ -31,6 +32,8 @@ function AddToPlaylist({ song, playlists, currentUserLibrary }) {
 
     const addToUserPlaylist = (song, playlistId) => {
         console.log('playlistId!!!!!!!!!!!!!!!!!!!!!', playlistId)
+        console.log('song!!!!!!!!!!!!!!!!!!!!!', song)
+        dispatch(addPlaylistSong(song, playlistId))
     }
 
     return (
