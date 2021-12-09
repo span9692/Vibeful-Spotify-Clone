@@ -3,7 +3,7 @@ from app.models import db, Song, playlist_songs, Playlist
 
 def seed_songs():
     song1 = Song(title='Billy Jean', artist='Michael Jackson', album='Thriller', genre='Pop', url='https://res.cloudinary.com/photofinder/video/upload/v1638837028/vibeful%20mp3/michael_jackson_billy_jean_lyrics_fvibrd.mp3')
-    song2 = Song(title='Goddamn', artist='Tyga', album='Kyoto', genre='Rap', url='https://res.cloudinary.com/photofinder/video/upload/v1638836615/vibeful%20mp3/Tyga_-_Goddamn_Audio_x8hyne.mp3')
+    song2 = Song(title='Goddamn', artist='Tyga', album='Legendary', genre='Rap', url='https://res.cloudinary.com/photofinder/video/upload/v1638836615/vibeful%20mp3/Tyga_-_Goddamn_Audio_x8hyne.mp3')
     song3 = Song(title='Spaceman', artist='Hardwell', album='Hardwell Presents Revealed, Volume 3', genre='EDM', url='https://res.cloudinary.com/photofinder/video/upload/v1638837618/vibeful%20mp3/Hardwell_-_Spaceman_Original_Mix_qkvpfb.mp3')
     song4 = Song(title='Welcome to My Life', artist='Simple Plan', album='Still Not Getting Any...', genre='Rock', url='https://res.cloudinary.com/photofinder/video/upload/v1638837504/vibeful%20mp3/Welcome_to_my_life-lyrics_Full_song_ivvshi.mp3')
     song5 = Song(title='In The End', artist='Linkin Park', album='Hybrid Theory', genre='Rock', url='https://res.cloudinary.com/photofinder/video/upload/v1638837501/vibeful%20mp3/In_the_end_-_Linkin_Park_with_lyrics_jvzwba.mp3')

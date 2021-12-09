@@ -42,6 +42,7 @@ function SongList() {
         <tr>
           <th>#</th>
           <th>Title</th>
+          <th></th>
           <th>Artist</th>
           <th>Album</th>
           <th></th>

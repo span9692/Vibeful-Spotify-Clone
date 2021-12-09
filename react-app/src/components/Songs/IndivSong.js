@@ -37,12 +37,12 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists })
   return (
     <tr className='libraryRow'>
         <td>{song.id}</td>
-        <td><div onClick={() => play(song)}>
-          {song.title}
-        </div>
+        <td onClick={() => play(song)}>
+        <div>album cover</div>
         </td>
-        <td>{song.artist}</td>
-        <td>{song.album}</td>
+        <td onClick={() => play(song)}>{song.title}</td>
+        <td onClick={() => play(song)}>{song.artist}</td>
+        <td onClick={() => play(song)}>{song.album}</td>
         <td>
         {
           playlist_songs[currentUserLibrary.id]
