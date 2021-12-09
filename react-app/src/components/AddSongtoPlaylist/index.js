@@ -46,7 +46,7 @@ function AddToPlaylist({ song, playlists, currentUserLibrary }) {
                             <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
                         </div>
                     ))}
-                </div>
+                {/* </div> */}
             {/* </div> */}
         </div>
     )
