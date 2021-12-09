@@ -37,10 +37,21 @@ function SongList() {
       <br></br>
       <br></br>
       <br></br>
-      HELLO FROM SONGLIST
+      WILL STYLE AFTER ADDING NAV/SIDE BAR
+      <table>
+        <tr className='tableHeader'>
+          <th>#</th>
+          <th>Title</th>
+          <th></th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th></th>
+          <th></th>
+        </tr>
       {songs.map((song) => (
         <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
       ))}
+      </table>
     </div>
   );
 }

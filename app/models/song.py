@@ -8,6 +8,7 @@ class Song(db.Model):
     title = db.Column(db.String(50), nullable=False)
     artist = db.Column(db.String(50), nullable=False)
     album = db.Column(db.String(100), nullable=False)
+    cover = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(50), nullable=False)
     url = db.Column(db.String(255), nullable=False)
 
@@ -19,6 +20,7 @@ class Song(db.Model):
             'title': self.title,
             'artist': self.artist,
             'album': self.album,
+            'cover': self.cover,
             'genre': self.genre,
             'url': self.url
         }

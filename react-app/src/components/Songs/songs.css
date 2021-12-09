@@ -1,0 +1,15 @@
+.libraryRow:hover {
+  cursor: pointer;
+}
+
+.libraryRow {
+  color: white;
+}
+
+.tableHeader {
+  color: white;
+}
+
+.coverImg {
+  width: 50px;
+}
