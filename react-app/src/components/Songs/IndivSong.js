@@ -38,7 +38,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists })
     <tr className='libraryRow'>
         <td>{song.id}</td>
         <td onClick={() => play(song)}>
-        <div>album cover</div>
+        <img className='coverImg' src={song.cover}></img>
         </td>
         <td onClick={() => play(song)}>{song.title}</td>
         <td onClick={() => play(song)}>{song.artist}</td>

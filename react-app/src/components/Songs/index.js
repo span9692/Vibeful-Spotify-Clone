@@ -39,7 +39,7 @@ function SongList() {
       <br></br>
       WILL STYLE AFTER ADDING NAV/SIDE BAR
       <table>
-        <tr>
+        <tr className='tableHeader'>
           <th>#</th>
           <th>Title</th>
           <th></th>
