@@ -1,14 +1,14 @@
 .addToPlaylistBtn {
-    background-color: black;
+    /* background-color: black; */
     color: white;
     padding: 5px 6px;
     border: none;
     cursor: pointer;
   }
 
-  .addToPlaylistBtn:hover, .addToPlaylistBtn:focus {
+  /* .addToPlaylistBtn:hover, .addToPlaylistBtn:focus {
     background-color: #232627;
-  }
+  } */
 
   .dropdownBtn {
     position: relative;

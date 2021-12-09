@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   addToLibrary,
@@ -9,9 +9,11 @@ import { getSongs } from "../../store/song";
 import { playMusic } from "../../store/audio";
 import { getPlaylists } from "../../store/playlist";
 import AddToPlaylist from "../AddSongtoPlaylist";
+import './songs.css'
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
 
-function IndivSong({song, currentUserLibrary, playlist_songs, playlists}) {
+function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists }) {
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -33,25 +35,33 @@ function IndivSong({song, currentUserLibrary, playlist_songs, playlists}) {
   };
 
   return (
-    <div>
-      <button onClick={() => play(song)}>
-        {song.title} -- {song.artist}
-      </button>
-      {
-      playlist_songs[currentUserLibrary.id]
-        ? [
-            playlist_songs[currentUserLibrary.id].includes(song.id) ? (
-              <button onClick={() => removeLibrarySong(song)}>
-                Unlike
-              </button>
-            ) : (
-              <button onClick={() => addLibrarySong(song)}>Like</button>
-            ),
-          ]
-        : null
-      }
-      <AddToPlaylist song={song} playlists={playlists} currentUserLibrary={currentUserLibrary}/>
-    </div>
+    <tr className='libraryRow'>
+        <td>{song.id}</td>
+        <td><div onClick={() => play(song)}>
+          {song.title}
+        </div>
+        </td>
+        <td>{song.artist}</td>
+        <td>{song.album}</td>
+        <td>
+        {
+          playlist_songs[currentUserLibrary.id]
+            ? [
+              playlist_songs[currentUserLibrary.id].includes(song.id) ? (
+                <div onClick={() => removeLibrarySong(song)}>
+                  <i class="fas fa-heart"></i>
+                </div>
+              ) : (
+                <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
+              ),
+            ]
+            : null
+        }
+        </td>
+        <td>
+        <AddToPlaylist key={key} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
+        </td>
+    </tr>
   );
 }
 
