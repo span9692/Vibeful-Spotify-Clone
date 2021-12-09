@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import SignUpFormModal from '../auth/SignUpFormModal';
 import LoginForm from '../auth/LoginForm';
 import { logout } from '../../store/session';
 import './NavBar.css'
@@ -28,7 +29,7 @@ const NavBar = () => {
         </NavLink>
         <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
         <label for="openSidebarMenu" class="signupLink">
-          Signup
+          <SignUpFormModal />
         </label>
         <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
         <label for="openSidebarMenu" class="loginLink">
