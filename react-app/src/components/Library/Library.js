@@ -2,13 +2,15 @@ import React from "react";
 import "./Library.css"
 import { useSelector } from "react-redux";
 import SongList from "../Songs";
+import CreatePlaylist from "../CreatePlaylist";
+
 
 
 const Library = () => {
 
   const user = useSelector((state) => state.session.user);
 
-  let options;
+  let options = null;
 
   if (window.location.href.endsWith("songs")) {
     options = (
@@ -33,6 +35,10 @@ const Library = () => {
             />
           </div>
         </div>
+    )
+  } else if (window.location.href.includes("playlist/")) {
+    options = (
+      <div className="library_songs_meta"><CreatePlaylist /></div>
     )
   }
 

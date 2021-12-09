@@ -2,9 +2,35 @@ import React from "react";
 import Playlist from "../Playlists/Playlist"
 import Library from "../Library/Library"
 import Player from '../Player/index'
-import "./Dashboard.css";
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { addPlaylist, getPlaylists } from "../../store/playlist";
+import { Redirect } from 'react-router-dom';
+import "./Dashboard.css"
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user)
+  const asdf = useSelector((state) => state.playlist)
+
+  useEffect(() => {
+    dispatch(getPlaylists())
+  }, [dispatch])
+
+  if(!sessionUser) {
+    // history.push('/');
+    return <Redirect to="/" />;
+  }
+
+  const owner_id = sessionUser.id
+
+  const add = () => {
+    dispatch(addPlaylist({
+      playlist_name: 'Untitled Playlist',
+      owner_id: owner_id
+    }))
+  }
 
   return (
     <>
@@ -13,7 +39,6 @@ const Dashboard = () => {
         <div className="dashboard-main">
           <div className="dashboard-main-leftnav">
             <div className="d-m-leftnav-top">
-
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
@@ -35,7 +60,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i class="fab fa-napster"></i><span>Create a playlist</span>
+                  <i class="fab fa-napster"></i><span className='pointer' onClick={() => add()}>Create a playlist</span>
                   </div>
                 </li>
               </ul>

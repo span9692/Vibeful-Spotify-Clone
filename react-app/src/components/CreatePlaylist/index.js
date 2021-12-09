@@ -7,18 +7,18 @@ import { useHistory } from 'react-router';
 
 
 const CreatePlaylist = () => {
-  
+
   const [playlist_name, setPlaylist_name] = useState('');
   const [errors, setErrors] = useState([]);
   const history = useHistory()
   const dispatch = useDispatch();
-  
+
   const sessionUser = useSelector((state) => state.session.user)
   if(!sessionUser) {
     // history.push('/');
     return <Redirect to="/" />;
   }
-  
+
   const owner_id = sessionUser.id
 
   const handleSubmit = async(e) => {
@@ -37,18 +37,18 @@ const CreatePlaylist = () => {
     //     const data = await res.json();
     //     if (data && data.errors) {
     //       setErrors(data.errors)
-    //     } 
-    //   } 
+    //     }
+    //   }
     // );
 
-    
+
     // if (playlist_name) {
     //   history.push('/playlist');
     // }
-    
+
   };
 
-  
+  // console.log(window.location.href)
 
   return (
     <div>

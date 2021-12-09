@@ -7,14 +7,14 @@ const Player = () => {
     const song = useSelector(state => state.audio)
 
     return (
-        <>
-            <AudioPlayer 
+        <div className='showPlayer'>
+            <AudioPlayer
                 autoPlay
                 showSkipControls="False"
                 showFilledVolume="True"
                 src={song.url}
             />
-        </>
+        </div>
     )
 }
 

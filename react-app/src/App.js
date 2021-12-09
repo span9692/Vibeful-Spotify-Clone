@@ -61,14 +61,15 @@ function App() {
           <CreatePlaylist />
         </ProtectedRoute>
         <ProtectedRoute path="/playlist/:playlistId" exact={true}>
-          <CreatePlaylist />
+          <Dashboard />
+          {/* <CreatePlaylist /> */}
         </ProtectedRoute>
         <Route path="/home" exact={true}>
           <Splash />
         </Route>
         <ProtectedRoute path="/users/:id/dashboard" exact={true}>
           <Dashboard />
-          <Follows />
+          {/* <Follows /> */}
         </ProtectedRoute>
       </Switch>
       <Player/>
