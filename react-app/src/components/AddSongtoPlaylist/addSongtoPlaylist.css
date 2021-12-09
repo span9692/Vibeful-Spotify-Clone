@@ -21,7 +21,7 @@
   }
   .dropdown-content {
     display: none;
-    position: absolute;
+    /* position: absolute; */
     background-color: #f1f1f1;
     min-width: 160px;
     overflow: auto;
@@ -44,6 +44,7 @@
 
   .addtoplaylist {
     cursor: pointer;
+    position: relative;
   }
 
   .addtoplaylist:hover {

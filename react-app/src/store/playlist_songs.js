@@ -79,6 +79,9 @@ export default function reducer(state = {}, action) {
             return newState
         case ADD_LIBRARY_SONG_PLAYLIST:
             newState = {...state}
+            if (!(action.data["listId"] in newState)) {
+                newState[action.data["listId"]] = []
+            }
             newState[action.data["listId"]].push(action.data["musicId"])
             return newState
         case REMOVE_LIBRARY_SONG_PLAYLIST:
