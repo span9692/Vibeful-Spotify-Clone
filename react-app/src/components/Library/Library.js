@@ -41,7 +41,7 @@ const Library = () => {
       <div className="library_songs_meta"><CreatePlaylist /></div>
     )
   }
-  console.log('fjaklsdfjklas', window.location.href)
+
   // <div className="library_profile">
   //   <div className="library_profile_left">
   //     <div className="library_profile_left_top">

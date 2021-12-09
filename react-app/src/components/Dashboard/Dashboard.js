@@ -12,6 +12,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user)
+  const asdf = useSelector((state) => state.playlist)
 
   useEffect(() => {
     dispatch(getPlaylists())
@@ -59,7 +60,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i class="fab fa-napster"></i><span onClick={() => add()}>Create a playlist</span>
+                  <i class="fab fa-napster"></i><span className='pointer' onClick={() => add()}>Create a playlist</span>
                   </div>
                 </li>
               </ul>

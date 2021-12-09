@@ -33,3 +33,7 @@ body {
     /* margin-left: 2vw;
     margin-right: 2vw; */
 }
+
+.pointer {
+    cursor: pointer;
+}

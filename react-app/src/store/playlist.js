@@ -12,9 +12,9 @@ const showPlaylists = (data) => {
 }
 
 const removeOnePlaylist = id => {
-    return { 
-        type: REMOVE_ONE_PLAYLIST, 
-        payload: id 
+    return {
+        type: REMOVE_ONE_PLAYLIST,
+        payload: id
     };
 };
 
@@ -42,7 +42,7 @@ export const deletePlaylist = id => async dispatch => {
     const response = await fetch(`/api/playlists/${id}`, {
       method: 'DELETE',
     });
-  
+
     if (response.ok) {
       dispatch(removeOnePlaylist(id));
     }
@@ -70,7 +70,7 @@ export const updatePlaylist = data => async (dispatch) => {
       body: JSON.stringify(data)
     });
 
-        
+
     if (response.ok) {
       const playlist = await response.json();
       dispatch(updateOnePlaylist(playlist));
@@ -92,11 +92,11 @@ export default function reducer(state = initialState, action) {
       delete newState[action.payload];
       return newState;
     case ADD_ONE_PLAYLIST:
-      newState = { ...state, [action.id]: action};
+      newState = { ...state, [action.payload.id]: action.payload};
       return newState;
-      case UPDATE_ONE_PLAYLIST:
-        newState = { ...state, [action.payload.id]: action.payload }
-        return newState;
+    case UPDATE_ONE_PLAYLIST:
+      newState = { ...state, [action.payload.id]: action.payload }
+      return newState;
     default:
       return state;
   }
