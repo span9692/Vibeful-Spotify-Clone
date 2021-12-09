@@ -8,7 +8,7 @@ const showSongs = (data) => {
 }
 
 export const getSongs = () => async dispatch => {
-  const songs = await fetch('/api/songs')
+  const songs = await fetch('/api/songs/')
   const data = await songs.json()
   dispatch(showSongs(data))
 }

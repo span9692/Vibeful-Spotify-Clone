@@ -54,9 +54,9 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <Dashboard />
         </ProtectedRoute>
-        <ProtectedRoute path="/playlist" exact={true}>
+        <Route path="/playlist" exact={true}>
           <PlayList />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path="/addplaylist" exact={true}>
           <CreatePlaylist />
         </ProtectedRoute>

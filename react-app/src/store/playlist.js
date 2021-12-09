@@ -32,7 +32,7 @@ const updateOnePlaylist = payload => ({
 
 // Define Thunk Creators
 export const getPlaylists = () => async dispatch => {
-  const playlists = await fetch('/api/playlists')
+  const playlists = await fetch('/api/playlists/')
   const data = await playlists.json()
   dispatch(showPlaylists(data))
 }
