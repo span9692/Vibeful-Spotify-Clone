@@ -9,6 +9,7 @@ import './NavBar.css'
 const NavBar = () => {
 
   const user = useSelector((state) => state.session.user);
+  console.log('this user', user)
 
   const dispatch = useDispatch();
   const onLogout = async (e) => {
@@ -52,12 +53,20 @@ const NavBar = () => {
         />
       </NavLink>
       <NavLink
-        to="/home"
+        to={`/users/${user?.id}/dashboard`}
         exact={true}
         activeClassName="active"
         className="homeLink"
       >
-        Home
+        Dashboard
+      </NavLink>
+      <NavLink
+        to={`/songs`}
+        exact={true}
+        activeClassName="active"
+        className="songLink"
+      >
+        Songs
       </NavLink>
       <a href onClick={onLogout}
         exact={true}

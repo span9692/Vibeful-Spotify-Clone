@@ -32,11 +32,6 @@ function SongList() {
 
   return (
     <div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       WILL STYLE AFTER ADDING NAV/SIDE BAR
       <table>
         <tr className='tableHeader'>
