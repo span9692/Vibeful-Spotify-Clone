@@ -80,10 +80,20 @@ input[type=checkbox] {
     left: 10vw;
     height: auto;
     width: 50px;
-    
+
 }
 
 .homeLink {
+    color: #FFF;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    top: 15px;
+    left: 65vw;
+    text-decoration: none;
+}
+
+.songLink {
     color: #FFF;
     cursor: pointer;
     position: absolute;
