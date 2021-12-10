@@ -36,7 +36,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
     }
 
     const addToUserPlaylist = (song, playlistId) => {
-        // dispatch(addPlaylistSong(song, playlistId))
+        dispatch(addPlaylistSong(song, playlistId))
         console.log(song, playlistId)
     }
 
