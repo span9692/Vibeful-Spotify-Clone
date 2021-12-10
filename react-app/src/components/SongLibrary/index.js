@@ -25,8 +25,10 @@ const SongLibrary = () => {
         songResult = null;
     } else {
         songs = allSongs.filter((el) => songResult.includes(el.id));
-        
+
     }
+
+
 
     useEffect(()=>{
         dispatch(getSongs())
@@ -47,7 +49,7 @@ const SongLibrary = () => {
                     <th></th>
                     <th></th>
                 </tr>
-                {songs?.map((song, index) => (
+                {songs.map((song, index) => (
                     <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
                 ))}
             </table>
