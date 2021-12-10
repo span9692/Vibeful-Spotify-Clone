@@ -9,10 +9,14 @@ const Search = () => {
     const songResult = useSelector(state => Object.values(state.song))
     console.log('songResult', songResult)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     dispatch(searchSongs(search))
+    // }
+
+    useEffect(()=>{
         dispatch(searchSongs(search))
-    }
+    }, [dispatch, search])
 
     let option = null;
 
@@ -21,20 +25,27 @@ const Search = () => {
     }
 
     return (
+
         <div>
-            <form onSubmit={handleSubmit}>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <form>
                 <div>
                     <label>
-                        Search:
+                        Search
                     </label>
+                    <div></div>
                     <input
                         type='text'
                         value={search}
+                        placeholder='Find a song...'
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                </div>
-                <div>
-                    <button>Search</button>
                 </div>
             </form>
         </div>

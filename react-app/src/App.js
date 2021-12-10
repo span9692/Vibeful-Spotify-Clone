@@ -67,10 +67,13 @@ function App() {
           <Splash />
         </Route>
         <ProtectedRoute path="/users/:id/dashboard" exact={true}>
-          <Follows />
+          {/* <Follows /> */}
           <Dashboard />
         </ProtectedRoute>
         <Route path='/search'>
+          <Dashboard />
+        </Route>
+        <Route path='/circle'>
           <Dashboard />
         </Route>
       </Switch>
