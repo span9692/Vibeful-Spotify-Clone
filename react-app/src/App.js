@@ -70,6 +70,9 @@ function App() {
           <Follows />
           <Dashboard />
         </ProtectedRoute>
+        <Route path='/search'>
+          <Dashboard />
+        </Route>
       </Switch>
       <Player />
     </BrowserRouter>
