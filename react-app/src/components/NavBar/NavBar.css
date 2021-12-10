@@ -131,7 +131,7 @@ input[type=checkbox] {
     cursor: pointer;
     position: absolute;
     z-index: 99;
-    top: 1vhpx;
+    top: 1vh;
     left: 80vw;
     text-decoration: none;
 }

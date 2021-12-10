@@ -37,10 +37,7 @@ const NavBar = () => {
         >
           Home
         </NavLink>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
-        <label for="openSidebarMenu" class="signupLink">
-          <SignUpFormModal />
-        </label>
+        <SignUpFormModal />
         <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
         <label for="openSidebarMenu" class="loginLink">
           Login
