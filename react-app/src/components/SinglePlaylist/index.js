@@ -50,6 +50,7 @@ const SinglePlaylist = () => {
             if (button.textContent === 'Edit Playlist Name') {
                 const h = div.firstElementChild;
                 const input = document.createElement('input')
+                input.className = 'myInput'
                 input.type = 'text'
                 input.value = h.textContent
                 div.insertBefore(input, h);
