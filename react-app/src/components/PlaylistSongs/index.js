@@ -32,9 +32,9 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
     useEffect(()=> {
 
     }, [dispatch])
-console.log('playlist_song', playlist_song)
-console.log('currentUserLibrary', currentUserLibrary)
-console.log('playlistId', playlistId)
+    // console.log('playlist_song', playlist_song)
+    // console.log('currentUserLibrary', currentUserLibrary)
+    // console.log('playlistId', playlistId)
     return (
         <>
             <table>

@@ -18,17 +18,17 @@ const SongLibrary = () => {
     const playlist_songs = useSelector((state) => state.playlist_song);
     const allSongs = useSelector(state => Object.values(state.song))
 
-    console.log('playlists', playlists)
-    console.log('currentUserLibrary', currentUserLibrary)
-    console.log('playlist_songs', playlist_songs)
-    console.log('allSongs', allSongs)
+    // console.log('playlists', playlists)
+    // console.log('currentUserLibrary', currentUserLibrary)
+    // console.log('playlist_songs', playlist_songs)
+    // console.log('allSongs', allSongs)
 
     // list of song IDs
     let songResult = playlist_songs[currentUserLibrary?.id]
-    console.log(songResult)
+    // console.log(songResult)
 
     let songs = allSongs.filter(el => songResult.includes(el.id))
-    console.log(songs)
+    // console.log(songs)
 
     useEffect(()=>{
         dispatch(getSongs())
