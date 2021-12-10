@@ -40,8 +40,6 @@ const SignUpForm = ({setShowModal}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-
-    console.log(firstName, "<<<--firstNAme");
     const errors = validate();
     if (errors.length > 0) return setValidationErrors(errors);
 
