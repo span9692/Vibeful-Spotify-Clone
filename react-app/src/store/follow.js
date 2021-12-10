@@ -2,24 +2,24 @@ const GET_FOLLOWINGS = "follows/GET_FOLLOWINGS";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOWS";
 const ADD_FOLLOW = "follows/ADD_FOLLOWS";
 
-const showFollowings = (follows) => {
+const showFollowings = (data) => {
   return {
     type: GET_FOLLOWINGS,
-    follows,
+    data,
   };
 };
 
-const removeFollow = (id) => {
+const removeFollow = (data) => {
   return {
     type: REMOVE_FOLLOW,
-    id,
+    data,
   };
 };
 
-const addFollow = (payload) => {
+const addFollow = (data) => {
   return {
     type: ADD_FOLLOW,
-    payload,
+    data,
   };
 };
 
@@ -34,74 +34,70 @@ export const showFollowing = (id) => async (dispatch) => {
   }
 };
 
-export const unfollowUser = (id) => async (dispatch) => {
-  console.log("*****DISBEDA----------> id", id);
-  const res = await fetch(`/api/users/${id}/dashboard`, {
+export const unfollowUser = (follower_id, followee_id) => async (dispatch) => {
+  console.log("*****----------> follower_id", follower_id);
+  console.log("*****----------> followee_id", followee_id);
+  const res = await fetch("/api/follow/delete", {
     method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ follower_id, followee_id }),
   });
-  console.log("******DISBEDA res------>", res);
+  console.log("****************res*******************", res);
+  // console.log("****************res.body*******************", res.body);
   if (res.ok) {
-    console.log("******DISBEDA res.ok------>", res);
-    dispatch(removeFollow(id));
+    console.log("****************res.ok*******************", res);
+    const data = await res.json();
+    console.log("************DATA**************", data);
+    dispatch(removeFollow(data));
   }
 };
 
-export const followUser = (id) => async (dispatch) => {
-  const res = await fetch(`/users/${id}/dashboard`, {
+export const followUser = (follower_id, followee_id) => async (dispatch) => {
+  console.log("*****----------> follower_id", follower_id);
+  console.log("*****----------> followee_id", followee_id);
+  const res = await fetch("/api/follow/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ follower_id, followee_id }),
   });
-
+  console.log("**********THIS IS THE res**********", res);
   if (res.ok) {
     const data = await res.json();
-    dispatch(addFollow(data, id));
+    console.log("**********THIS IS THE data**********", data);
+    dispatch(addFollow(data));
   }
 };
 
-const initialState = { myFollows: [], follows: [] };
-
-export default function reducer(state = initialState, action) {
+export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case GET_FOLLOWINGS:
-      // console.log("THISISTHEACTION----------->", action);
-      // console.log("THISISTHESTATE-------------->", state);
       newState = { ...state };
-      newState.myFollows = action.follows;
-      return newState;
-    case REMOVE_FOLLOW:
-      newState = { ...state };
-      console.log("*******DISBEDA newState------->", newState[action.id]);
-      delete newState[action.id];
+      console.log("******************>", newState);
+      newState = action.data;
+      console.log("******************>STATE", action.data);
       return newState;
     case ADD_FOLLOW:
       newState = { ...state };
-      newState.follows.push(action.payload);
+      if (!(action.data["follower_id"] in newState)) {
+        newState[action.data["follower_id"]] = [];
+      }
+      newState[action.data["follower_id"]].push(action.data["followee_id"]);
       return newState;
+    case REMOVE_FOLLOW:
+      console.log("HELLLLLLLLLLLLLLLLLLLLLLLLOO");
+      console.log("=================> action.data", action.data);
+      console.log("=================> action", action);
+      newState = { ...state };
+      let index = newState[action.data["follower_id"]].indexOf(
+        action.data["followee_id"]
+      );
+      newState[action.data["follower_id"]].splice(index, 1);
+      return newState;
+    // newState = { ...state };
+    // delete newState[action.data];
+    // return newState;
     default:
       return state;
   }
 }
-
-// export default function reducer(state = {}, action) {
-//   let newState;
-//   switch (action.type) {
-//     case GET_FOLLOWS:
-//       console.log("THISISTHEACTION----------->", action);
-//       console.log("THISISTHESTATE-------------->", state);
-//       newState = { ...state };
-//       action.payload.follows.forEach(
-//         (follow) => (newState[follow.id] = follow)
-//       );
-//       return newState;
-//     case REMOVE_FOLLOW:
-//       newState = { ...state };
-//       delete newState[action.id.id];
-//       return newState;
-//     case ADD_FOLLOW:
-//       newState = { ...state, [action.id.id]: action.id };
-//       return newState;
-//     default:
-//       return state;
-//   }
-// }
