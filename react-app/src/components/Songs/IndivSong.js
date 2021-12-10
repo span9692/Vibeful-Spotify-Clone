@@ -16,12 +16,6 @@ import './songs.css'
 function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists }) {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getSongs());
-  //   dispatch(getPlaylists());
-  //   dispatch(getLibrary());
-  // }, [dispatch]);
-
   const play = (song) => {
     dispatch(playMusic(song));
   };

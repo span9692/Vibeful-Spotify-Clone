@@ -5,12 +5,21 @@ import { addPlaylist, deletePlaylist, getPlaylists, updatePlaylist } from '../..
 import { useHistory } from 'react-router';
 import './singleplaylist.css'
 import { getLibrary } from '../../store/playlist_songs';
+import PlaylistSongs from '../PlaylistSongs';
+import { getSongs } from '../../store/song';
 
 const SinglePlaylist = () => {
     const { playlistId } = useParams()
 
     const playlistState = useSelector((state) => (state.playlist))
     const playlist = Object.values(playlistState).filter(el => el.id == playlistId)[0]
+    const songs = useSelector(state => Object.values(state.song))
+    const playlist_song = useSelector(state => state.playlist_song)
+
+    const userId = useSelector((state) => state.session.user.id);
+    const playlists = useSelector((state) => Object.values(state.playlist));
+    const currentUserLibrary = playlists.filter((el) => el.owner_id == userId && el.playlist_name == "Library")[0];
+    const newUserLibrary = {...currentUserLibrary}
 
     const history = useHistory()
     const dispatch = useDispatch();
@@ -18,11 +27,11 @@ const SinglePlaylist = () => {
     useEffect(() => {
         dispatch(getPlaylists())
         dispatch(getLibrary())
+        dispatch(getSongs())
     }, [dispatch])
 
     const sessionUser = useSelector((state) => state.session.user)
     if (!sessionUser) {
-        // history.push('/');
         return <Redirect to="/" />;
     }
 
@@ -80,6 +89,7 @@ const SinglePlaylist = () => {
                     Edit Playlist Name
                 </button>
             </div>
+            <PlaylistSongs songs={songs} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
         </div>
     );
 };

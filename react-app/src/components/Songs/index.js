@@ -15,8 +15,8 @@ function SongList() {
   const currentUserLibrary = playlists.filter(
     (el) => el.owner_id == userId && el.playlist_name == "Library"
   )[0];
-  const playlist_songs = useSelector((state) => state.playlist_song);
   const newUserLibrary = {...currentUserLibrary}
+  const playlist_songs = useSelector((state) => state.playlist_song);
 
   useEffect(() => {
     dispatch(getSongs());
