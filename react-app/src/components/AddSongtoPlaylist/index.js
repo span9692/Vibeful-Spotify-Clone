@@ -38,7 +38,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
 
     return (
         <div className='dropdownBtn'>
-            <div onClick={() => showPlaylistOptions()}><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div>
+            <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div>
                 <div id='playlistDropdown' className='dropdown-content'>
                 {usersPlaylist.map(playlist=> (
                     <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./Library.css"
 import { useSelector } from "react-redux";
 import SongList from "../Songs";
-import CreatePlaylist from "../CreatePlaylist";
+import SinglePlaylist from "../SinglePlaylist";
 
 
 
@@ -38,7 +38,7 @@ const Library = () => {
     )
   } else if (window.location.href.includes("playlist/")) {
     options = (
-      <div className="library_songs_meta"><CreatePlaylist /></div>
+      <div className="library_songs_meta"><SinglePlaylist /></div>
     )
   }
 
