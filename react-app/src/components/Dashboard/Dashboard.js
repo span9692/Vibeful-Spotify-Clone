@@ -5,21 +5,32 @@ import Player from '../Player/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { addPlaylist, getPlaylists } from "../../store/playlist";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import "./Dashboard.css"
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user)
-
   useEffect(() => {
     dispatch(getPlaylists())
   }, [dispatch])
 
   if(!sessionUser) {
-    // history.push('/');
     return <Redirect to="/" />;
+  }
+
+  const goSearch = () => {
+    history.push('/search')
+  }
+
+  const goLibrary = () => {
+    history.push(`/users/${sessionUser.id}/library`)
+  }
+
+  const goSocial = () => {
+    history.push(`/users/${sessionUser.id}/social`)
   }
 
   const owner_id = sessionUser.id
@@ -42,12 +53,12 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i className="fas fa-search"></i><span>Search</span>
+                  <i className="fas fa-search"></i><span className='pointer' onClick={() => goSearch()}>Search</span>
                   </div>
                 </li>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i className="fas fa-icons"></i><span>Your library</span>
+                  <i className="fas fa-icons"></i><span className='pointer' onClick={() => goLibrary()}>Your library</span>
                   </div>
                 </li>
               </ul>
@@ -55,7 +66,7 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i class="fas fa-microphone-alt"></i><span>Add a song</span>
+                  <i class="fas fa-microphone-alt"></i><span className='pointer' onClick={() => goSocial()}>Social</span>
                   </div>
                 </li>
                 <li>

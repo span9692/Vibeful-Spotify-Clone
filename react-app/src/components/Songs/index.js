@@ -15,8 +15,8 @@ function SongList() {
   const currentUserLibrary = playlists.filter(
     (el) => el.owner_id == userId && el.playlist_name == "Library"
   )[0];
-  const playlist_songs = useSelector((state) => state.playlist_song);
   const newUserLibrary = {...currentUserLibrary}
+  const playlist_songs = useSelector((state) => state.playlist_song);
 
   useEffect(() => {
     dispatch(getSongs());
@@ -32,7 +32,6 @@ function SongList() {
 
   return (
     <div>
-      WILL STYLE AFTER ADDING NAV/SIDE BAR
       <table>
         <tr className='tableHeader'>
           <th>#</th>
@@ -43,8 +42,8 @@ function SongList() {
           <th></th>
           <th></th>
         </tr>
-      {songs.map((song) => (
-        <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
+      {songs.map((song, index) => (
+        <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
       ))}
       </table>
     </div>

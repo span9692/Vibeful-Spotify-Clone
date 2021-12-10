@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
-import Profile from '../Profile/Profile'
-import RowSong from '../RowSong/RowSong'
+import Profile from '../Profile/Profile';
+import RowSong from '../RowSong/RowSong';
 import { showFollowing } from "../../store/follow";
-
-
+import Search from '../Search';
+import Follows from "../Follows";
+import SongLibrary from "../SongLibrary";
 
 const Library = () => {
 
@@ -37,6 +38,18 @@ const Library = () => {
   } else if (window.location.href.includes("playlist/")) {
     options = (
       <div className="library_songs_meta"><SinglePlaylist /></div>
+    )
+  } else if (window.location.href.endsWith('search')) {
+    options = (
+      <div className="library_songs_meta"><Search /></div>
+    )
+  } else if (window.location.href.endsWith('library')) {
+    options = (
+      <div className="library_songs_meta"><SongLibrary /></div>
+    )
+  } else if (window.location.href.endsWith('social')) {
+    options = (
+      <div className="library_songs_meta"><Follows /></div>
     )
   }
 
