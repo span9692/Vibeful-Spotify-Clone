@@ -27,7 +27,7 @@ export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case GET_SONGS:
-      newState = {...state};
+      newState = {};
       action.data.songs.forEach(song => newState[song.id] = song)
       return newState;
     default:

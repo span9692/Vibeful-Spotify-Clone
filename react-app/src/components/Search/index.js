@@ -6,12 +6,18 @@ const Search = () => {
     const [search, setSearch] = useState('')
     const dispatch = useDispatch()
 
-    const songResult = useSelector(state => state.song)
+    const songResult = useSelector(state => Object.values(state.song))
     console.log('songResult', songResult)
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        await dispatch(searchSongs(search))
+        dispatch(searchSongs(search))
+    }
+
+    let option = null;
+
+    if (songResult.length > 0) {
+        
     }
 
     return (
