@@ -14,6 +14,7 @@ import SongLibrary from "../SongLibrary";
 import { getSongs } from "../../store/song";
 import { getPlaylists } from "../../store/playlist";
 import { getLibrary } from "../../store/playlist_songs";
+import RowPlaylist from "../RowPlaylist";
 
 const Library = () => {
   const {id} = useParams()
@@ -25,7 +26,6 @@ const Library = () => {
   const allSongs = useSelector(state => Object.values(state.song))
   const allPlaylists = useSelector(state => Object.values(state.playlist))
   const allPlaylistSongs = useSelector(state => state.playlist_song)
-  // console.log(allPlaylistSongs)
   let currentUserLibrary = allPlaylists.filter(el => el.owner_id == id && el.playlist_name == 'Library')[0]
   let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
 
@@ -45,8 +45,9 @@ const Library = () => {
   } else if (window.location.href.endsWith("dashboard")) {
     options = (
       <>
-      <Profile user={user} urlId={id} followInfo={followInfo}/>
-      <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
+        <Profile user={user} urlId={id} followInfo={followInfo}/>
+        <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
+        <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
       </>
     )
   } else if (window.location.href.includes("playlist/")) {
