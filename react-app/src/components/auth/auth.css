@@ -51,3 +51,49 @@
     Cursor: pointer;
     background-color: #0d1230;
 }
+
+.signUpForm {
+    color: white;
+    border-radius: 20px;
+    min-width: 35vw;
+    background: linear-gradient(0.60turn, #513aa3, #fe749c);
+    padding: 2vh 3vw 2vh 3vw;
+    text-align: center;
+}
+
+.signUpContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.signUpContent > h1, .signUpForm > p {
+    color: #fff;
+}
+
+.signUpContent > div > input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #999;
+    border-radius: 20px;
+    outline: none;
+}
+
+.signUpContent-btn {
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #0d1230;
+}
+
+.signUpLogin {
+    color: #0d1230;
+}
+
+

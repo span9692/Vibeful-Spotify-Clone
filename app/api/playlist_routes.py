@@ -46,32 +46,12 @@ def create_playlist():
 
 @playlist_routes.route('/<int:id>', methods=['PUT'])
 def update_playlist(id):
-    print('<><>REQUEST',request.get_json(), 'END OF REQUEST<><><><>')
-    form = UpdatePlaylistForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+
+    data = request.get_json()
     playlist = Playlist.query.get(id)
     if not playlist:
         return jsonify({'message': f'Playlist Id {id} Cannot Be Found'}), 404
-    print('BEOFRE VALIDATION', form.data)
-    if form.validate_on_submit():
-        # print('??BACKEND<><>', form.data)
-        print('<><PLAYLIST NAME$$$$$$><>', form.data['playlist_name'])
-        playlist.playlist_name = form.data['playlist_name']
-        # playlist.owner_id= form.data['owner_id']
-        db.session.commit()
-        return playlist.to_dict()
-    print('<><>NOT GETTING VALIDATED')
-    
 
-
-
-
-
-
-
-
-    
-
-
-
-
+    playlist.playlist_name = data['newName']
+    db.session.commit()
+    return playlist.to_dict()

@@ -12,7 +12,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { authenticate } from "./store/session";
 import SongList from "./components/Songs";
 import PlayList from "./components/Playlist";
-import CreatePlaylist from "./components/CreatePlaylist";
+import SinglePlaylist from "./components/SinglePlaylist";
 import Follows from "./components/Follows";
 import Player from "./components/Player";
 
@@ -58,22 +58,20 @@ function App() {
           <PlayList />
         </Route>
         <ProtectedRoute path="/addplaylist" exact={true}>
-          <CreatePlaylist />
+          <SinglePlaylist />
         </ProtectedRoute>
         <ProtectedRoute path="/playlist/:playlistId" exact={true}>
           <Dashboard />
-          {/* <CreatePlaylist /> */}
         </ProtectedRoute>
         <Route path="/home" exact={true}>
           <Splash />
         </Route>
         <ProtectedRoute path="/users/:id/dashboard" exact={true}>
+          <Follows />
           <Dashboard />
-          {/* <Follows /> */}
         </ProtectedRoute>
       </Switch>
-      <Player/>
-
+      <Player />
     </BrowserRouter>
   );
 }

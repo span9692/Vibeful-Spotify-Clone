@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPlaylists, deletePlaylist, updatePlaylist } from '../../store/playlist'
-import CreatePlaylist from '../CreatePlaylist'
+import SinglePlaylist from '../SinglePlaylist'
 import EditPlaylistForm from '../UpdatePlaylist'
 
 function PlayList() {
@@ -20,7 +20,7 @@ function PlayList() {
     return (
         <>
             {/* <div>
-                <CreatePlaylist/>
+                <SinglePlaylist/>
             </div> */}
             <div>
                 PLAYLISTS
@@ -34,9 +34,9 @@ function PlayList() {
                             <EditPlaylistForm playlistId={playlist.id}/>
                         </div>
                     </div>
-                
+
                 : null
-                    
+
                 ))}
             </div>
         </>
