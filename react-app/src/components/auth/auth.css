@@ -108,4 +108,8 @@
     color: #0d1230;
 }
 
+.validationErrors > ul {
+    list-style: none;
+}
+
 

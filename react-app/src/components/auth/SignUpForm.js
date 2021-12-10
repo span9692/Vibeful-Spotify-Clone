@@ -10,12 +10,27 @@ const SignUpForm = ({setShowModal}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [validationErrors, setValidationErrors] = useState([]);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const validate = () => {
+    const validateErrors = [];
+
+    if (!firstName) validateErrors.push("First name is required");
+    if (!lastName) validateErrors.push("Last name is required");
+    if (!email || !email.toLocaleLowerCase().match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) validateErrors.push("Please enter a valid e-mail");
+    if (!password) validateErrors.push("Please enter a valid password");
+    if (password !== repeatPassword) validateErrors.push("Password and Confirm Password must match");
+
+    return validateErrors;
+  };
+
   const demoLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login("demo@demo.com", "demopassword"));
+    dispatch(login("dle@gmail.com", "password"));
   }
 
   const handleLogin = () => {
@@ -25,6 +40,11 @@ const SignUpForm = ({setShowModal}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    console.log(firstName, "<<<--firstNAme");
+    const errors = validate();
+    if (errors.length > 0) return setValidationErrors(errors);
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data) {
@@ -65,20 +85,17 @@ const SignUpForm = ({setShowModal}) => {
       />
       <div className="signUpContent">
         <h1>Sign Up Now</h1>
+        {validationErrors.length > 0 && (
+          <div className="validationErrors">
+            The following errors were found:
+            <ul>
+              {validationErrors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>
-              {error.includes("first_name")
-                ? "First name is required"
-                : error.includes("last_name")
-                ? "Last name is required"
-                : error.includes("email")
-                ? "Please enter a valid email"
-                : error.includes("password")
-                ? "Please enter a valid password"
-                : error}
-            </div>
-          ))}
         </div>
         <div>
           <input
