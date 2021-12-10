@@ -32,7 +32,9 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
     useEffect(()=> {
 
     }, [dispatch])
-
+console.log('playlist_song', playlist_song)
+console.log('currentUserLibrary', currentUserLibrary)
+console.log('playlistId', playlistId)
     return (
         <>
             <table>
@@ -64,7 +66,7 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
                                         <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
                                     ),
                                 ]
-                                : null
+                                : <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
                             }
                         </td>
                         <td>
