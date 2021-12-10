@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: flex-end;
     width: 90%;
-    background: linear-gradient(0.10turn, #755bea, #ff72c0);
+    background: linear-gradient(0.10turn, #755bea, #ffa4d6);
     margin-bottom: 3vh;
     gap: 2vw;
     border-radius: 15px;
@@ -34,4 +34,3 @@
     padding: 1px;
     border-radius: 5px;
 }
-
