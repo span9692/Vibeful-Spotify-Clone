@@ -18,9 +18,9 @@ const showUser = data => {
 //   }
 // }
 
-const setUser = (user) => ({
+const setUser = (payload) => ({
   type: SET_USER,
-  payload: user,
+  payload
 });
 
 const removeOneUser = id => {
@@ -49,8 +49,8 @@ export const getUser = (id) => async dispatch => {
 
 /*  revamping edit user */
 export const editUserDetail =
-  (id, first_name, last_name, email, password, profile_pic) => async (dispatch) => {
-    console.log(id,first_name,last_name, "<------ARE WE IN THE THUNK?")
+  (id, first_name, last_name, email, profile_pic) => async (dispatch) => {
+  
     const response = await fetch(`/api/users/${id}/edit`, {
       method: "PUT",
       headers: {
@@ -61,7 +61,6 @@ export const editUserDetail =
         first_name,
         last_name,
         email,
-        password,
         profile_pic
       }),
     });
@@ -69,15 +68,16 @@ export const editUserDetail =
     if (response.ok) {
       const data = await response.json();
       dispatch(setUser(data));
-      return null;
-    } else if (response.status < 500) {
-      const data = await response.json();
-      if (data.errors) {
-        return data.errors;
-      }
-    } else {
-      return ["An error occurred. Please try again."];
-    }
+      // return data;
+    } 
+    // else if (response.status < 500) {
+    //   const data = await response.json();
+    //   if (data.errors) {
+    //     return data.errors;
+    //   }
+    // } else {
+    //   return ["An error occurred. Please try again."];
+    // }
   };
 
 export const deleteUser = id => async dispatch => {
@@ -91,7 +91,6 @@ export const deleteUser = id => async dispatch => {
   };
 
   const initialState = {};
-
   export default function reducer(state = initialState, action) {
     let newState = {};
     switch (action.type) {
@@ -99,14 +98,11 @@ export const deleteUser = id => async dispatch => {
         newState = action.data;
         return newState;
       case EDIT_PROFILE_PIC:
-        // console.log("action.data", action.data);
         newState = action.data;
-        // console.log("newState", newState);
         return newState;
       case SET_USER:
-      console.log("action.data ->>", action.data);
-      console.log("newState ->>", newState);
-      return { user: action.payload };
+        newState = action.payload
+        return newState;
       case REMOVE_ONE_USER:
         newState = { ...state };
         delete newState[action.payload];

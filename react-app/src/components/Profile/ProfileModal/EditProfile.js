@@ -9,20 +9,19 @@ const EditProfile = ({ setShowModal, currentUser }) => {
     const [firstName, setFirstName] = useState(currentUser.first_name);
     const [lastName, setLastName] = useState(currentUser.last_name);
     const [email, setEmail] = useState(currentUser.email);
-    const [password, setPassword] = useState(currentUser.password);
-    const [repeatPassword, setRepeatPassword] = useState("");
     const [profilePic, setProfilePic] = useState(currentUser.profile_pic);
     const [validationErrors, setValidationErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
 
     const saveProfile = async (e) => {
+        e.preventDefault();
     //   const errors = validate();
     //   if (errors.length > 0) return setValidationErrors(errors);
 
     //   if (password === repeatPassword) {
         const data = await dispatch(
-          editUserDetail(id, firstName, lastName, email, password, profilePic)
+          editUserDetail(id, firstName, lastName, email, profilePic)
         );
         // if (data) {
         //   setErrors(data);
@@ -52,9 +51,6 @@ const EditProfile = ({ setShowModal, currentUser }) => {
           )
       )
         validateErrors.push("Please enter a valid e-mail");
-      if (!password) validateErrors.push("Please enter a valid password");
-      if (password !== repeatPassword)
-        validateErrors.push("Password and Confirm Password must match");
 
       return validateErrors;
     };
@@ -75,14 +71,6 @@ const EditProfile = ({ setShowModal, currentUser }) => {
 
   const updateProfilePic = (e) => {
     setProfilePic(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   return (
@@ -140,27 +128,9 @@ const EditProfile = ({ setShowModal, currentUser }) => {
             value={profilePic}
           ></input>
         </div>
-        <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="repeat_password"
-            placeholder="Confirm Password"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
+    
       </div>
-      <button type="submit" className="signUpContent-btn" onClick={() => saveProfile()}>
+      <button type="submit" className="signUpContent-btn" onClick={saveProfile}>
         Save Changes
       </button>
     </form>

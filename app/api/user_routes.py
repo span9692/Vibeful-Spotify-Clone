@@ -19,11 +19,14 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-@user_routes.route('/<int:id>/edit', methods=['POST'])
+@user_routes.route('/<int:id>/edit', methods=['PUT'])
 def edit_user(id):
     data = request.get_json()
     user = User.query.get(id)
-    user.profile_pic = data['data']
+    user.first_name = data['first_name']
+    user.last_name = data['last_name']
+    user.email = data['email']
+    user.profile_pic = data['profile_pic']
     db.session.commit()
     return user.to_dict()
 
