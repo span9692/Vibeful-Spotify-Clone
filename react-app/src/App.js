@@ -76,6 +76,9 @@ function App() {
         <Route path='/circle'>
           <Dashboard />
         </Route>
+        <ProtectedRoute path="/users/:id/library" exact={true}>
+          <Dashboard />
+        </ProtectedRoute>
       </Switch>
       <Player />
     </BrowserRouter>

@@ -8,12 +8,6 @@ const Search = () => {
     const dispatch = useDispatch()
 
     const songResult = useSelector(state => Object.values(state.song))
-    console.log('songResult', songResult)
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(searchSongs(search))
-    // }
 
     useEffect(()=>{
         dispatch(searchSongs(search))
@@ -26,7 +20,7 @@ const Search = () => {
             <SongList songResult={songResult}/>
         )
     }
-console.log(songOption)
+
     return (
 
         <div>

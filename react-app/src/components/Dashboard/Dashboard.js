@@ -14,18 +14,21 @@ const Dashboard = () => {
 
   const sessionUser = useSelector((state) => state.session.user)
   const asdf = useSelector((state) => state.playlist)
-
+  console.log('sessionuser', sessionUser)
   useEffect(() => {
     dispatch(getPlaylists())
   }, [dispatch])
 
   if(!sessionUser) {
-    // history.push('/');
     return <Redirect to="/" />;
   }
 
   const goSearch = () => {
     history.push('/search')
+  }
+
+  const goLibrary = () => {
+    history.push(`/users/${sessionUser.id}/library`)
   }
 
   const owner_id = sessionUser.id
@@ -52,7 +55,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i className="fas fa-icons"></i><span>Your library</span>
+                  <i className="fas fa-icons"></i><span className='pointer' onClick={() => goLibrary()}>Your library</span>
                   </div>
                 </li>
               </ul>

@@ -32,7 +32,6 @@ function SongList() {
 
   return (
     <div>
-      WILL STYLE AFTER ADDING NAV/SIDE BAR
       <table>
         <tr className='tableHeader'>
           <th>#</th>
@@ -43,8 +42,8 @@ function SongList() {
           <th></th>
           <th></th>
         </tr>
-      {songs.map((song) => (
-        <IndivSong key={song.id} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
+      {songs.map((song, index) => (
+        <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>
       ))}
       </table>
     </div>
