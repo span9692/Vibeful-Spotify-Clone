@@ -32,11 +32,11 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
     useEffect(()=> {
 
     }, [dispatch])
-    // console.log('playlist_song', playlist_song)
-    // console.log('currentUserLibrary', currentUserLibrary)
-    // console.log('playlistId', playlistId)
+
+    // playlist table
+
     return (
-        <>
+        <div className='tablediv'>
             <table>
                 <tr className='tableHeader'>
                     <th>#</th>
@@ -75,7 +75,7 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
                     </tr>
                 ))}
             </table>
-        </>
+        </div>
     )
 }
 
