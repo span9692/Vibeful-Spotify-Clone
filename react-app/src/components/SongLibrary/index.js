@@ -11,7 +11,7 @@ const SongLibrary = () => {
 
     const userId = useSelector((state) => state.session.user.id);
     const playlists = useSelector((state) => Object.values(state.playlist));
-    const currentUserLibrary = playlists.filter(
+    let currentUserLibrary = playlists.filter(
         (el) => el.owner_id == userId && el.playlist_name == "Library"
     )[0];
     const newUserLibrary = { ...currentUserLibrary }
@@ -24,11 +24,16 @@ const SongLibrary = () => {
     // console.log('allSongs', allSongs)
 
     // list of song IDs
-    let songResult = playlist_songs[currentUserLibrary?.id]
-    // console.log(songResult)
+    let songResult = (playlist_songs[newUserLibrary.id]) ? playlist_songs[newUserLibrary.id] : null
+    let songs;
+    if (!songResult || songResult.length === 0) {
+        songResult = null;
+    } else {
+        songs = allSongs.filter((el) => songResult.includes(el.id));
+        
+    }
 
-    let songs = allSongs.filter(el => songResult.includes(el.id))
-    // console.log(songs)
+    
 
     useEffect(()=>{
         dispatch(getSongs())
@@ -36,7 +41,7 @@ const SongLibrary = () => {
         dispatch(getLibrary())
     }, [dispatch])
 
-    return (
+    const libraryLoaded = (
         <>
             Library
             <table>
@@ -49,11 +54,24 @@ const SongLibrary = () => {
                     <th></th>
                     <th></th>
                 </tr>
-                {songs.map((song, index) => (
+                {songs?.map((song, index) => (
                     <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
                 ))}
             </table>
         </>
+    )
+
+    const libraryEmpty = (
+      <>
+        <br></br>
+        <center>Your Library is empty! Add your first song!</center>
+      </>
+    );
+
+    return (
+        <>
+      { songResult === null ? libraryEmpty : libraryLoaded }
+      </>
     )
 }
 

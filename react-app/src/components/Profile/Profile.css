@@ -6,18 +6,29 @@
 }
 
 .library_profile_left {
-    flex: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.library_profile_right {
+    padding: 1vh 2vw 1vh 2vw;
     flex: 1;
     text-align: center;
 }
 
+.library_profile_right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.library_profile_right_t {
+    padding-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.library_profile_right_b {
+    display: flex;
+    flex-direction: row;
+}
 
 .userProfile {
     width: 200px;

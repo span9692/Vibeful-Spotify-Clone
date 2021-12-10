@@ -14,6 +14,7 @@ import './songs.css'
 
 
 function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists, index }) {
+  console.log(currentUserLibrary)
   const dispatch = useDispatch();
 
   const play = (song) => {
@@ -40,8 +41,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists, i
         <td>
         {
           playlist_songs[currentUserLibrary.id]
-            ? [
-              playlist_songs[currentUserLibrary.id].includes(song.id) ? (
+            ? [playlist_songs[currentUserLibrary.id].includes(song.id) ? (
                 <div onClick={() => removeLibrarySong(song)}>
                   <i class="fas fa-heart"></i>
                 </div>
