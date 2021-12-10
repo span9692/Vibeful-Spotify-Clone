@@ -40,9 +40,9 @@ const SinglePlaylist = () => {
         history.push('/');
     };
 
-    const asdf = () => {
-    let edit = document.getElementById('editname')
-    edit.addEventListener('click', (e) => {
+    const asdf = (e) => {
+    // let edit = document.getElementById('editname')
+    // edit.addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON') {
             const button = e.target;
             const jeff = button.parentNode;
@@ -75,7 +75,7 @@ const SinglePlaylist = () => {
                 }
             }
         }
-    })
+    // })
 }
 
 
@@ -86,7 +86,7 @@ const SinglePlaylist = () => {
                 <button onClick={() => handleDelete()}>
                     Delete Playlist
                 </button>
-                <button onClick={(() => asdf())}>
+                <button onClick={((e) => asdf(e))}>
                     Edit Playlist Name
                 </button>
             </div>
