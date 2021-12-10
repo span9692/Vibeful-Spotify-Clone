@@ -13,8 +13,6 @@ const Dashboard = () => {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user)
-  const asdf = useSelector((state) => state.playlist)
-  console.log('sessionuser', sessionUser)
   useEffect(() => {
     dispatch(getPlaylists())
   }, [dispatch])
@@ -43,6 +41,7 @@ const Dashboard = () => {
       owner_id: owner_id
     }))
   }
+
 
   return (
     <>
@@ -82,7 +81,7 @@ const Dashboard = () => {
             <Playlist />
           </div>
           <div className="dashboard-main-rightcontent">
-            <Library />
+            <Library owner_id={owner_id} />
           </div>
         </div>
         {/* <div className="dashboard-bot-player"><Player /></div> */}

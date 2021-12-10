@@ -83,6 +83,19 @@
     color: #c6b8b8;
 }
 
+.d-m-leftnav-bot a {
+    text-decoration: none;
+    color: rgb(169, 169, 169);
+}
+
+.active {
+    color:white!important;
+}
+
+.d-m-leftnav-bot a:hover{
+    color: white;
+}
+
 /* overflow scrollbar css */
 .d-m-leftnav-bot::-webkit-scrollbar-thumb {
     background-color:#FFF;

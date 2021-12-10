@@ -73,9 +73,7 @@ export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_FOLLOWINGS:
       newState = { ...state };
-      console.log("******************>", newState);
       newState = action.data;
-      console.log("******************>STATE", action.data);
       return newState;
     case ADD_FOLLOW:
       newState = { ...state };
@@ -85,9 +83,6 @@ export default function reducer(state = {}, action) {
       newState[action.data["follower_id"]].push(action.data["followee_id"]);
       return newState;
     case REMOVE_FOLLOW:
-      console.log("HELLLLLLLLLLLLLLLLLLLLLLLLOO");
-      console.log("=================> action.data", action.data);
-      console.log("=================> action", action);
       newState = { ...state };
       let index = newState[action.data["follower_id"]].indexOf(
         action.data["followee_id"]
