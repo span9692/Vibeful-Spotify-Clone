@@ -12,6 +12,11 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    dispatch(login("dle@gmail.com", "password"));
+  };
+
   
   const validate = () => {
     const validateErrors = [];
@@ -68,7 +73,13 @@ const LoginForm = () => {
       )}
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error.includes('password') ? null : error.includes('email') ? 'Invalid login. Please recheck email/password' : error}</div>
+          <div key={ind}>
+            {error.includes("password")
+              ? null
+              : error.includes("email")
+              ? "Invalid login. Please recheck email/password"
+              : error}
+          </div>
         ))}
       </div>
       <div className="loginEmail">
@@ -93,6 +104,9 @@ const LoginForm = () => {
       </div>
       <div>
         <button type="submit">Login</button>
+        <button onClick={demoLogin} type="submit" className="signUpContent-btn">
+          Demo User
+        </button>
       </div>
     </form>
   );

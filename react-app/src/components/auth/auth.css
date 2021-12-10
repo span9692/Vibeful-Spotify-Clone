@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: 1vh;
     height: 100%;
+    background: linear-gradient(0.60turn, #513aa3, #fe749c);
 }
 .loginForm label {
     font-family: 'Questrial', sans-serif;
@@ -42,14 +43,14 @@
     color: #fff;
     width: 80%;
     padding: 10px;
-    border: 2px solid white!important;
+    /* border: 2px solid white!important; */
     border-radius: 20px;
     font-size: 15px;
     margin: 10px 0;
     border: none;
     outline: none;
     cursor: pointer;
-    background: transparent;
+    background: #0d1230;
 }
 
 .signUpForm {

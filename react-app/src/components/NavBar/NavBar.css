@@ -45,7 +45,8 @@ nav {
     right: 125px;
     transform: translateY(-900px);
     transition: transform 250ms ease-in-out;
-    background: #0e1849;
+    background: linear-gradient(0.60turn, #513aa3, #fe749c);
+    /* background: #0e1849; */
     padding-bottom: 2vh;
     padding-top: 2vh;
 }
