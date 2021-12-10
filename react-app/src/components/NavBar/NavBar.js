@@ -10,7 +10,6 @@ import './NavBar.css'
 const NavBar = () => {
 
   const user = useSelector((state) => state.session.user);
-  console.log('this user', user)
 
   const dispatch = useDispatch();
   const onLogout = async (e) => {
@@ -59,6 +58,7 @@ const NavBar = () => {
           className="logo"
           src="https://cdn.discordapp.com/attachments/917541871457275925/917759128548569098/vibe_icon.png"
         />
+        <span className="logoText">Vibeful</span>
       </NavLink>
       <NavLink
         to={`/users/${user?.id}/dashboard`}
@@ -76,7 +76,9 @@ const NavBar = () => {
       >
         Songs
       </NavLink>
-      <a href onClick={onLogout}
+      <a
+        href
+        onClick={onLogout}
         exact={true}
         activeClassName="active"
         className="loginLink"

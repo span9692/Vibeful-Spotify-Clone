@@ -1,14 +1,25 @@
 import React from "react";
 import "./Library.css"
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
+import Profile from '../Profile/Profile'
+import RowSong from '../RowSong/RowSong'
+import { showFollowing } from "../../store/follow";
 
 
 
 const Library = () => {
 
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.session.user);
+  const followInfo = useSelector(state => state.follow)
+
+  useEffect(() => {
+    dispatch(showFollowing(user.id));
+  }, [dispatch, user.id]);
 
   let options = null;
 
@@ -18,23 +29,10 @@ const Library = () => {
     )
   } else if (window.location.href.endsWith("dashboard")) {
     options = (
-      <div className="library_profile">
-          <div className="library_profile_left">
-            <div className="library_profile_left_top">
-              Welcome {user.first_name}!
-            </div>
-            <div className="library_profile_left_bot">
-              NaN followers and following NaN people.
-            </div>
-          </div>
-          <div className="library_profile_right">
-            <img
-              className="userProfile"
-              alt="sample_profile_pic"
-              src="https://media.discordapp.net/attachments/917541871457275925/917916180486971402/sample_prof.png"
-            />
-          </div>
-        </div>
+      <>
+      <Profile user={user} followInfo={followInfo}/>
+      <RowSong />
+      </>
     )
   } else if (window.location.href.includes("playlist/")) {
     options = (
@@ -42,24 +40,6 @@ const Library = () => {
     )
   }
 
-  // <div className="library_profile">
-  //   <div className="library_profile_left">
-  //     <div className="library_profile_left_top">
-  //       Welcome {user.first_name}!
-  //     </div>
-  //     <div className="library_profile_left_bot">
-  //       NaN followers and following NaN people.
-  //     </div>
-  //   </div>
-  //   <div className="library_profile_right">
-  //     <img
-  //       className="userProfile"
-  //       alt="sample_profile_pic"
-  //       src="https://media.discordapp.net/attachments/917541871457275925/917916180486971402/sample_prof.png"
-  //     />
-  //   </div>
-  // </div>
-  // <div className="library_songs_meta"><SongList /></div>
   return (
     <>
       <div className="libray-container">
