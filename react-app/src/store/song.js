@@ -13,11 +13,21 @@ export const getSongs = () => async dispatch => {
   dispatch(showSongs(data))
 }
 
+export const searchSongs = (searchParam) => async dispatch => {
+  const response = await fetch('/api/songs/search', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(searchParam)
+  })
+  const data = await response.json();
+  dispatch(showSongs(data))
+}
+
 export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case GET_SONGS:
-      newState = {...state};
+      newState = {};
       action.data.songs.forEach(song => newState[song.id] = song)
       return newState;
     default:

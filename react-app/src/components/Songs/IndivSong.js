@@ -13,17 +13,11 @@ import './songs.css'
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
 
-function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists }) {
+function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists, index }) {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getSongs());
-  //   dispatch(getPlaylists());
-  //   dispatch(getLibrary());
-  // }, [dispatch]);
-
   const play = (song) => {
-    dispatch(playMusic(song));
+    dispatch(playMusic(song))
   };
 
   const addLibrarySong = (song) => {
@@ -36,7 +30,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists })
 
   return (
     <tr className='libraryRow'>
-        <td>{song.id}</td>
+        <td>{index+1}</td>
         <td onClick={() => play(song)}>
         <img className='coverImg' src={song.cover}></img>
         </td>
@@ -59,9 +53,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists })
         }
         </td>
         <td>
-          <div>
-            <AddToPlaylist key={key} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
-          </div>
+          <AddToPlaylist key={key} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
         </td>
     </tr>
   );

@@ -67,7 +67,16 @@ function App() {
           <Splash />
         </Route>
         <ProtectedRoute path="/users/:id/dashboard" exact={true}>
-          <Follows />
+          {/* <Follows /> */}
+          <Dashboard />
+        </ProtectedRoute>
+        <Route path='/search'>
+          <Dashboard />
+        </Route>
+        <ProtectedRoute path="/users/:id/social" exact={true}>
+          <Dashboard />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:id/library" exact={true}>
           <Dashboard />
         </ProtectedRoute>
       </Switch>

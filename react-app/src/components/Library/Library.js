@@ -3,6 +3,9 @@ import "./Library.css"
 import { useSelector } from "react-redux";
 import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
+import Search from '../Search';
+import Follows from "../Follows";
+import SongLibrary from "../SongLibrary";
 
 
 
@@ -39,6 +42,18 @@ const Library = () => {
   } else if (window.location.href.includes("playlist/")) {
     options = (
       <div className="library_songs_meta"><SinglePlaylist /></div>
+    )
+  } else if (window.location.href.endsWith('search')) {
+    options = (
+      <div className="library_songs_meta"><Search /></div>
+    )
+  } else if (window.location.href.endsWith('library')) {
+    options = (
+      <div className="library_songs_meta"><SongLibrary /></div>
+    )
+  } else if (window.location.href.endsWith('social')) {
+    options = (
+      <div className="library_songs_meta"><Follows /></div>
     )
   }
 
