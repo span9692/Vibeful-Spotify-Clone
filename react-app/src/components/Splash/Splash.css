@@ -45,7 +45,7 @@
 .main-content-author {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .vibeText {

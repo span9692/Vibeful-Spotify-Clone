@@ -29,8 +29,8 @@ const Author = () => {
          {authors.map(each => 
              <div className="author-box-info">
                 <h3>{each.name}</h3>
-                <span>{each.github}</span>
-                <span>{each.linkedin}</span>
+                <a href={`${each.github}`}><img className="github_icon" alt="github_icon" src="https://cdn.discordapp.com/attachments/907133739128217621/907463508101316659/github.png"/></a>
+                <a href={`${each.linkedin}`}><img className="linkedin_icon" alt="linkedin_icon" src="https://media.discordapp.net/attachments/907133739128217621/907465323828084746/linkedin.png"/></a>
              </div>
           )}
     </>
