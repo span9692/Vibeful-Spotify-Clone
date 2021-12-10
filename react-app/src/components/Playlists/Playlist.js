@@ -19,7 +19,7 @@ const Playlist = () => {
             <ul className='ul'>
               {playlists?.map(playlist => (playlist.owner_id === sessionUser?.id && playlist.playlist_name !== 'Library'?
                   <li key={playlist.id}>
-                    <NavLink  to={`/playlist/${playlist.id}`}>{playlist.playlist_name}</NavLink>
+                    <NavLink exact activeClassName="active" to={`/playlist/${playlist.id}`}>{playlist.playlist_name}</NavLink>
                   </li>
                   : null
                   ))}
