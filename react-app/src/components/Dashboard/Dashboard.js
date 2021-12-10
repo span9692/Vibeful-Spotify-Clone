@@ -5,6 +5,7 @@ import Player from '../Player/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { addPlaylist, getPlaylists } from "../../store/playlist";
+import { deleteUser } from "../../store/user";
 import { Redirect, useHistory } from 'react-router-dom';
 import "./Dashboard.css"
 
