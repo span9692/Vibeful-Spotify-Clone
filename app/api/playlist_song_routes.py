@@ -8,7 +8,7 @@ playlist_songs_routes = Blueprint('playlist_songs', __name__)
 @playlist_songs_routes.route('/')
 def getLibrarySong():
     allPlaylistSongs = db.session.query(playlist_songs).all()
-    
+
     playlistSong = {}
     for i in allPlaylistSongs:
         playlistSong.setdefault(i[0], []).append(i[1])
@@ -27,7 +27,7 @@ def removeSongFromLibrary():
     data = request.get_json()
     db.session.execute(playlist_songs.delete().where(playlist_songs.c.playlist_id==data['currentUserLibrary']['id']).where(playlist_songs.c.song_id==data['song']['id']))
     db.session.commit()
-    return {"listId":data['currentUserLibrary']['id'], "musicId":data['song']['id']}    
+    return {"listId":data['currentUserLibrary']['id'], "musicId":data['song']['id']}
 
 @playlist_songs_routes.route('/newSong', methods=['POST'])
 def newPlaylistSong():
@@ -35,3 +35,5 @@ def newPlaylistSong():
     db.session.execute(playlist_songs.insert().values(playlist_id=data['playlistId'], song_id=data['song']['id']))
     db.session.commit()
     return {"listId":data['playlistId'], "musicId":data['song']['id']}
+
+

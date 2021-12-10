@@ -4,21 +4,20 @@ import { Redirect, useParams } from 'react-router-dom';
 import { addPlaylist, deletePlaylist, getPlaylists, updatePlaylist } from '../../store/playlist';
 import { useHistory } from 'react-router';
 import './singleplaylist.css'
+import { getLibrary } from '../../store/playlist_songs';
 
 const SinglePlaylist = () => {
     const { playlistId } = useParams()
 
     const playlistState = useSelector((state) => (state.playlist))
     const playlist = Object.values(playlistState).filter(el => el.id == playlistId)[0]
-    console.log('playlist', playlist)
-    const data = playlistState[playlistId]
-    console.log('data', data)
 
     const history = useHistory()
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getPlaylists())
+        dispatch(getLibrary())
     }, [dispatch])
 
     const sessionUser = useSelector((state) => state.session.user)
