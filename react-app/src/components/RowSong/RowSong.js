@@ -22,7 +22,7 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
   }
 
   let relevantSongs = allSongs.filter(el => songId.includes(el.id)) //randomize songs
-  shuffle(relevantSongs)
+  relevantSongs = shuffle(relevantSongs)
 
   if (relevantSongs.length > 5) { //only display 5 songs
     relevantSongs = relevantSongs.slice(0,5)
