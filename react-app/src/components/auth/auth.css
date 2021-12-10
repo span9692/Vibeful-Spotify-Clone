@@ -39,17 +39,17 @@
 }
 
 .loginForm button {
-    color: white;
-    text-decoration: none;
-    border: 2px white solid;
-    padding: 10px 15px;
-    text-align: center;
-    Text-decoration: none;
-    display: inline-block;
-    Font-size: 14px;
-    Transition: 0.3s;
-    Cursor: pointer;
-    background-color: #0d1230;
+    color: #fff;
+    width: 80%;
+    padding: 10px;
+    border: 2px solid white!important;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
 }
 
 .signUpForm {
