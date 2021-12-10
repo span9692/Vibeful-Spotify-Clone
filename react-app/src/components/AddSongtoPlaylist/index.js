@@ -37,7 +37,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
 
     const addToUserPlaylist = (song, playlistId) => {
         dispatch(addPlaylistSong(song, playlistId))
-        console.log(song, playlistId)
+        // console.log(song, playlistId)
     }
 
     return (
@@ -50,7 +50,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                 ))}
                 </div> */}
 
-                
+
                 {/* <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
                 <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>
                     <div id='playlistDropdown' className='dropdown-content'>
@@ -80,10 +80,10 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                             <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
                         ))}
                     </div> */}
-                
-                
-                
-                
+
+
+
+
         </div>
         </>
     )
