@@ -1,5 +1,6 @@
 const GET_ONE_USER = 'users/GET_ONE_USER'
 const REMOVE_ONE_USER = 'users/REMOVE_ONE_USER';
+const SET_USER = "users/SET_USER";
 const EDIT_PROFILE_PIC = 'users/EDIT_PROFILE_PIC'
 
 // Action Creators
@@ -10,12 +11,17 @@ const showUser = data => {
   }
 }
 
-const editPic = data => {
-  return {
-    type: EDIT_PROFILE_PIC,
-    data
-  }
-}
+// const editPic = data => {
+//   return {
+//     type: EDIT_PROFILE_PIC,
+//     data
+//   }
+// }
+
+const setUser = (user) => ({
+  type: SET_USER,
+  payload: user,
+});
 
 const removeOneUser = id => {
     return {
@@ -26,21 +32,53 @@ const removeOneUser = id => {
 
 // Thunk Creators
 export const getUser = (id) => async dispatch => {
-  console.log('WE IN THE THUNK BABY')
   const response = await fetch(`/api/users/${id}`)
   const user = await response.json()
   dispatch(showUser(user))
 }
 
-export const editUser = (data, id) => async dispatch => {
-  const response = await fetch(`/api/users/${id}/edit`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({data, id})
-  })
-  const updated = await response.json()
-  dispatch(editPic(updated))
-}
+// export const editUser = (data, id) => async dispatch => {
+//   const response = await fetch(`/api/users/${id}/edit`, {
+//     method:'POST',
+//     headers:{'Content-Type':'application/json'},
+//     body: JSON.stringify({data, id})
+//   })
+//   const updated = await response.json()
+//   dispatch(editPic(updated))
+// }
+
+/*  revamping edit user */
+export const editUserDetail =
+  (id, first_name, last_name, email, password, profile_pic) => async (dispatch) => {
+    console.log(id,first_name,last_name, "<------ARE WE IN THE THUNK?")
+    const response = await fetch(`/api/users/${id}/edit`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        first_name,
+        last_name,
+        email,
+        password,
+        profile_pic
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+      return null;
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
+    }
+  };
 
 export const deleteUser = id => async dispatch => {
     const response = await fetch(`/api/users/${id}`, {
@@ -58,13 +96,17 @@ export const deleteUser = id => async dispatch => {
     let newState = {};
     switch (action.type) {
       case GET_ONE_USER:
-        newState = action.data
-        return newState
+        newState = action.data;
+        return newState;
       case EDIT_PROFILE_PIC:
-        console.log('action.data', action.data)
-        newState = action.data
-        console.log('newState', newState)
-        return newState
+        // console.log("action.data", action.data);
+        newState = action.data;
+        // console.log("newState", newState);
+        return newState;
+      case SET_USER:
+      console.log("action.data ->>", action.data);
+      console.log("newState ->>", newState);
+      return { user: action.payload };
       case REMOVE_ONE_USER:
         newState = { ...state };
         delete newState[action.payload];

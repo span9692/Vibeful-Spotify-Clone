@@ -3,17 +3,12 @@ import { useEffect } from "react";
 import { showFollowing } from "../../store/follow";
 import "./Profile.css";
 import { editUser, getUser } from "../../store/user";
+import ProfileModal from "../Profile/ProfileModal/index.js";
+import EditProfile from "../Profile/ProfileModal/EditProfile"
 
 function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
-  console.log('user', user)
-
-  const editPic = (payload) => {
-    let image = 'https://www.forbes.com/advisor/wp-content/uploads/2021/04/dogecoin.jpeg.jpg'
-    // let image = 'https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg'
-    dispatch(editUser(image, user.id))
-  }
 
   useEffect(()=> {
     dispatch(getUser(user.id))
@@ -28,7 +23,7 @@ function Profile({ user, urlId, followInfo }) {
           alt="sample_profile_pic"
           src={currentUser.profile_pic}
         />
-        <button onClick={()=>editPic()}>Edit Profile Pic</button>
+        <ProfileModal currentUser={currentUser} />
         <div className="library_profile_right">
           <div className="library_profile_right_t">
             <h1>
