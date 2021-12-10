@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchSongs } from '../../store/song'
+import SongList from '../SongList'
 
 const Search = () => {
     const [search, setSearch] = useState('')
@@ -18,22 +19,17 @@ const Search = () => {
         dispatch(searchSongs(search))
     }, [dispatch, search])
 
-    let option = null;
+    let songOption = null;
 
     if (songResult.length > 0) {
-        
+        songOption = (
+            <SongList songResult={songResult}/>
+        )
     }
-
+console.log(songOption)
     return (
 
         <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             <form>
                 <div>
                     <label>
@@ -48,6 +44,7 @@ const Search = () => {
                     />
                 </div>
             </form>
+            {songOption}
         </div>
     )
 }
