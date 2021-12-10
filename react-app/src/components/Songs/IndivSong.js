@@ -53,7 +53,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists })
         }
         </td>
         <td>
-        <AddToPlaylist key={key} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
+          <AddToPlaylist key={key} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
         </td>
     </tr>
   );

@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 import { addToLibrary, removeFromLibrary } from "../../store/playlist_songs"
 import { useDispatch } from 'react-redux'
 import { playMusic } from '../../store/audio';
+import AddToPlaylist from '../AddSongtoPlaylist';
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
-const PlaylistSongs = ({ songs, currentUserLibrary, playlistId, playlist_song }) => {
+const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playlist_song }) => {
     const dispatch = useDispatch()
 
     // if playlist doesn't have any songs
@@ -44,9 +45,9 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlistId, playlist_song })
                     <th></th>
                     <th></th>
                 </tr>
-                {songsToDisplay.map(song => (
-                    <tr className='libraryRow'>
-                        <td>{song.id}</td>
+                {songsToDisplay.map((song, index) => (
+                    <tr key={song.id} className='libraryRow'>
+                        <td>{index+1}</td>
                         <td onClick={() => play(song)}><img className='coverImg' src={song.cover}></img></td>
                         <td onClick={() => play(song)}>{song.title}</td>
                         <td onClick={() => play(song)}>{song.artist}</td>
@@ -66,8 +67,10 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlistId, playlist_song })
                                 : null
                             }
                         </td>
+                        <td>
+                            <AddToPlaylist key={song.id} song={song} playlists={playlists} currentUserLibrary={currentUserLibrary} />
+                        </td>
                     </tr>
-                    // <div key={song.id}>asdf</div>
                 ))}
             </table>
         </>
