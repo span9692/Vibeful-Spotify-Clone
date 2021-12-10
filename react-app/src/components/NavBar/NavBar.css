@@ -1,6 +1,7 @@
 nav {
     font-family: 'Readex Pro', sans-serif;
     max-width: 100%;
+    font-size: 1.5vh;
 }
 
 .nav-container {
@@ -103,13 +104,25 @@ input[type=checkbox] {
     text-decoration: none;
 }
 
+.signUpButton {
+    border: none;
+    color: white;
+    background-color: transparent;
+    z-index: 99;
+    position: absolute;
+    z-index: 99;
+    top: 15px;
+    left: 74vw;
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 1.5vh;
+}
 
 .signupLink {
     color: #FFF;
     cursor: pointer;
     position: absolute;
     z-index: 99;
-    top: 15px;
+    top: 1vhpx;
     left: 80vw;
     text-decoration: none;
 }
