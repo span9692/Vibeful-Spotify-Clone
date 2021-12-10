@@ -1,10 +1,14 @@
 import { useDispatch } from 'react-redux'
+import React, { useState } from "react";
 import { addPlaylistSong } from '../../store/playlist_songs'
+import { Modal } from '../../context/Modal'
+import SignUpForm from '../auth/SignUpForm';
 import './addSongtoPlaylist.css'
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
 function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false);
     // console.log(song)
     // console.log(playlists)
     // console.log(currentUserLibrary)
@@ -47,14 +51,37 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                 </div> */}
 
                 
-                <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
+                {/* <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
                 <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>
                     <div id='playlistDropdown' className='dropdown-content'>
                         {usersPlaylist.map(playlist=> (
                             <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
                         ))}
                     </div>
-                </div>
+                </div> */}
+
+                <div className='addToPlaylistBtn' onClick={() => setShowModal(true)}></div>
+                <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div>
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                    <div setShowModal={setShowModal}>
+                        <div className='p'>
+                            Add to Playlist
+                            {usersPlaylist.map(playlist=> (
+                                <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
+                            ))}
+                        </div>
+                    </div>
+                    </Modal>
+                )}
+                {/* <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div> */}
+                    {/* <div id='playlistDropdown' className='dropdown-content'>
+                        {usersPlaylist.map(playlist=> (
+                            <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
+                        ))}
+                    </div> */}
+                
+                
                 
                 
         </div>

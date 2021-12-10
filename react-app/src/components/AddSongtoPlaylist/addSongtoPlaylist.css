@@ -60,3 +60,14 @@
   .rel {
     position: relative;
   }
+
+  .modal-box {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white
+
+  }
+
+ 
+  
