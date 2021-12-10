@@ -67,12 +67,11 @@ function App() {
           <Splash />
         </Route>
         <ProtectedRoute path="/users/:id/dashboard" exact={true}>
+          <Follows />
           <Dashboard />
-          {/* <Follows /> */}
         </ProtectedRoute>
       </Switch>
-      <Player/>
-
+      <Player />
     </BrowserRouter>
   );
 }
