@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, Playlist, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -70,6 +70,13 @@ def sign_up():
             password=form.data['password']
         )
         db.session.add(user)
+        db.session.commit()
+        newestUser = db.session.query(User).order_by(User.id.desc()).first()
+        newLibrary = Playlist(
+            playlist_name = 'Library',
+            owner_id = newestUser.id
+        )
+        db.session.add(newLibrary)
         db.session.commit()
         login_user(user)
         return user.to_dict()
