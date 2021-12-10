@@ -15,10 +15,6 @@ const Follows = ({ follower_id, followee_id }) => {
   const userId = useSelector((state) => state.session.user.id);
   const follows = useSelector((state) => Object.values(state.follow))[1];
 
-  const playlists = useSelector((state) => Object.values(state.playlist));
-  const currentUserLibrary = follows.map((el) => el)[0];
-
-  console.log("******************> currentUserLibrary", currentUserLibrary);
   // console.log("THIS IS THE follower_ID", follower_id);
   // console.log("THIS IS THE FOLLOWEE_ID", followee_id);
   console.log("THISBEDA FOLLOWERS-------------->", followers);
@@ -49,10 +45,6 @@ const Follows = ({ follower_id, followee_id }) => {
       <li key={user.id}>
         <ul>
           {user.first_name} {user.last_name}{" "}
-          <button onClick={() => handleDelete(user.id)}>Unfollow user</button>
-          <button onClick={() => handleAddFollower(user.id)}>
-            Follow user
-          </button>
           <button onClick={() => handleDelete(user.id)}>Unfollow user</button>
           <button onClick={() => handleAddFollower(user.id)}>
             Follow user
@@ -92,16 +84,3 @@ const Follows = ({ follower_id, followee_id }) => {
 
 export default Follows;
 
-// const userComponents = users.map((user) => {
-//   return (
-//     <li key={user.id}>
-//       <NavLink to={`/users/${user.id}`}>
-//         {user.first_name} {user.last_name}{" "}
-//         <button onClick={() => handleDelete(user.id)}>Unfollow user</button>
-//         <button onClick={() => handleAddFollower(user.id)}>
-//           Follow user
-//         </button>
-//       </NavLink>
-//     </li>
-//   );
-// });

@@ -33,9 +33,3 @@ def deleteFollow():
     return {"follower_id":data['follower_id'], "followee_id":data['followee_id']}
 
 
-# @playlist_songs_routes.route('/delete', methods=['DELETE'])
-# def removeSongFromLibrary():
-#     data = request.get_json()
-#     db.session.execute(playlist_songs.delete().where(playlist_songs.c.playlist_id==data['currentUserLibrary']['id']).where(playlist_songs.c.song_id==data['song']['id']))
-#     db.session.commit()
-#     return {"listId":data['currentUserLibrary']['id'], "musicId":data['song']['id']}
