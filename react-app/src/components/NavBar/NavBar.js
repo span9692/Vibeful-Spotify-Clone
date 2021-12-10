@@ -27,15 +27,12 @@ const NavBar = () => {
         <NavLink to="/home" exact={true} activeClassName="active" className="homeLink">
           Home
         </NavLink>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
-        <label for="openSidebarMenu" class="signupLink">
           <SignUpFormModal />
-        </label>
+        <NavLink to="/home" exact={true} activeClassName="active" className="homeLink" />
         <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
         <label for="openSidebarMenu" class="loginLink">
           Login
         </label>
-
         <div id="sidebarMenu">
             <LoginForm />
         </div>
