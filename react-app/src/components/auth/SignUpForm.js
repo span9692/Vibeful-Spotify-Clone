@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
 
 const SignUpForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
@@ -12,6 +12,11 @@ const SignUpForm = ({setShowModal}) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@demo.com", "demopassword"));
+  }
 
   const handleLogin = () => {
     setShowModal(false);
@@ -54,7 +59,10 @@ const SignUpForm = ({setShowModal}) => {
 
   return (
     <form className="signUpForm">
-      <img alt="userlogo" src="https://cdn.discordapp.com/attachments/917541871457275925/918793424776364052/user_icon.png"/>
+      <img
+        alt="userlogo"
+        src="https://cdn.discordapp.com/attachments/917541871457275925/918793424776364052/user_icon.png"
+      />
       <div className="signUpContent">
         <h1>Sign Up Now</h1>
         <div>
@@ -62,8 +70,13 @@ const SignUpForm = ({setShowModal}) => {
             <div key={ind}>
               {error.includes("first_name")
                 ? "First name is required"
-                : error.includes("last_name") ? "Last name is required" : error.includes("email") ?
-                "Please enter a valid email" : error.includes("password") ? "Please enter a valid password" : error}
+                : error.includes("last_name")
+                ? "Last name is required"
+                : error.includes("email")
+                ? "Please enter a valid email"
+                : error.includes("password")
+                ? "Please enter a valid password"
+                : error}
             </div>
           ))}
         </div>
@@ -116,6 +129,9 @@ const SignUpForm = ({setShowModal}) => {
       </div>
       <button onClick={onSignUp} type="submit" className="signUpContent-btn">
         Sign Up
+      </button>
+      <button onClick={demoLogin} type="submit" className="signUpContent-btn">
+        Demo User
       </button>
       <hr></hr>
       <p>
