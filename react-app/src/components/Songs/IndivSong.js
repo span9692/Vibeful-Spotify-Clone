@@ -49,7 +49,7 @@ function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists, i
                 <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
               ),
             ]
-            : null
+            : <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
         }
         </td>
         <td>

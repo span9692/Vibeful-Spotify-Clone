@@ -3,9 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getPlaylists, deletePlaylist, updatePlaylist } from '../../store/playlist'
 import SinglePlaylist from '../SinglePlaylist'
 import EditPlaylistForm from '../UpdatePlaylist'
+import { deleteUser } from "../../store/user";
+import { Redirect, useHistory } from 'react-router-dom';
+import { logout } from '../../store/session';
 
 function PlayList() {
     const dispatch = useDispatch()
+    const history = useHistory();
 
     const playlists = useSelector(state => Object.values(state.playlist))
     const sessionUser = useSelector((state) => state.session.user)
@@ -16,6 +20,17 @@ function PlayList() {
     const handleDelete = (id) => {
         dispatch(deletePlaylist(id));
       };
+
+    const userId = sessionUser?.id
+
+    const onLogout = async (e) => {
+        await dispatch(logout());
+      };
+    const handleDeleteUser = (id) => {
+        onLogout()
+        dispatch(deleteUser(id))
+        history.push('/home')
+    }
 
     return (
         <>
@@ -39,6 +54,9 @@ function PlayList() {
 
                 ))}
             </div>
+            <button onClick={() => handleDeleteUser(userId)}>
+                Delete Account
+            </button>
         </>
     )
 }
