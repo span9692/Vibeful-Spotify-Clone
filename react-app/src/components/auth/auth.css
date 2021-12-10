@@ -61,6 +61,18 @@
     text-align: center;
 }
 
+.signUpForm > img {
+    margin-top: -6vh;
+    width: 7vw;
+    height: auto;
+}
+
+.signUpForm > hr {
+    margin-top: 20px;
+    width: 20vw; 
+}
+
+
 .signUpContent {
     display: flex;
     flex-direction: column;

@@ -54,6 +54,7 @@ const SignUpForm = ({setShowModal}) => {
 
   return (
     <form className="signUpForm">
+      <img alt="userlogo" src="https://cdn.discordapp.com/attachments/917541871457275925/918793424776364052/user_icon.png"/>
       <div className="signUpContent">
         <h1>Sign Up Now</h1>
         <div>
@@ -117,8 +118,7 @@ const SignUpForm = ({setShowModal}) => {
         Sign Up
       </button>
       <hr></hr>
-      <p className="or">OR</p>
-      <p className="or">
+      <p>
         Do you already have an account?{" "}
         <span className="signUpLogin pointer" onClick={handleLogin}>
           Login.
