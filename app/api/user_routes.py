@@ -19,6 +19,15 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+@user_routes.route('/<int:id>/edit', methods=['POST'])
+def edit_user(id):
+    data = request.get_json()
+    user = User.query.get(id)
+    user.profile_pic = data['data']
+    db.session.commit()
+    return user.to_dict()
+
+
 @user_routes.route('/<int:id>', methods=['DELETE'])
 def delete_user(id):
     user = User.query.get(id)
