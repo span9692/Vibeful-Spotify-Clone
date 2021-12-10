@@ -10,10 +10,8 @@ import User from "./components/User";
 import Splash from "./components/Splash/Splash";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { authenticate } from "./store/session";
-import SongList from "./components/Songs";
 import PlayList from "./components/Playlist";
 import SinglePlaylist from "./components/SinglePlaylist";
-import Follows from "./components/Follows";
 import Player from "./components/Player";
 
 function App() {

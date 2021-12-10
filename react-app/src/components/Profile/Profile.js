@@ -9,29 +9,27 @@ function Profile({ user, followInfo }) {
   return (
     <div className="library_profile">
       <div className="library_profile_left">
-        <div className="library_profile_left_left">
-          Following
-          <div className="followers-tile">
-            {followInfo.following.length} people
-          </div>
-        </div>
-        <div className="library_profile_left_mid">
-          Followers
-          <div className="followers-tile">
-            {followInfo.followers.length} people
-          </div>
-        </div>
-        <div className="library_profile_left_right">
-          Welcome {user.first_name}!
-          <div className="userInfo">Member since 2021</div>
-        </div>
-      </div>
-      <div className="library_profile_right">
         <img
           className="userProfile"
           alt="sample_profile_pic"
           src="https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg"
         />
+        <div className="library_profile_right">
+          <div className="library_profile_right_t">
+            <h1>
+              {user.first_name} {user.last_name}
+            </h1>
+            <div className="userInfo">User Meta</div>
+          </div>
+          <div className="library_profile_right_b">
+            <div className="library_profile_right_b1">
+              {followInfo.following?.length} Following 
+            </div>
+            <div className="library_profile_right_b2">
+              -{followInfo.followers?.length} Followers
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
