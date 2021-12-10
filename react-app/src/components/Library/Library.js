@@ -7,16 +7,22 @@ import SinglePlaylist from "../SinglePlaylist";
 import Profile from '../Profile/Profile';
 import RowSong from '../RowSong/RowSong';
 import { showFollowing } from "../../store/follow";
+import { useParams } from "react-router-dom";
 import Search from '../Search';
 import Follows from "../Follows";
 import SongLibrary from "../SongLibrary";
 
 const Library = () => {
+  const {id} = useParams()
 
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
   const followInfo = useSelector(state => state.follow)
+  const allSongs = useSelector(state => state.song)
+  const allPlaylists = useSelector(state => Object.values(state.playlist))
+  const allPlaylistSongs = useSelector(state => state.playlist_song)
+  // console.log(allPlaylistSongs)
 
   useEffect(() => {
     dispatch(showFollowing(user.id));
@@ -31,8 +37,8 @@ const Library = () => {
   } else if (window.location.href.endsWith("dashboard")) {
     options = (
       <>
-      <Profile user={user} followInfo={followInfo}/>
-      <RowSong />
+      <Profile user={user} urlId={id} followInfo={followInfo}/>
+      <RowSong urlId={id} allSongs={allSongs} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
       </>
     )
   } else if (window.location.href.includes("playlist/")) {

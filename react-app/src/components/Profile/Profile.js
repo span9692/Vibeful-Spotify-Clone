@@ -4,7 +4,7 @@ import { showFollowing } from "../../store/follow";
 import "./Profile.css";
 import { editUser, getUser } from "../../store/user";
 
-function Profile({ user, followInfo }) {
+function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
   console.log('user', user)
@@ -34,7 +34,7 @@ function Profile({ user, followInfo }) {
             <h1>
               {user.first_name} {user.last_name}
             </h1>
-            <div className="userInfo">User Meta</div>
+            <div className="userInfo">{currentUser.first_name} {currentUser.last_name}</div>
           </div>
           <div className="library_profile_right_b">
             <div className="library_profile_right_b1">

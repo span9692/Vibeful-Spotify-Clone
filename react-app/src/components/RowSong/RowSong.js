@@ -1,6 +1,6 @@
 import "./RowSong.css";
 
-function RowSong() {
+function RowSong(urlId, allSongs, allPlaylists, allPlaylistSongs) {
   return (
     <>
       <h2>Recent Songs</h2>
