@@ -50,7 +50,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                 ))}
                 </div> */}
 
-                
+
                 {/* <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
                 <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>
                     <div id='playlistDropdown' className='dropdown-content'>
@@ -65,7 +65,7 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                     <div setShowModal={setShowModal}>
-                        <div className='p'>
+                        <div className='modal-box'>
                             Add to Playlist
                             {usersPlaylist.map(playlist=> (
                                 <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
@@ -80,10 +80,10 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                             <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
                         ))}
                     </div> */}
-                
-                
-                
-                
+
+
+
+
         </div>
         </>
     )
