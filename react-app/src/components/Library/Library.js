@@ -5,6 +5,7 @@ import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
 import Search from '../Search';
 import Follows from "../Follows";
+import SongLibrary from "../SongLibrary";
 
 
 
@@ -46,7 +47,11 @@ const Library = () => {
     options = (
       <div className="library_songs_meta"><Search /></div>
     )
-  } else if (window.location.href.endsWith('circle')) {
+  } else if (window.location.href.endsWith('library')) {
+    options = (
+      <div className="library_songs_meta"><SongLibrary /></div>
+    )
+  } else if (window.location.href.endsWith('social')) {
     options = (
       <div className="library_songs_meta"><Follows /></div>
     )

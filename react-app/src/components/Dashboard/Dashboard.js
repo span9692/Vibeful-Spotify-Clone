@@ -31,6 +31,10 @@ const Dashboard = () => {
     history.push(`/users/${sessionUser.id}/library`)
   }
 
+  const goSocial = () => {
+    history.push(`/users/${sessionUser.id}/social`)
+  }
+
   const owner_id = sessionUser.id
 
   const add = () => {
@@ -63,7 +67,7 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i class="fas fa-microphone-alt"></i><span>Add a song</span>
+                  <i class="fas fa-microphone-alt"></i><span className='pointer' onClick={() => goSocial()}>Social</span>
                   </div>
                 </li>
                 <li>

@@ -73,9 +73,9 @@ function App() {
         <Route path='/search'>
           <Dashboard />
         </Route>
-        <Route path='/circle'>
+        <ProtectedRoute path="/users/:id/social" exact={true}>
           <Dashboard />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path="/users/:id/library" exact={true}>
           <Dashboard />
         </ProtectedRoute>
