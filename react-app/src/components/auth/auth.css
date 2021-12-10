@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: 1vh;
     height: 100%;
+    background: linear-gradient(0.60turn, #513aa3, #fe749c);
 }
 .loginForm label {
     font-family: 'Questrial', sans-serif;
@@ -39,17 +40,17 @@
 }
 
 .loginForm button {
-    color: white;
-    text-decoration: none;
-    border: 2px white solid;
-    padding: 10px 15px;
-    text-align: center;
-    Text-decoration: none;
-    display: inline-block;
-    Font-size: 14px;
-    Transition: 0.3s;
-    Cursor: pointer;
-    background-color: #0d1230;
+    color: #fff;
+    width: 80%;
+    padding: 10px;
+    /* border: 2px solid white!important; */
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #0d1230;
 }
 
 .signUpForm {
@@ -60,6 +61,18 @@
     padding: 2vh 3vw 2vh 3vw;
     text-align: center;
 }
+
+.signUpForm > img {
+    margin-top: -6vh;
+    width: 7vw;
+    height: auto;
+}
+
+.signUpForm > hr {
+    margin-top: 20px;
+    width: 20vw; 
+}
+
 
 .signUpContent {
     display: flex;
@@ -94,6 +107,10 @@
 
 .signUpLogin {
     color: #0d1230;
+}
+
+.validationErrors > ul {
+    list-style: none;
 }
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
 
 const SignUpForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
@@ -10,8 +10,28 @@ const SignUpForm = ({setShowModal}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [validationErrors, setValidationErrors] = useState([]);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const validate = () => {
+    const validateErrors = [];
+
+    if (!firstName) validateErrors.push("First name is required");
+    if (!lastName) validateErrors.push("Last name is required");
+    if (!email || !email.toLocaleLowerCase().match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) validateErrors.push("Please enter a valid e-mail");
+    if (!password) validateErrors.push("Please enter a valid password");
+    if (password !== repeatPassword) validateErrors.push("Password and Confirm Password must match");
+
+    return validateErrors;
+  };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    dispatch(login("dle@gmail.com", "password"));
+  }
 
   const handleLogin = () => {
     setShowModal(false);
@@ -20,6 +40,9 @@ const SignUpForm = ({setShowModal}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const errors = validate();
+    if (errors.length > 0) return setValidationErrors(errors);
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data) {
@@ -54,17 +77,23 @@ const SignUpForm = ({setShowModal}) => {
 
   return (
     <form className="signUpForm">
+      <img
+        alt="userlogo"
+        src="https://cdn.discordapp.com/attachments/917541871457275925/918793424776364052/user_icon.png"
+      />
       <div className="signUpContent">
         <h1>Sign Up Now</h1>
+        {validationErrors.length > 0 && (
+          <div className="validationErrors">
+            The following errors were found:
+            <ul>
+              {validationErrors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>
-              {error.includes("first_name")
-                ? "First name is required"
-                : error.includes("last_name") ? "Last name is required" : error.includes("email") ?
-                "Please enter a valid email" : error.includes("password") ? "Please enter a valid password" : error}
-            </div>
-          ))}
         </div>
         <div>
           <input
@@ -116,9 +145,11 @@ const SignUpForm = ({setShowModal}) => {
       <button onClick={onSignUp} type="submit" className="signUpContent-btn">
         Sign Up
       </button>
+      <button onClick={demoLogin} type="submit" className="signUpContent-btn">
+        Demo User
+      </button>
       <hr></hr>
-      <p className="or">OR</p>
-      <p className="or">
+      <p>
         Do you already have an account?{" "}
         <span className="signUpLogin pointer" onClick={handleLogin}>
           Login.

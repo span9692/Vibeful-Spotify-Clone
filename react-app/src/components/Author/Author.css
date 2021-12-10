@@ -1,5 +1,36 @@
 .author-box {
     display: flex;
+    flex-direction: column;
+}
+
+.author-box-info {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90%;
+    background: linear-gradient(0.10turn, #755bea, #ffa4d6);
+    margin-bottom: 3vh;
     gap: 2vw;
+    border-radius: 15px;
+}
+
+.author-box-info > h3 {
+    color:#fefefe;
+}
+
+.github_icon {
+    height: auto;
+    width: 3vw;
+    /* background-color: white; */
+    border-radius: 5px;
+}
+
+
+.linkedin_icon {
+    height: auto;
+    width: 8vw;
+    /* background-color: white; */
+    padding: 1px;
+    border-radius: 5px;
 }
