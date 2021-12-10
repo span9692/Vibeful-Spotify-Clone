@@ -19,7 +19,12 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-
+@user_routes.route('/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    user = User.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': f'User {id} has been deleted'}), 200
 
 @user_routes.route('/<int:id>/dashboard')
 # @login_required
