@@ -8,6 +8,8 @@ const EditProfile = ({ setShowModal, currentUser }) => {
     const id = currentUser.id
     const [firstName, setFirstName] = useState(currentUser.first_name);
     const [lastName, setLastName] = useState(currentUser.last_name);
+    const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
     const [email, setEmail] = useState(currentUser.email);
     const [profilePic, setProfilePic] = useState(currentUser.profile_pic);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -16,26 +18,19 @@ const EditProfile = ({ setShowModal, currentUser }) => {
 
     const saveProfile = async (e) => {
         e.preventDefault();
-    //   const errors = validate();
-    //   if (errors.length > 0) return setValidationErrors(errors);
+      const errors = validate();
+      if (errors.length > 0) return setValidationErrors(errors);
 
-    //   if (password === repeatPassword) {
+      if (password === repeatPassword) {
         const data = await dispatch(
-          editUserDetail(id, firstName, lastName, email, profilePic)
-        );
-        // if (data) {
-        //   setErrors(data);
-        // }
-      }
-    // };
-
-
-    //   const editPic = (payload) => {
-    //     // let image = 'https://www.forbes.com/advisor/wp-content/uploads/2021/04/dogecoin.jpeg.jpg'
-    //     let image =
-    //       "https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg";
-    //     dispatch(editUser(image, user.id));
-    //   };
+          editUserDetail(id, firstName, lastName, email, profilePic, password)
+          );
+          setShowModal(false);
+        if (data) {
+          setErrors(data);
+        }
+        }
+    };
 
     const validate = () => {
       const validateErrors = [];
@@ -51,6 +46,7 @@ const EditProfile = ({ setShowModal, currentUser }) => {
           )
       )
         validateErrors.push("Please enter a valid e-mail");
+        if (!password) validateErrors.push("Please enter a valid password");
 
       return validateErrors;
     };
@@ -68,6 +64,14 @@ const EditProfile = ({ setShowModal, currentUser }) => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const updatePassword = (e) => {
+      setPassword(e.target.value);
+    };
+
+    const updateRepeatPassword = (e) => {
+      setRepeatPassword(e.target.value);
+    };
 
   const updateProfilePic = (e) => {
     setProfilePic(e.target.value);
@@ -121,6 +125,25 @@ const EditProfile = ({ setShowModal, currentUser }) => {
         </div>
         <div>
           <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <input
+            type="password"
+            name="repeat_password"
+            placeholder="Confirm Password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <input
             type="text"
             name="profile_pic"
             placeholder="URL of Profile Pic"
@@ -128,7 +151,6 @@ const EditProfile = ({ setShowModal, currentUser }) => {
             value={profilePic}
           ></input>
         </div>
-    
       </div>
       <button type="submit" className="signUpContent-btn" onClick={saveProfile}>
         Save Changes

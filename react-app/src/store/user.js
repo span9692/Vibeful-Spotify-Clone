@@ -11,13 +11,6 @@ const showUser = data => {
   }
 }
 
-// const editPic = data => {
-//   return {
-//     type: EDIT_PROFILE_PIC,
-//     data
-//   }
-// }
-
 const setUser = (payload) => ({
   type: SET_USER,
   payload
@@ -37,20 +30,9 @@ export const getUser = (id) => async dispatch => {
   dispatch(showUser(user))
 }
 
-// export const editUser = (data, id) => async dispatch => {
-//   const response = await fetch(`/api/users/${id}/edit`, {
-//     method:'POST',
-//     headers:{'Content-Type':'application/json'},
-//     body: JSON.stringify({data, id})
-//   })
-//   const updated = await response.json()
-//   dispatch(editPic(updated))
-// }
-
 /*  revamping edit user */
 export const editUserDetail =
-  (id, first_name, last_name, email, profile_pic) => async (dispatch) => {
-  
+  (id, first_name, last_name, email, profile_pic, password) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/edit`, {
       method: "PUT",
       headers: {
@@ -61,23 +43,23 @@ export const editUserDetail =
         first_name,
         last_name,
         email,
-        profile_pic
+        profile_pic,
+        password
       }),
     });
 
     if (response.ok) {
       const data = await response.json();
       dispatch(setUser(data));
-      // return data;
     } 
-    // else if (response.status < 500) {
-    //   const data = await response.json();
-    //   if (data.errors) {
-    //     return data.errors;
-    //   }
-    // } else {
-    //   return ["An error occurred. Please try again."];
-    // }
+    else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
+    }
   };
 
 export const deleteUser = id => async dispatch => {

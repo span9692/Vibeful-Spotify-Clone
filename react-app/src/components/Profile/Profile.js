@@ -10,6 +10,7 @@ function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
 
+
   useEffect(()=> {
     dispatch(getUser(user.id))
   }, [dispatch])
@@ -27,7 +28,7 @@ function Profile({ user, urlId, followInfo }) {
         <div className="library_profile_right">
           <div className="library_profile_right_t">
             <h1>
-              {user.first_name} {user.last_name}
+              {currentUser.first_name} {currentUser.last_name}
             </h1>
             <div className="userInfo">{currentUser.first_name} {currentUser.last_name}</div>
           </div>

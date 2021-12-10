@@ -27,6 +27,7 @@ def edit_user(id):
     user.last_name = data['last_name']
     user.email = data['email']
     user.profile_pic = data['profile_pic']
+    user.password = data['password']
     db.session.commit()
     return user.to_dict()
 
