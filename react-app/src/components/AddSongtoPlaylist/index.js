@@ -37,14 +37,28 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
     }
 
     return (
+        <>
         <div className='dropdownBtn'>
-            <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div>
+            {/* <div onClick={() => showPlaylistOptions()} className='addToPlaylistBtn'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>test</div>
                 <div id='playlistDropdown' className='dropdown-content'>
                 {usersPlaylist.map(playlist=> (
                     <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
                 ))}
+                </div> */}
+
+                
+                <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
+                <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>
+                    <div id='playlistDropdown' className='dropdown-content'>
+                        {usersPlaylist.map(playlist=> (
+                            <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
+                        ))}
+                    </div>
                 </div>
+                
+                
         </div>
+        </>
     )
 }
 
