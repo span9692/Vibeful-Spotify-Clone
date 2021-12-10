@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 
 const Player = () => {
     const song = useSelector(state => state.audio)
+    const user = useSelector(state => state.session.user);
 
-    return (
+    const userPlayer = (
         <div className='showPlayer'>
             <AudioPlayer
                 autoPlay
@@ -15,6 +16,12 @@ const Player = () => {
                 src={song.url}
             />
         </div>
+    )
+
+    return (
+         <>
+      { user ? userPlayer : null }
+    </>
     )
 }
 
