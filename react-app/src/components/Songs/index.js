@@ -20,12 +20,12 @@ function SongList() {
 
   let count = songs.length
 
-  const shuffle = (arr) => {
-    arr.sort(()=>Math.random()-0.5);
-    return arr
-  }
+  // const shuffle = (arr) => {
+  //   arr.sort(()=>Math.random()-0.5);
+  //   return arr
+  // }
 
-  songs = shuffle(songs)
+  // songs = shuffle(songs)
 
   useEffect(() => {
     dispatch(getSongs());

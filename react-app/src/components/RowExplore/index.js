@@ -24,12 +24,12 @@ function RowExplore({urlId, allSongs, currentUserLibrary, currentUserLibraryId, 
     let unknownSongs = allSongs.filter(el => !uniqueKnownSongId.includes(el.id))
     // console.log('unknownSongs', unknownSongs)
 
-    const shuffle = (arr) => {
-        arr.sort(()=>Math.random()-0.5);
-        return arr
-    }
+    // const shuffle = (arr) => {
+    //     arr.sort(()=>Math.random()-0.5);
+    //     return arr
+    // }
 
-    unknownSongs = shuffle(unknownSongs)
+    // unknownSongs = shuffle(unknownSongs)
 
     if (unknownSongs.length > 5) { //only display 5 songs
         unknownSongs = unknownSongs.slice(0,5)

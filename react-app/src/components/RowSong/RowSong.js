@@ -16,13 +16,14 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
     songId = []
   }
 
-  const shuffle = (arr) => {
-    arr.sort(()=>Math.random()-0.5);
-    return arr
-  }
+  // const shuffle = (arr) => {
+  //   arr.sort(()=>Math.random()-0.5);
+  //   return arr
+  // }
+
+  // relevantSongs = shuffle(relevantSongs)
 
   let relevantSongs = allSongs.filter(el => songId.includes(el.id)) //randomize songs
-  relevantSongs = shuffle(relevantSongs)
 
   if (relevantSongs.length > 5) { //only display 5 songs
     relevantSongs = relevantSongs.slice(0,5)
