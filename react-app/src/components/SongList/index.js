@@ -22,9 +22,9 @@ const SongList = ({ songResult }) => {
         dispatch(getPlaylists())
         dispatch(getLibrary())
     }, [dispatch])
-
+    // search table
     return (
-        <>
+        <div className='tablediv'>
             <table>
                 <tr className='tableHeader'>
                     <th>#</th>
@@ -39,7 +39,7 @@ const SongList = ({ songResult }) => {
                     <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
                 ))}
             </table>
-        </>
+        </div>
     )
 }
 

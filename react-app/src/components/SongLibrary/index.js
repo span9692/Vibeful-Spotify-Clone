@@ -28,16 +28,15 @@ const SongLibrary = () => {
 
     }
 
-
-
     useEffect(()=>{
         dispatch(getSongs())
         dispatch(getPlaylists())
         dispatch(getLibrary())
     }, [dispatch])
 
+    // library table
     const libraryLoaded = (
-        <>
+        <div className='tablediv'>
             Library
             <table>
                 <tr className='tableHeader'>
@@ -53,7 +52,7 @@ const SongLibrary = () => {
                     <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
                 ))}
             </table>
-        </>
+        </div>
     )
 
     const libraryEmpty = (
@@ -62,7 +61,7 @@ const SongLibrary = () => {
         <center>Your Library is empty! Add your first song!</center>
       </>
     );
-
+    // library table
     return (
         <>
       { songResult === null ? libraryEmpty : libraryLoaded }

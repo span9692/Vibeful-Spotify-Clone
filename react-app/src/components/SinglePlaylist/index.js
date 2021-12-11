@@ -43,7 +43,6 @@ const SinglePlaylist = () => {
     const asdf = (e) => {
     // let edit = document.getElementById('editname')
     // edit.addEventListener('click', (e) => {
-    
         if (e.target.tagName === 'BUTTON') {
             const button = e.target;
             const jeff = button.parentNode;
@@ -77,8 +76,8 @@ const SinglePlaylist = () => {
                 }
             }
         }
-    }
-
+    // })
+}
 
 
     return (
