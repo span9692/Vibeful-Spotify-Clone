@@ -10,7 +10,9 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
     let usersPlaylist = allPlaylists.filter(el => el.owner_id == urlId && el.playlist_name != 'Library') //relevant playlists
     console.log('USERSPLAYLIST', usersPlaylist)
 
-
+    if (usersPlaylist.length > 5) {
+        usersPlaylist = usersPlaylist.slice(0,5)
+    }
 
     return (
         <div>
@@ -18,7 +20,7 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
             <div className="main_row">
             {usersPlaylist.map(playlist => (
                 <div className="sub_row">
-                    <img src={playlist.playlist_pic}></img>
+                    <img className='subsubrow' src={playlist.playlist_pic}></img>
                     <div>{playlist.playlist_name}</div>
                 </div>
             ))}

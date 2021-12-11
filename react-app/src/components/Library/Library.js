@@ -52,7 +52,7 @@ const Library = () => {
         <Profile user={user} urlId={id} followInfo={followInfo}/>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
-        <RowExplore />
+        <RowExplore urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
       </>
     );
   } else if (window.location.href.includes("playlist/")) {
