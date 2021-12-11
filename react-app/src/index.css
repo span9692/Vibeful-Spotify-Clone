@@ -38,3 +38,13 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.libray-container {
+    height: 50rem;
+    overflow: auto;
+
+}
+
+.tablediv {
+    justify-content: center;
+}

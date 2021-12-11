@@ -52,7 +52,7 @@ const NavBar = () => {
   const userSplash = (
     <nav className="dashboardDisappear">
       <div class="header"></div>
-      <NavLink to="/home" exact={true} activeClassName="active">
+      <NavLink to={`/users/${user?.id}/dashboard`} exact={true} activeClassName="active">
         <img
           alt="logo"
           className="logo"

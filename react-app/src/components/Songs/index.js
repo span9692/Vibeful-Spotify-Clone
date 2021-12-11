@@ -29,9 +29,9 @@ function SongList() {
       playlist_songs[currentUserLibrary.id] = [];
     }
   }
-
+// library table
   return (
-    <div>
+    <div className='tablediv'>
       <table>
         <tr className='tableHeader'>
           <th>#</th>
