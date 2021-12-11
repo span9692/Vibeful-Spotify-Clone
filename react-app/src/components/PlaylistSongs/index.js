@@ -92,7 +92,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
                 <button onClick={((e) => asdf(e))}>
                     Edit Playlist Name
                 </button>
-                <span className='subTitlePlaylist'>{count} songs</span>
+                <span> &bull; {count} songs</span>
             </div>
 
             <table className='tabletable'>
