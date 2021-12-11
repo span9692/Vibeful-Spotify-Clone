@@ -1,9 +1,9 @@
 .main_row {
-    width: 94%;
+    width: 90%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin: auto;
+    justify-content: left;
+    /* margin: auto; */
 }
 
 .sub_row {
@@ -12,6 +12,7 @@
     align-items: center;
     text-decoration: none;
     color: white;
+    margin-left: 2.7vw;
 }
 
 .subsubrow {
