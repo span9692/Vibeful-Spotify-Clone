@@ -72,6 +72,7 @@ const SinglePlaylist = () => {
                     }
 
                     dispatch(updatePlaylist(payload))
+                    return <Redirect to="/playlists" />
                 }
             }
         }

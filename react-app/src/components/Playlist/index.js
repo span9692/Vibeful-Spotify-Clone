@@ -23,6 +23,8 @@ function PlayList() {
 
     const userId = sessionUser?.id
 
+
+    //code to delete account
     const onLogout = async (e) => {
         await dispatch(logout());
       };
