@@ -31,7 +31,7 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
 
   return (
     <>
-      <h2>Liked Songs</h2>
+      <h2 className='dashHeader'>Liked Songs</h2>
       <div className='tablediv'>
         <table className='tabletable'>
           <tr className='tableHeader'>

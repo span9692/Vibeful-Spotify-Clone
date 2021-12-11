@@ -134,3 +134,8 @@ tr:hover td {
 .hideText{
     color: #0e1849
 }
+
+.dashHeader {
+    margin-left: 4vh;
+    margin-top: 8vh;
+}

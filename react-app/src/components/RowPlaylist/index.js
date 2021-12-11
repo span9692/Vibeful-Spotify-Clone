@@ -16,7 +16,7 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
 
     return (
         <div>
-            <h2>Your Playlists</h2>
+            <h2 className='dashHeader'>Your Playlists</h2>
             <div className="main_row">
             {usersPlaylist.map(playlist => (
                 <div className="sub_row">

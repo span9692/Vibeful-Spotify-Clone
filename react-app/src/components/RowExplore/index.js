@@ -37,7 +37,7 @@ function RowExplore({urlId, allSongs, currentUserLibrary, currentUserLibraryId, 
 
     return (
         <>
-            <h2>Discover New Songs</h2>
+            <h2 className='dashHeader'>Discover New Songs</h2>
             <div className='tablediv'>
                 <table className='tabletable'>
                     <tr className='tableHeader'>
