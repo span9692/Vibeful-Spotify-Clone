@@ -18,6 +18,8 @@ function SongList() {
   const newUserLibrary = {...currentUserLibrary}
   const playlist_songs = useSelector((state) => state.playlist_song);
 
+  let count = songs.length
+
   useEffect(() => {
     dispatch(getSongs());
     dispatch(getPlaylists());
@@ -32,6 +34,8 @@ function SongList() {
 // library table
   return (
     <div className='tablediv'>
+      <div className='pageTitle'><div>Songs</div></div>
+      <div className='subTitle'>Look through our entire library! &nbsp; &bull; &nbsp; {count} songs</div>
       <table className='tabletable'>
         <tr className='tableHeader'>
           <th>#</th>
