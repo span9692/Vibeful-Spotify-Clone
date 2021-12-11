@@ -72,7 +72,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
                         ...playlist,
                         newName
                     }
-                    // <input type="text" spellcheck="false">
+
                     dispatch(updatePlaylist(payload))
                     return <Redirect to="/playlists" />
                 }
@@ -85,16 +85,15 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
     return (
         <div className='tablediv'>
             <span className='pageTitle'>{name}</span>
-            <div>
+            <div className='subTitle'>
                 <button onClick={() => handleDelete()}>
                     Delete Playlist
                 </button>
                 <button onClick={((e) => asdf(e))}>
                     Edit Playlist Name
                 </button>
+                <span className='subTitlePlaylist'>{count} songs</span>
             </div>
-
-            <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} songs</div>
 
             <table className='tabletable'>
                 <tr className='tableHeader'>
