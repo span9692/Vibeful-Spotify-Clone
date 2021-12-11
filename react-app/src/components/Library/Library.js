@@ -42,30 +42,40 @@ const Library = () => {
     options = (
       <div className="library_songs_meta"><SongList /></div>
     )
-  } else if (window.location.href.endsWith("dashboard")) {
+  } else if (
+    window.location.href.endsWith("dashboard") ||
+    window.location.href.endsWith("home")) {
     options = (
       <>
         <Profile user={user} urlId={id} followInfo={followInfo}/>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
       </>
-    )
+    );
   } else if (window.location.href.includes("playlist/")) {
     options = (
-      <div className="library_songs_meta"><SinglePlaylist /></div>
-    )
-  } else if (window.location.href.endsWith('search')) {
+      <div className="library_songs_meta">
+        <SinglePlaylist />
+      </div>
+    );
+  } else if (window.location.href.endsWith("search")) {
     options = (
-      <div className="library_songs_meta"><Search /></div>
-    )
-  } else if (window.location.href.endsWith('library')) {
+      <div className="library_songs_meta">
+        <Search />
+      </div>
+    );
+  } else if (window.location.href.endsWith("library")) {
     options = (
-      <div className="library_songs_meta"><SongLibrary /></div>
-    )
-  } else if (window.location.href.endsWith('social')) {
+      <div className="library_songs_meta">
+        <SongLibrary />
+      </div>
+    );
+  } else if (window.location.href.endsWith("social")) {
     options = (
-      <div className="library_songs_meta"><Follows /></div>
-    )
+      <div className="library_songs_meta">
+        <Follows />
+      </div>
+    );
   }
 
   return (
