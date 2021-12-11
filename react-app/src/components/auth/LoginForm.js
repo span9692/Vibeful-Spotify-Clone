@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   const demoLogin = async (e) => {
     e.preventDefault();
-    dispatch(login("dle@gmail.com", "password"));
+    dispatch(login("user@demo.com", "password"));
   };
 
   
