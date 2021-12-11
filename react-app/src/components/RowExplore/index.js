@@ -1,14 +1,14 @@
 import IndivSong from "../Songs/IndivSong"
 
 function RowExplore({urlId, allSongs, currentUserLibrary, currentUserLibraryId, allPlaylists, allPlaylistSongs}) {
-    console.log('urlId', urlId)
-    console.log('allSongs',allSongs) //array of all songs
-    console.log('currentUserLibraryId', currentUserLibraryId) // 3
-    console.log('allPlaylists',allPlaylists)  // array of all playlists
-    console.log('allPlaylistSongs',allPlaylistSongs) // object of playlist:[songs]
+    // console.log('urlId', urlId)
+    // console.log('allSongs',allSongs) //array of all songs
+    // console.log('currentUserLibraryId', currentUserLibraryId) // 3
+    // console.log('allPlaylists',allPlaylists)  // array of all playlists
+    // console.log('allPlaylistSongs',allPlaylistSongs) // object of playlist:[songs]
 
     let irrelevantPlaylists = allPlaylists.filter(el => el.owner_id === currentUserLibraryId)
-    console.log("irrelevantPlaylists", irrelevantPlaylists)
+    // console.log("irrelevantPlaylists", irrelevantPlaylists)
     let knownSongsId = []
 
     irrelevantPlaylists.forEach(playlist => {
@@ -19,18 +19,25 @@ function RowExplore({urlId, allSongs, currentUserLibrary, currentUserLibraryId, 
     })
 
     let uniqueKnownSongId = [...new Set(knownSongsId)]
-    console.log('uniqueKnownSongId', uniqueKnownSongId)
+    // console.log('uniqueKnownSongId', uniqueKnownSongId)
 
     let unknownSongs = allSongs.filter(el => !uniqueKnownSongId.includes(el.id))
-    console.log('unknownSongs', unknownSongs)
+    // console.log('unknownSongs', unknownSongs)
 
-    // if (unknownSongs.length > 5) { //only display 5 songs
-    //     unknownSongs = unknownSongs.slice(0,5)
-    // }
+    const shuffle = (arr) => {
+        arr.sort(()=>Math.random()-0.5);
+        return arr
+    }
+
+    unknownSongs = shuffle(unknownSongs)
+
+    if (unknownSongs.length > 5) { //only display 5 songs
+        unknownSongs = unknownSongs.slice(0,5)
+    }
 
     return (
         <>
-            <h2>Liked Songs</h2>
+            <h2>Discover New Songs</h2>
             <div className='tablediv'>
                 <table className='tabletable'>
                     <tr className='tableHeader'>

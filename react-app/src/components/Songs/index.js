@@ -9,7 +9,7 @@ import { getSongs } from "../../store/song";
 function SongList() {
   const dispatch = useDispatch();
 
-  const songs = useSelector((state) => Object.values(state.song));
+  let songs = useSelector((state) => Object.values(state.song));
   const userId = useSelector((state) => state.session.user.id);
   const playlists = useSelector((state) => Object.values(state.playlist));
   const currentUserLibrary = playlists.filter(
@@ -19,6 +19,13 @@ function SongList() {
   const playlist_songs = useSelector((state) => state.playlist_song);
 
   let count = songs.length
+
+  const shuffle = (arr) => {
+    arr.sort(()=>Math.random()-0.5);
+    return arr
+  }
+
+  songs = shuffle(songs)
 
   useEffect(() => {
     dispatch(getSongs());
