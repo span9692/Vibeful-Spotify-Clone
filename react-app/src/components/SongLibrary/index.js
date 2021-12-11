@@ -37,8 +37,7 @@ const SongLibrary = () => {
     // library table
     const libraryLoaded = (
         <div className='tablediv'>
-            Library
-            <table>
+            <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
                     <th>Title</th>

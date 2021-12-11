@@ -58,13 +58,24 @@ th {
 }
 
 td {
-    padding-top: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 15px;
 }
 
+/*size of song image*/
 .coverImg {
     width: 2rem;
 }
 
+tr {
+    height: 15px;
+}
+
 tr:hover td {
-    background:grey
+    background:grey;
+}
+
+.fa-heart {
+    color: rgb(11, 150, 11);
 }

@@ -25,7 +25,7 @@ const SongList = ({ songResult }) => {
     // search table
     return (
         <div className='tablediv'>
-            <table>
+            <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
                     <th>Title</th>
