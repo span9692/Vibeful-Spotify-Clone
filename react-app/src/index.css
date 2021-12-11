@@ -45,6 +45,22 @@ body {
 
 }
 
-.tablediv {
-    justify-content: center;
+.tabletable {
+    text-align: left;
+    border-collapse: collapse;
+    width: 90%;
+    color: grey;
+    margin: 0 auto;
+}
+
+th {
+    border-bottom: solid 0.01em white;
+}
+
+/* td:hover {
+    background-color: red;
+} */
+
+.coverImg {
+    width: 2rem;
 }
