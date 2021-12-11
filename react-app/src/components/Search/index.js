@@ -17,7 +17,7 @@ const Search = () => {
 
     if (songResult.length > 0) {
         songOption = (
-            <SongList songResult={songResult}/>
+            <SongList search={search} songResult={songResult}/>
         )
     }
 
@@ -38,7 +38,20 @@ const Search = () => {
                     /> <span className={search.length == 0 ? 'hideText' :'subTitleSearch1'}> &nbsp; &bull; &nbsp;{count} {count == 1 ? 'result' : 'results'} found for '{search}'</span>
                 </div>
             </form>
-            {songOption}
+            <div className='tablediv'>
+            <table className='tabletable'>
+                <tr className='tableHeader'>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th></th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {songOption}
+                </table>
+            </div>
         </div>
     )
 }
