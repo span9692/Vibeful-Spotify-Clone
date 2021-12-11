@@ -35,54 +35,51 @@ const SinglePlaylist = () => {
         return <Redirect to="/" />;
     }
 
-    const handleDelete = () => {
-        dispatch(deletePlaylist(+playlistId));
-        history.push('/');
-    };
+    // const handleDelete = () => {
+    //     dispatch(deletePlaylist(+playlistId));
+    //     history.push('/');
+    // };
 
-    const asdf = (e) => {
-    // let edit = document.getElementById('editname')
-    // edit.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
-            const button = e.target;
-            const jeff = button.parentNode;
-            const div = jeff.parentNode;
-            if (button.textContent === 'Edit Playlist Name') {
-                const h = div.firstElementChild;
-                const input = document.createElement('input')
-                input.className = 'myInput'
-                input.type = 'text'
-                input.value = h.textContent
-                div.insertBefore(input, h);
-                div.removeChild(h)
-                button.textContent = 'Save';
-            } else if (button.textContent === 'Save') {
-                const input = div.firstElementChild;
-                const h = document.createElement('span')
-                h.textContent = input.value;
-                if (h.textContent.length > 0) {
-                    div.insertBefore(h, input);
-                    div.removeChild(input)
-                    button.textContent = 'Edit Playlist Name'
-                    let newName = h.textContent
+    // const asdf = (e) => {
+    //     if (e.target.tagName === 'BUTTON') {
+    //         const button = e.target;
+    //         const jeff = button.parentNode;
+    //         const div = jeff.parentNode;
+    //         if (button.textContent === 'Edit Playlist Name') {
+    //             const h = div.firstElementChild;
+    //             const input = document.createElement('input')
+    //             input.className = 'myInput'
+    //             input.type = 'text'
+    //             input.value = h.textContent
+    //             div.insertBefore(input, h);
+    //             div.removeChild(h)
+    //             button.textContent = 'Save';
+    //         } else if (button.textContent === 'Save') {
+    //             const input = div.firstElementChild;
+    //             const h = document.createElement('span')
+    //             h.textContent = input.value;
+    //             if (h.textContent.length > 0) {
+    //                 div.insertBefore(h, input);
+    //                 div.removeChild(input)
+    //                 button.textContent = 'Edit Playlist Name'
+    //                 let newName = h.textContent
 
-                    const payload = {
-                        ...playlist,
-                        newName
-                    }
+    //                 const payload = {
+    //                     ...playlist,
+    //                     newName
+    //                 }
 
-                    dispatch(updatePlaylist(payload))
-                    return <Redirect to="/playlists" />
-                }
-            }
-        }
-    // })
-}
+    //                 dispatch(updatePlaylist(payload))
+    //                 return <Redirect to="/playlists" />
+    //             }
+    //         }
+    //     }
+    // }
 
 
     return (
         <div id='editname'>
-            <span>{playlist?.playlist_name}</span>
+            {/* <span>{playlist?.playlist_name}</span>
             <div>
                 <button onClick={() => handleDelete()}>
                     Delete Playlist
@@ -90,8 +87,8 @@ const SinglePlaylist = () => {
                 <button onClick={((e) => asdf(e))}>
                     Edit Playlist Name
                 </button>
-            </div>
-            <PlaylistSongs songs={songs} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
+            </div> */}
+            <PlaylistSongs name={playlist.playlist_name} songs={songs} playlist={playlist} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
         </div>
     );
 };

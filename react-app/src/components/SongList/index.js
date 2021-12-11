@@ -5,7 +5,7 @@ import { getLibrary } from '../../store/playlist_songs'
 import { getSongs } from '../../store/song'
 import IndivSong from "../Songs/IndivSong"
 
-const SongList = ({ songResult }) => {
+const SongList = ({ search, songResult }) => {
     const dispatch = useDispatch()
 
     const userId = useSelector((state) => state.session.user.id);
@@ -16,6 +16,12 @@ const SongList = ({ songResult }) => {
     const newUserLibrary = { ...currentUserLibrary }
     const playlist_songs = useSelector((state) => state.playlist_song);
 
+    let option;
+    if (search.length === 0 ) {
+        option = false;
+    } else {
+        option = true;
+    }
 
     useEffect(() => {
         dispatch(getSongs())
@@ -24,22 +30,13 @@ const SongList = ({ songResult }) => {
     }, [dispatch])
     // search table
     return (
-        <div className='tablediv'>
-            <table>
-                <tr className='tableHeader'>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th></th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                {songResult.map((song, index) => (
-                    <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
-                ))}
-            </table>
-        </div>
+        <>
+            {option ?
+            (songResult.map((song, index) => (
+                <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists} />
+            ))) : null
+            }
+        </>
     )
 }
 

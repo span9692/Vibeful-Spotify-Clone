@@ -40,11 +40,135 @@ body {
 }
 
 .libray-container {
-    height: 50rem;
+    height:83vh;
     overflow: auto;
 
 }
 
-.tablediv {
-    justify-content: center;
+
+/* table css */
+.tabletable {
+    text-align: left;
+    border-collapse: collapse;
+    width: 90%;
+    color: grey;
+    margin: 0 auto;
+}
+
+th {
+    border-bottom: solid 0.01em white;
+}
+
+td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 15px;
+}
+
+/*size of song image*/
+.coverImg {
+    width: 2rem;
+}
+
+tr {
+    height: 15px;
+}
+
+tr:hover td {
+    background:rgb(58, 58, 58);
+}
+
+.fa-heart {
+    color: rgb(11, 150, 11);
+}
+
+.thId {
+    width: 3%;
+}
+
+.thCover {
+    width: 3%;
+}
+
+.thTitle {
+    width: 31%
+}
+
+.thArtist {
+    width: 24%
+}
+
+.thAlbum {
+    width: 36%
+}
+
+.thLike {
+    width: 2%
+}
+
+.thAdd {
+    width: 1%
+}
+
+
+
+/* dashboard css */
+.pageTitle {
+    font-size: 13vh;
+    font-weight: bold;
+    background: -webkit-linear-gradient(rgb(241, 241, 241), rgb(94, 94, 94));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 3vw;
+}
+
+.pageTitleBorder {
+    border-width:0px;
+    border:none;
+    -webkit-appearance: none;
+    caret-color: white;
+}
+
+.pageTitleBorder:focus,
+.subTitleSearch {
+    outline: none;
+}
+
+.pageTitleWidth {
+    width: 20px;
+}
+
+.subTitleSearch {
+    border-width:0px;
+    border:none;
+    -webkit-appearance: none;
+    caret-color: rgb(59, 59, 59);
+    margin-left: 5vw;
+    margin-bottom: 4vh;
+}
+
+.subTitle {
+    margin-left: 5vw;
+    color: rgb(175, 175, 175);
+    margin-bottom: 4vh;
+}
+
+.subTitlePlaylist {
+    margin-left: 1vw;
+    color: rgb(175, 175, 175);
+    margin-bottom: 4vh;
+}
+
+.subTitleSearch1 {
+    color: rgb(175, 175, 175);
+    margin-bottom: 4vh;
+}
+
+.hideText{
+    color: #0e1849
+}
+
+.dashHeader {
+    margin-left: 4vh;
+    margin-top: 8vh;
 }

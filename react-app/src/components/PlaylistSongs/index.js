@@ -1,13 +1,17 @@
 import { useEffect } from 'react';
 import { addToLibrary, removeFromLibrary } from "../../store/playlist_songs"
 import { useDispatch } from 'react-redux'
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { playMusic } from '../../store/audio';
 import AddToPlaylist from '../AddSongtoPlaylist';
+import { deletePlaylist, updatePlaylist } from '../../store/playlist';
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
-const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playlist_song }) => {
+const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, playlistId, playlist_song }) => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     // if playlist doesn't have any songs
     if (!(playlistId in playlist_song)) {
@@ -29,23 +33,77 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
         dispatch(removeFromLibrary(song, currentUserLibrary));
       }
 
-    useEffect(()=> {
+    let count = songsToDisplay.length
 
-    }, [dispatch])
+
+    const handleDelete = () => {
+        dispatch(deletePlaylist(+playlistId));
+        history.push('/');
+    };
+
+    const asdf = (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            const button = e.target;
+            const jeff = button.parentNode;
+            const div = jeff.parentNode;
+            if (button.textContent === 'Edit Playlist Name') {
+                const h = div.firstElementChild;
+                const input = document.createElement('input')
+                input.className = 'pageTitle pageTitleBorder'
+                input.setAttribute('size', 16)
+                input.setAttribute('spellcheck', false)
+                input.type = 'text'
+                input.value = h.textContent
+                div.insertBefore(input, h);
+                div.removeChild(h)
+                button.textContent = 'Save';
+            } else if (button.textContent === 'Save') {
+                const input = div.firstElementChild;
+                const h = document.createElement('span')
+                h.className='pageTitle pageTitleWidth'
+                h.textContent = input.value;
+                if (h.textContent.length > 0) {
+                    div.insertBefore(h, input);
+                    div.removeChild(input)
+                    button.textContent = 'Edit Playlist Name'
+                    let newName = h.textContent
+
+                    const payload = {
+                        ...playlist,
+                        newName
+                    }
+
+                    dispatch(updatePlaylist(payload))
+                    return <Redirect to="/playlists" />
+                }
+            }
+        }
+    }
 
     // playlist table
 
     return (
         <div className='tablediv'>
-            <table>
+            <span className='pageTitle'>{name}</span>
+            <div className='subTitle'>
+                <button onClick={() => handleDelete()}>
+                    Delete Playlist
+                </button>
+                <button onClick={((e) => asdf(e))}>
+                    Edit Playlist Name
+                </button>
+                <span> &bull; {count} {count == 1 ? 'song' : 'songs'}</span>
+            </div>
+
+            <table className='tabletable'>
                 <tr className='tableHeader'>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th></th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th></th>
-                    <th></th>
+                <th className='thId'>#</th>
+                <th className='thCover'>Title</th>
+                <th className='thTitle'></th>
+                <th className='thArtist'>Artist</th>
+                <th className='thAlbum'>Album</th>
+                <th className='thLike'></th>
+                <th className='thAdd'></th>
                 </tr>
                 {songsToDisplay.map((song, index) => (
                     <tr key={song.id} className='libraryRow'>

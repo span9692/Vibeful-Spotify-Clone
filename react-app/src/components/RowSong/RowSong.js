@@ -16,61 +16,38 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
     songId = []
   }
 
-  const shuffle = (arr) => {
-    arr.sort(()=>Math.random()-0.5);
-    return arr
-  }
+  // const shuffle = (arr) => {
+  //   arr.sort(()=>Math.random()-0.5);
+  //   return arr
+  // }
+
+  // relevantSongs = shuffle(relevantSongs)
 
   let relevantSongs = allSongs.filter(el => songId.includes(el.id)) //randomize songs
-  relevantSongs = shuffle(relevantSongs)
 
   if (relevantSongs.length > 5) { //only display 5 songs
     relevantSongs = relevantSongs.slice(0,5)
   }
-  console.log('relevantSongs', relevantSongs)
+  // console.log('relevantSongs', relevantSongs)
 
   return (
     <>
-      <h2>Liked Songs</h2>
-      <div>
-        <table>
+      <h2 className='dashHeader'>Liked Songs</h2>
+      <div className='tablediv'>
+        <table className='tabletable'>
           <tr className='tableHeader'>
-              <th>#</th>
-              <th>Title</th>
-              <th></th>
-              <th>Artist</th>
-              <th>Album</th>
-              <th></th>
-              <th></th>
+            <th className='thId'>#</th>
+            <th className='thCover'>Title</th>
+            <th className='thTitle'></th>
+            <th className='thArtist'>Artist</th>
+            <th className='thAlbum'>Album</th>
+            <th className='thLike'></th>
+            <th className='thAdd'></th>
           </tr>
           {relevantSongs.map((song, index) => (
         <IndivSong key={song.id} index={index} song={song} currentUserLibrary={currentUserLibrary} playlist_songs={allPlaylistSongs} playlists={allPlaylists}/>
       ))}
         </table>
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Recent Playlists</h2>
-      <div className="main_row">
-        {relevantSongs.map(song => (
-          <img className='coverImg' src={song.cover}/>
-        ))}
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Explore More Songs</h2>
-      <div className="main_row">
-        <div>Song 1</div>
-        <div>Song 2</div>
-        <div>Song 3</div>
-        <div>Song 4</div>
-        <div>Song 5</div>
       </div>
     </>
   );
