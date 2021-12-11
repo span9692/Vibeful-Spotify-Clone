@@ -79,3 +79,11 @@ tr:hover td {
 .fa-heart {
     color: rgb(11, 150, 11);
 }
+
+.pageTitle {
+    font-size: 13vh;
+    font-weight: bold;
+    background: -webkit-linear-gradient(rgb(226, 248, 104), rgb(197, 35, 189));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

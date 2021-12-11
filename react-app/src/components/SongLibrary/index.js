@@ -25,7 +25,6 @@ const SongLibrary = () => {
         songResult = null;
     } else {
         songs = allSongs.filter((el) => songResult.includes(el.id));
-
     }
 
     useEffect(()=>{
@@ -37,6 +36,8 @@ const SongLibrary = () => {
     // library table
     const libraryLoaded = (
         <div className='tablediv'>
+            <div className='pageTitle'>Library</div>
+            <div>hi</div>
             <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
