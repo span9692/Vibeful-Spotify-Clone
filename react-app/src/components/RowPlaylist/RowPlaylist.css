@@ -1,8 +1,9 @@
 .main_row {
-    width: 100%;
+    width: 94%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: auto;
 }
 
 .sub_row {
