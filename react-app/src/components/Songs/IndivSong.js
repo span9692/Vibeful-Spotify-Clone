@@ -14,7 +14,7 @@ import './songs.css'
 
 
 function IndivSong({ key, song, currentUserLibrary, playlist_songs, playlists, index }) {
-  console.log(currentUserLibrary)
+  // console.log(currentUserLibrary)
   const dispatch = useDispatch();
 
   const play = (song) => {

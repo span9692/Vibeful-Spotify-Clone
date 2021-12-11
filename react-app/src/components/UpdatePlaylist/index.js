@@ -11,7 +11,7 @@ const EditPlaylistForm = ({ playlistId }) => {
    const updateName = (e) => setPlaylistName(e.target.value);
 
   const handleSubmit = async (e) => {
-    console.log(playlist_name)
+    // console.log(playlist_name)
     e.preventDefault();
 
     const payload = {
@@ -30,7 +30,7 @@ const EditPlaylistForm = ({ playlistId }) => {
           type="text"
           placeholder="Playlist Name"
           value={playlist_name}
-         onChange={updateName} 
+         onChange={updateName}
           />
         <button className='update-button' type="submit">
           Update Playlist Name

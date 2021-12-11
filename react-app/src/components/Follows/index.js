@@ -17,8 +17,8 @@ const Follows = ({ follower_id, followee_id }) => {
 
   // console.log("THIS IS THE follower_ID", follower_id);
   // console.log("THIS IS THE FOLLOWEE_ID", followee_id);
-  console.log("THISBEDA FOLLOWERS-------------->", followers);
-  console.log("THISBEDA FOLLOWS-------------->", follows);
+  // console.log("THISBEDA FOLLOWERS-------------->", followers);
+  // console.log("THISBEDA FOLLOWS-------------->", follows);
 
   useEffect(() => {
     dispatch(showFollowing(id)).then(() => setLoad(true));
@@ -83,4 +83,3 @@ const Follows = ({ follower_id, followee_id }) => {
 };
 
 export default Follows;
-
