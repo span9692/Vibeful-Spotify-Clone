@@ -83,7 +83,14 @@ tr:hover td {
 .pageTitle {
     font-size: 13vh;
     font-weight: bold;
-    background: -webkit-linear-gradient(rgb(226, 248, 104), rgb(197, 35, 189));
+    background: -webkit-linear-gradient(rgb(241, 241, 241), rgb(94, 94, 94));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-left: 3vw;
+}
+
+.subTitle {
+    margin-left: 5vw;
+    color: rgb(175, 175, 175);
+    margin-bottom: 5vh;
 }

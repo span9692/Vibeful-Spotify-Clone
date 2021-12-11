@@ -5,6 +5,7 @@ import { getPlaylists } from '../../store/playlist'
 import { getLibrary } from '../../store/playlist_songs'
 import { getSongs } from '../../store/song'
 import IndivSong from '../Songs/IndivSong'
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
 const SongLibrary = () => {
     const dispatch = useDispatch()
@@ -27,6 +28,8 @@ const SongLibrary = () => {
         songs = allSongs.filter((el) => songResult.includes(el.id));
     }
 
+    let count = songs.length
+
     useEffect(()=>{
         dispatch(getSongs())
         dispatch(getPlaylists())
@@ -36,8 +39,8 @@ const SongLibrary = () => {
     // library table
     const libraryLoaded = (
         <div className='tablediv'>
-            <div className='pageTitle'>Library</div>
-            <div>hi</div>
+            <div className='pageTitle'><div>Library</div></div>
+            <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} songs</div>
             <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
