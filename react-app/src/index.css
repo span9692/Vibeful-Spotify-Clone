@@ -96,12 +96,22 @@ tr:hover td {
     caret-color: white;
 }
 
-.pageTitleBorder:focus {
+.pageTitleBorder:focus,
+.subTitleSearch {
     outline: none;
 }
 
 .pageTitleWidth {
     width: 20px;
+}
+
+.subTitleSearch {
+    border-width:0px;
+    border:none;
+    -webkit-appearance: none;
+    caret-color: rgb(59, 59, 59);
+    margin-left: 5vw;
+    margin-bottom: 4vh;
 }
 
 .subTitle {
@@ -114,4 +124,13 @@ tr:hover td {
     margin-left: 1vw;
     color: rgb(175, 175, 175);
     margin-bottom: 4vh;
+}
+
+.subTitleSearch1 {
+    color: rgb(175, 175, 175);
+    margin-bottom: 4vh;
+}
+
+.hideText{
+    color: #0e1849
 }
