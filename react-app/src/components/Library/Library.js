@@ -15,6 +15,7 @@ import { getSongs } from "../../store/song";
 import { getPlaylists } from "../../store/playlist";
 import { getLibrary } from "../../store/playlist_songs";
 import RowPlaylist from "../RowPlaylist";
+import RowExplore from "../RowExplore";
 
 const Library = () => {
   const {id} = useParams()
@@ -42,7 +43,7 @@ const Library = () => {
     options = (
       <div className="library_songs_meta"><SongList /></div>
     )
-  } 
+  }
   else if (
     window.location.href.endsWith("dashboard") ||
     window.location.href.endsWith("home")) {
@@ -51,6 +52,7 @@ const Library = () => {
         <Profile user={user} urlId={id} followInfo={followInfo}/>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
+        <RowExplore />
       </>
     );
   } else if (window.location.href.includes("playlist/")) {

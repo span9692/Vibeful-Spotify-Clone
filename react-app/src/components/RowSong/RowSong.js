@@ -48,30 +48,6 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
       ))}
         </table>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Recent Playlists</h2>
-      <div className="main_row">
-        {relevantSongs.map(song => (
-          <img className='coverImg' src={song.cover}/>
-        ))}
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Explore More Songs</h2>
-      <div className="main_row">
-        <div>Song 1</div>
-        <div>Song 2</div>
-        <div>Song 3</div>
-        <div>Song 4</div>
-        <div>Song 5</div>
-      </div>
     </>
   );
 }
