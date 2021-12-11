@@ -74,8 +74,7 @@ const SinglePlaylist = () => {
                 }
             }
         }
-    // })
-}
+    }
 
 
     return (
@@ -89,7 +88,7 @@ const SinglePlaylist = () => {
                     Edit Playlist Name
                 </button>
             </div>
-            <PlaylistSongs songs={songs} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
+            <PlaylistSongs name={playlist.playlist_name} songs={songs} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
         </div>
     );
 };

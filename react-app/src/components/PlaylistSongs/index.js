@@ -6,7 +6,7 @@ import AddToPlaylist from '../AddSongtoPlaylist';
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
-const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playlist_song }) => {
+const PlaylistSongs = ({ name, songs, currentUserLibrary, playlists, playlistId, playlist_song }) => {
     const dispatch = useDispatch()
 
     // if playlist doesn't have any songs
@@ -35,7 +35,7 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
 
     return (
         <div className='tablediv'>
-            <div className='pageTitle'><div>Library</div></div>
+            <div className='pageTitle'><div>{name}</div></div>
             <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} songs</div>
 
             <table className='tabletable'>
