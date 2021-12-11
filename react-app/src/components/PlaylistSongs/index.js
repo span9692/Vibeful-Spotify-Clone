@@ -29,14 +29,15 @@ const PlaylistSongs = ({ songs, currentUserLibrary, playlists, playlistId, playl
         dispatch(removeFromLibrary(song, currentUserLibrary));
       }
 
-    useEffect(()=> {
-
-    }, [dispatch])
+    let count = songsToDisplay.length
 
     // playlist table
 
     return (
         <div className='tablediv'>
+            <div className='pageTitle'><div>Library</div></div>
+            <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} songs</div>
+
             <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
