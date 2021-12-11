@@ -10,16 +10,20 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
     let usersPlaylist = allPlaylists.filter(el => el.owner_id == urlId && el.playlist_name != 'Library') //relevant playlists
     console.log('USERSPLAYLIST', usersPlaylist)
 
-    
+
 
     return (
-        <>
+        <div>
             <h2>Your Playlists</h2>
-            <div className="main_row"></div>
+            <div className="main_row">
             {usersPlaylist.map(playlist => (
-                <div></div>
+                <div className="sub_row">
+                    <img src={playlist.playlist_pic}></img>
+                    <div>{playlist.playlist_name}</div>
+                </div>
             ))}
-        </>
+            </div>
+        </div>
     )
 }
 
