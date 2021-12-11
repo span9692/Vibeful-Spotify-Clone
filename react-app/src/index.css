@@ -172,3 +172,9 @@ tr:hover td {
     margin-left: 4vh;
     margin-top: 8vh;
 }
+
+
+/* empty library message */
+.centerText {
+    margin-top: 35vh;
+}
