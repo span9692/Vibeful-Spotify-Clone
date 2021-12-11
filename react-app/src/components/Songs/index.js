@@ -45,13 +45,13 @@ function SongList() {
       <div className='subTitle'>Check out the entire library! &nbsp; &bull; &nbsp; {count} {count == 1 ? 'song' : 'songs'}</div>
       <table className='tabletable'>
         <tr className='tableHeader'>
-          <th>#</th>
-          <th>Title</th>
-          <th></th>
-          <th>Artist</th>
-          <th>Album</th>
-          <th></th>
-          <th></th>
+          <th className='thId'>#</th>
+          <th className='thCover'>Title</th>
+          <th className='thTitle'></th>
+          <th className='thArtist'>Artist</th>
+          <th className='thAlbum'>Album</th>
+          <th className='thLike'></th>
+          <th className='thAdd'></th>
         </tr>
       {songs.map((song, index) => (
         <IndivSong key={song.id} index={index} song={song} currentUserLibrary={newUserLibrary} playlist_songs={playlist_songs} playlists={playlists}/>

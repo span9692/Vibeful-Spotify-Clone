@@ -45,6 +45,8 @@ body {
 
 }
 
+
+/* table css */
 .tabletable {
     text-align: left;
     border-collapse: collapse;
@@ -80,6 +82,37 @@ tr:hover td {
     color: rgb(11, 150, 11);
 }
 
+.thId {
+    width: 3%;
+}
+
+.thCover {
+    width: 3%;
+}
+
+.thTitle {
+    width: 31%
+}
+
+.thArtist {
+    width: 24%
+}
+
+.thAlbum {
+    width: 36%
+}
+
+.thLike {
+    width: 2%
+}
+
+.thAdd {
+    width: 1%
+}
+
+
+
+/* dashboard css */
 .pageTitle {
     font-size: 13vh;
     font-weight: bold;
