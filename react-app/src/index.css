@@ -89,6 +89,21 @@ tr:hover td {
     margin-left: 3vw;
 }
 
+.pageTitleBorder {
+    border-width:0px;
+    border:none;
+    -webkit-appearance: none;
+    caret-color: white;
+}
+
+.pageTitleBorder:focus {
+    outline: none;
+}
+
+.pageTitleWidth {
+    width: 20px;
+}
+
 .subTitle {
     margin-left: 5vw;
     color: rgb(175, 175, 175);

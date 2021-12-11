@@ -49,7 +49,9 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
             if (button.textContent === 'Edit Playlist Name') {
                 const h = div.firstElementChild;
                 const input = document.createElement('input')
-                input.className = 'pageTitle'
+                input.className = 'pageTitle pageTitleBorder'
+                input.setAttribute('size', 16)
+                input.setAttribute('spellcheck', false)
                 input.type = 'text'
                 input.value = h.textContent
                 div.insertBefore(input, h);
@@ -70,7 +72,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
                         ...playlist,
                         newName
                     }
-
+                    // <input type="text" spellcheck="false">
                     dispatch(updatePlaylist(payload))
                     return <Redirect to="/playlists" />
                 }
