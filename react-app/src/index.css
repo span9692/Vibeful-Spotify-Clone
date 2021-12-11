@@ -73,7 +73,7 @@ tr {
 }
 
 tr:hover td {
-    background:grey;
+    background:rgb(58, 58, 58);
 }
 
 .fa-heart {

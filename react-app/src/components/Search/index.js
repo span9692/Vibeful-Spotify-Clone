@@ -29,7 +29,6 @@ const Search = () => {
             <form>
                 <div>
                 <div className='pageTitle'><div>Search</div></div>
-                {/* <div className='subTitle'>Discover new music! &nbsp; &bull; &nbsp; {count} {count == 1 ? 'song' : 'songs'}</div> */}
                     <input
                         className='subTitleSearch'
                         type='text'
