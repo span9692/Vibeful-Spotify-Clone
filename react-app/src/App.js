@@ -68,7 +68,7 @@ function App() {
           {/* <Follows /> */}
           <Dashboard />
         </ProtectedRoute>
-        <Route path='/search'>
+        <Route path="/search">
           <Dashboard />
         </Route>
         <ProtectedRoute path="/users/:id/social" exact={true}>

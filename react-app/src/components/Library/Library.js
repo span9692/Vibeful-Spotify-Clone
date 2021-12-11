@@ -42,7 +42,8 @@ const Library = () => {
     options = (
       <div className="library_songs_meta"><SongList /></div>
     )
-  } else if (
+  } 
+  else if (
     window.location.href.endsWith("dashboard") ||
     window.location.href.endsWith("home")) {
     options = (

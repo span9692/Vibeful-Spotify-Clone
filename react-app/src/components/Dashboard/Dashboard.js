@@ -22,6 +22,7 @@ const Dashboard = () => {
     return <Redirect to="/" />;
   }
 
+
   const goSearch = () => {
     history.push('/search')
   }
