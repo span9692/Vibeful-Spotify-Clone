@@ -2,14 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './Splash.css';
 import Author from '../Author/Author.js'
-import Dashboard from '../Dashboard/Dashboard.js'
+import { useHistory } from 'react-router-dom'
 
 const Splash = () => {
+
+const history = useHistory()
 
 const user = useSelector((state) => state.session.user);
 
 if (user) {
-  return <Dashboard />
+  history.push("/songs")
 }
 
 const stockImages = {
