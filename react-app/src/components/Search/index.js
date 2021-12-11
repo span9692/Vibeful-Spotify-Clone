@@ -33,7 +33,7 @@ const Search = () => {
                         className='subTitleSearch'
                         type='text'
                         value={search}
-                        placeholder='Find a song...'
+                        placeholder='Find a song or artist...'
                         onChange={(e) => setSearch(e.target.value)}
                     /> <span className={search.length == 0 ? 'hideText' :'subTitleSearch1'}> &nbsp; &bull; &nbsp;{count} {count == 1 ? 'result' : 'results'} found for '{search}'</span>
                 </div>
