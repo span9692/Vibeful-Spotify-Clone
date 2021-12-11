@@ -57,10 +57,14 @@ th {
     border-bottom: solid 0.01em white;
 }
 
-/* td:hover {
-    background-color: red;
-} */
+td {
+    padding-top: 5px;
+}
 
 .coverImg {
     width: 2rem;
+}
+
+tr:hover td {
+    background:grey
 }
