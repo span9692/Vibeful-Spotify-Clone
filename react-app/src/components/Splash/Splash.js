@@ -10,7 +10,6 @@ const user = useSelector((state) => state.session.user);
 
 if (user) {
   return <Dashboard />
-  // return <Redirect to="/" />;
 }
 
 const stockImages = {
