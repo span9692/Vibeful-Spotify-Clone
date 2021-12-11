@@ -40,7 +40,7 @@ const SongLibrary = () => {
     const libraryLoaded = (
         <div className='tablediv'>
             <div className='pageTitle'><div>Library</div></div>
-            <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} songs</div>
+            <div className='subTitle'>A collection of your favorite songs! &nbsp; &bull; &nbsp; {count} {count == 1 ? 'song' : 'songs'}</div>
             <table className='tabletable'>
                 <tr className='tableHeader'>
                     <th>#</th>
