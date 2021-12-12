@@ -24,7 +24,7 @@ function Profile({ user, urlId, followInfo }) {
     return 'Good morning!'
   }
 
-  console.log(timeNow, "<---it is the time now")
+  // console.log(timeNow, "<---it is the time now")
 
 
 
@@ -39,12 +39,12 @@ function Profile({ user, urlId, followInfo }) {
     <div className="library_profile">
       <div className="library_profile_left">
         <div className="library_profile_left_user">
-        <img
-          className="userProfile"
-          alt="sample_profile_pic"
-          src={realCurrentUser.profile_pic}
-        />
-        <ProfileModal currentUser={realCurrentUser} followInfo={followInfo} />
+          <img
+            className="userProfile"
+            alt="sample_profile_pic"
+            src={realCurrentUser.profile_pic}
+          />
+          <ProfileModal currentUser={realCurrentUser} followInfo={followInfo} />
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">

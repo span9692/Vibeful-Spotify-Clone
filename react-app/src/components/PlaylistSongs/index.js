@@ -42,7 +42,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
     };
 
     const asdf = (e) => {
-        if (e.target.tagName === 'BUTTON') {
+        if (e.target.tagName === 'SPAN') {
             const button = e.target;
             const jeff = button.parentNode;
             const div = jeff.parentNode;
@@ -86,12 +86,12 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
         <div className='tablediv'>
             <span className='pageTitle'>{name}</span>
             <div className='subTitle'>
-                <button onClick={() => handleDelete()}>
+                <span className='editProfileBtn pointer playlistBtn' onClick={() => handleDelete()}>
                     Delete Playlist
-                </button>
-                <button onClick={((e) => asdf(e))}>
+                </span>
+                <span className='editProfileBtn pointer playlistBtn' onClick={((e) => asdf(e))}>
                     Edit Playlist Name
-                </button>
+                </span>
                 <span> &bull; {count} {count == 1 ? 'song' : 'songs'}</span>
             </div>
 

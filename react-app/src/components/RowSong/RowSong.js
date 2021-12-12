@@ -56,7 +56,7 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
 
   return (
     <>
-      <h2 className='dashHeader'>Liked Songs</h2>
+      <h2 className='dashSong'>Liked Songs</h2>
       {option}
     </>
   );

@@ -195,11 +195,19 @@ tr:hover td {
 
 .dashHeader {
     margin-left: 4vh;
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
+.dashSong {
+    margin-left: 4vh;
+    margin-top: 4vh;
+}
 
 /* empty library message */
 .centerText {
     margin-top: 35vh;
+}
+
+.playlistBtn {
+    margin-left: .5vw;
 }
