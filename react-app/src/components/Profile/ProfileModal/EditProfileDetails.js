@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { editUserDetail, getUser } from "../../../store/user";
+import { editUserDetail} from "../../../store/user";
 
 const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
     const [errors, setErrors] = useState([]);
@@ -125,6 +125,15 @@ const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
         </div>
         <div>
           <input
+            type="text"
+            name="profile_pic"
+            placeholder="URL of Profile Pic"
+            onChange={updateProfilePic}
+            value={profilePic}
+          ></input>
+        </div>
+        <div>
+          <input
             type="password"
             name="password"
             placeholder="Password"
@@ -142,15 +151,6 @@ const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
             required={true}
           ></input>
         </div>
-        <div>
-          <input
-            type="text"
-            name="profile_pic"
-            placeholder="URL of Profile Pic"
-            onChange={updateProfilePic}
-            value={profilePic}
-          ></input>
-        </div>
       </div>
       <button type="submit" className="signUpContent-btn" onClick={saveProfile}>
         Save Changes
@@ -160,9 +160,10 @@ const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
         className="signUpContent-btn deleteContent-btn"
         id="deleteContent-btn"
         onClick={(e) => {
-              e.preventDefault();
-              setPage(1)}}
-        >
+          e.preventDefault();
+          setPage(1);
+        }}
+      >
         Delete Profile
       </button>
     </form>
