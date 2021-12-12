@@ -7,3 +7,46 @@
     background-color: #0d1230;
     color: #FFF;
 }
+
+.showPlayer {
+    z-index: 9999;
+    position: absolute;
+    bottom: 1.5vh;
+    /* left: 3vw; */
+    /*start position of player row*/
+    left: 3vw;
+    width: 94vw;
+    display:flex;
+}
+
+.playerinfo {
+    display: flex;
+    justify-content: left;
+}
+
+.playersidecolumn {
+    width: 20%;
+}
+
+.playerImg {
+    height: 5rem;
+}
+
+.playerSongAndArtist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15vh;
+}
+
+.playerTitle {
+    color: white;
+}
+
+.playerArtist {
+    color: grey;
+}
+
+.musicPlayer {
+    width: 15vw;
+}

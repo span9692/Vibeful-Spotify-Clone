@@ -23,7 +23,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
+/* 
 .showPlayer {
     z-index: 9999;
     position: absolute;
@@ -31,9 +31,9 @@ body {
     left: 11vw;
     width: 1500px;
     display:flex;
-    /* margin-left: 2vw;
-    margin-right: 2vw; */
-}
+} */
+/* margin-left: 2vw;
+margin-right: 2vw; */
 
 .pointer {
     cursor: pointer;

@@ -7,18 +7,26 @@ const Player = () => {
     const song = useSelector(state => state.audio)
     const user = useSelector(state => state.session.user);
 
+
     const userPlayer = (
         <div className='showPlayer'>
-            {/* <div></div> */}
+            <div className='playerinfo playersidecolumn'>
+                <img className='playerImg' src={song?.cover}></img>
+                <div className='playerSongAndArtist'>
+                    <div className='playerTitle'>{song?.title}</div>
+                    <div className='playerArtist'>{song?.artist}</div>
+                </div>
+            </div>
             {/* <div> */}
-                <AudioPlayer
-                    autoPlay
-                    showSkipControls="False"
-                    showFilledVolume="True"
-                    src={song.url}
-                />
+            <AudioPlayer
+                className='musicPlayer'
+                autoPlay
+                showSkipControls="False"
+                showFilledVolume="True"
+                src={song.url}
+            />
             {/* </div> */}
-            {/* <div></div> */}
+            <div className='playersidecolumn'></div>
         </div>
     )
 
