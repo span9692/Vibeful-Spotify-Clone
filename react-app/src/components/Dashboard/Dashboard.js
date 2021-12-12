@@ -18,17 +18,15 @@ const Dashboard = () => {
   const sessionUser = useSelector((state) => state.session.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
   const follows = useSelector(state => Object.values(state.follow))
-  console.log('allUsers', allUsers)
 
   useEffect(() => {
     dispatch(getPlaylists())
-    dispatch(showFollowing(allUsers))
+    dispatch(showFollowing())
   }, [dispatch])
 
   if(!sessionUser) {
     return <Redirect to="/" />;
   }
-//greg joseph tony
 
   const goSearch = () => {
     history.push('/search')

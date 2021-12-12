@@ -45,30 +45,17 @@ def get_followers():
 
     userIds = User.query.all()
     ids = [user.id for user in userIds]
-    print(ids)
-#follows = people that follow you (followers)
-#followings = people that you follow (followees)
+
     followerslist = []
     followeeslist = []
 
     for id in ids:
         followers = db.session.query(follow_list).filter_by(followee_id = id).all()
         followerslist.append(followers)
-        print(followerslist)
 
     for id in ids:
         followees = db.session.query(follow_list).filter_by(follower_id = id).all()
         followeeslist.append(followees)
-        print(followeeslist)
-
-
-    # follows = db.session.query(follow_list).filter_by(followee_id = id).all()
-
-    # followings = db.session.query(follow_list).filter_by(follower_id = id).all()
-
-    # print("************** FOLLOWS", follows)
-    # print("************** FOLLOWING", followings)
-
 
     final_followers_list = []
     final_followee_list = []
@@ -87,68 +74,23 @@ def get_followers():
             temp_followee_list.append(user_followee.to_dict())
         final_followee_list.append(temp_followee_list)
 
-    # final_object = {}
-
     final_object = {}
-    # for i in ids:
-    #     final_object.setdefault(i, []).append(final_followers_list)
-
-    # print(final_object)
 
     for id in ids:
         final_object[id] = {"followers":final_followers_list[id-1], 'followees':final_followee_list[id-1]}
 
-    print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', final_object, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
-
     return jsonify(final_object)
 
-
-
-
-# {1: {'followers': [<bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 3>>, <bound method User.to_dict of <User 4>>, <bound method User.to_dict of <User 5>>]}, 2: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 3>>]}, 3: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 4>>]}, 4: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 3>>], 'followees': [<bound method User.to_dict of <User 3>>, <bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 1>>]}, 5: {'followers': [<bound method User.to_dict of <User 1>>], 'followees': []}}
-
-
-
-
-
-
-
-
-
-
-
-    #   followers_list = []
-    #   followering_list = []
-
-    #   for follow in followers:
-    #     user_follower = User.query.get(follow.follower_id)
-    #     followers_list.append(user_follower.to_dict())
-
-    # print("------------> followers_list", followers_list)
-
-    # for following in  followings:
-    #     user_following = User.query.get(following.followee_id)
-    #     following_list.append(user_following.to_dict())
-
-    # print("------------> following_list", following_list)
-
-    # return {"followers": followers_list, "following": following_list}
-    return {'asdf':'asdf'}
 
 @user_routes.route('/<int:id>/dashboard', methods=['DELETE'])
 @login_required
 def unfollow(id):
     unfollow_user = db.session.query(follow_list).filter(follow_list.c.follower_id == current_user.id, follow_list.c.followee_id == id ).first()
 
-    # print("**********DISBEDA UNFOLLOW_USER***********",unfollow_user)
-
     db.session.delete(unfollow_user)
     db.session.commit()
 
     return jsonify({'message': f'Unfollowed user {id} '}), 200
-
-
-
 
 
 @user_routes.route('/<int:id>/dashboard', methods=['POST'])

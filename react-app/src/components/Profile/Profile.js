@@ -12,7 +12,6 @@ function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
-  const updateFollow = useSelector(state => state.follow)
 
   // console.log('followInfo', followInfo)
   // console.log('updateFollow', updateFollow)
@@ -22,7 +21,7 @@ function Profile({ user, urlId, followInfo }) {
   // console.log(currentUser, 'currentUser')
 
   useEffect(()=> {
-    dispatch(showFollowing(allUsers))
+    dispatch(showFollowing())
     dispatch(getUser(user.id))
   }, [dispatch])
 
@@ -48,10 +47,10 @@ function Profile({ user, urlId, followInfo }) {
           </div>
           <div className="library_profile_right_b">
             <div className="library_profile_right_b1">
-              {followInfo.urlId.following?.length} Following
+              {followInfo[urlId].followees?.length} Following
             </div>
             <div className="library_profile_right_b2">
-              -{followInfo.urlId.followers?.length} Followers
+              -{followInfo[urlId].followers?.length} Followers
             </div>
 
           </div>

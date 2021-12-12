@@ -34,7 +34,7 @@ const Library = () => {
   console.log('followInfo', followInfo)
 
   useEffect(() => {
-    dispatch(showFollowing(everyone));
+    dispatch(showFollowing());
     dispatch(getSongs())
     dispatch(getPlaylists())
     dispatch(getLibrary()) // getLibrary grabs all playlist_song
@@ -44,8 +44,8 @@ const Library = () => {
   let options = null;
 
   // follow logic starts here
-  console.log(id, 'id BAYBEE') // id is the id of the profile page
-  console.log(user.id, 'user.id BAYBEE') //user.id is the session user
+  // console.log(id, 'id BAYBEE') // id is the id of the profile page
+  // console.log(user.id, 'user.id BAYBEE') //user.id is the session user
 
   const followPerson = () => {
     dispatch(followUser(user.id, id))
