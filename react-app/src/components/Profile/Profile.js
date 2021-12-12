@@ -52,6 +52,7 @@ function Profile({ user, urlId, followInfo }) {
             <div className="library_profile_right_b2">
               -{followInfo.followers?.length} Followers
             </div>
+            
           </div>
         </div>
       </div>

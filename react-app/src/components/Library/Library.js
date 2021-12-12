@@ -20,7 +20,7 @@ import { getAllUsers } from "../../store/alluser";
 
 const Library = () => {
   const {id} = useParams()
-
+  console.log(id, 'id BAYBEE')
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
@@ -54,6 +54,7 @@ const Library = () => {
     options = (
       <>
         <Profile user={user} urlId={id} followInfo={followInfo}/>
+        <button>Follow</button>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowExplore urlId={id} currentUserLibrary={currentUserLibrary} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
