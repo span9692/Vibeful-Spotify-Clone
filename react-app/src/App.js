@@ -13,6 +13,7 @@ import { authenticate } from "./store/session";
 import PlayList from "./components/Playlist";
 import SinglePlaylist from "./components/SinglePlaylist";
 import Player from "./components/Player";
+import PlayerInfo from "./components/PlayerInfo";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

@@ -7,3 +7,55 @@
     background-color: #0d1230;
     color: #FFF;
 }
+
+.showPlayer {
+    z-index: 9999;
+    position: absolute;
+    bottom: 1.1vh;
+    /* left: 3vw; */
+    /*start position of player row*/
+    left: 3vw;
+    width: 94vw;
+    display:flex;
+}
+
+.playerinfo {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+}
+
+.playersidecolumn {
+    width: 20%;
+}
+
+.playerImg {
+    height: 5rem;
+    border-left: 3vh;
+}
+
+.playerSongAndArtist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15vh;
+    margin-left: 1vw;
+}
+.playerTitle,
+.playerTitle {
+    /* margin-top: .1vh;
+    margin-bottom: .1vh; */
+}
+
+.playerTitle {
+    color: white;
+}
+
+.playerArtist {
+    color: grey;
+    font-size: .7vw;
+}
+
+.musicPlayer {
+    width: 15vw;
+}

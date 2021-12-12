@@ -48,11 +48,13 @@ const Follows = ({ everyone }) => {
 
   return (
       <div className='tablediv'>
-        <div className='pageTitle'><div>Social Circle</div></div>
+        <div className='pageTitle'><div>Social</div></div>
         <div className='subTitle'>Stay connected through the music!</div>
-        <button onClick={()=>showEveryone()}>everyone</button>
-        <button onClick={()=>showFollowers()}>your followers</button>
-        <button onClick={()=>showFollowees()}>people YOU follow</button>
+        <div className='optionwrapper'>
+          <span className='followOptions pointer' onClick={()=>showEveryone()}>All Users</span><span className='pipe'>|</span>
+          <span className='followOptions pointer' onClick={()=>showFollowers()}>Your Followers</span><span className='pipe'>|</span>
+          <span className='followOptions pointer' onClick={()=>showFollowees()}>Users You Follow</span>
+        </div>
         <div className="main_row1">
           {users.map(individual => (
             <div key={individual.id}>
