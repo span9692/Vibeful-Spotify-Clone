@@ -16,9 +16,18 @@ function Profile({ user, urlId, followInfo }) {
   // console.log('followInfo', followInfo)
   // console.log('updateFollow', updateFollow)
 
+  const timeNow = () => {
+    const currentHour = new Date().getHours()
+    if (currentHour >= 18) return 'Good evening!' 
+    else if (12 < currentHour && currentHour < 18 ) return 'Good afternoon!'
+    return 'Good morning!'
+  }
+    
+  console.log(timeNow, "<---it is the time now")
+
+
+
   let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
-  // console.log(realCurrentUser,'realCurrentUser')
-  // console.log(currentUser, 'currentUser')
 
   useEffect(()=> {
     dispatch(showFollowing())
@@ -40,20 +49,29 @@ function Profile({ user, urlId, followInfo }) {
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">
+            <h2>{timeNow()}</h2>
             <h1>
               {realCurrentUser.first_name} {realCurrentUser.last_name}
             </h1>
-            <div className="userInfo">{realCurrentUser.first_name} {realCurrentUser.last_name}</div>
-          </div>
-          <div className="library_profile_right_b">
-            <div className="library_profile_right_b1">
-              {followInfo[urlId].followees?.length} Following
+            <div className="userInfo">
+              <span>{followInfo[urlId].followees?.length} Following</span>
+              <span>
+                <i class="fas fa-link"></i>
+              </span>
+              <span>{followInfo[urlId].followers?.length} Followers </span>
             </div>
-            <div className="library_profile_right_b2">
-              -{followInfo[urlId].followers?.length} Followers
-            </div>
-
           </div>
+          <div>
+            <div className="profileVideoContainer">
+              <video className="profileVideo" autoPlay loop muted>
+                <source
+                  src="https://res.cloudinary.com/dpxlirk9q/video/upload/v1639293102/profile_2531140_gci36y.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              </div>
+          </div>
+      
         </div>
       </div>
     </div>
