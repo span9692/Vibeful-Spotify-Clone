@@ -18,11 +18,11 @@ function Profile({ user, urlId, followInfo }) {
 
   const timeNow = () => {
     const currentHour = new Date().getHours()
-    if (currentHour >= 18) return 'Good evening!' 
+    if (currentHour >= 18) return 'Good evening!'
     else if (12 < currentHour && currentHour < 18 ) return 'Good afternoon!'
     return 'Good morning!'
   }
-    
+
   console.log(timeNow, "<---it is the time now")
 
 
@@ -33,8 +33,6 @@ function Profile({ user, urlId, followInfo }) {
     dispatch(showFollowing())
     dispatch(getUser(user.id))
   }, [dispatch])
-
-  console.log('followInfo.urlId', followInfo.urlId)
 
   return (
     <div className="library_profile">
@@ -71,7 +69,7 @@ function Profile({ user, urlId, followInfo }) {
               </video>
               </div>
           </div>
-      
+
         </div>
       </div>
     </div>

@@ -26,9 +26,10 @@ def all_Users():
 @follow_routes.route('/', methods=['POST'])
 def newFollow():
     data = request.get_json()
-    db.session.execute(follow_list.insert().values(follower_id=data['follower_id'], followee_id=data['followee_id']))
+    print('IN THE BACKEND', data, 'end of datammmmmmmmmmmmmmmmmmmmmmmmm')
+    db.session.execute(follow_list.insert().values(follower_id=data['follower']['id'], followee_id=data['followee']['id']))
     db.session.commit()
-    return {"follower_id": data['follower_id'], "followee_id": data['followee_id']}
+    return {"follower_id": data['follower'], "followee_id": data['followee']}
 
 
 

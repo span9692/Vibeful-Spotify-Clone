@@ -17,6 +17,7 @@ const removeFollow = (data) => {
 };
 
 const addFollow = (data) => {
+  console.log('action creator', data)
   return {
     type: ADD_FOLLOW,
     data,
@@ -50,10 +51,11 @@ export const unfollowUser = (follower_id, followee_id) => async (dispatch) => {
 };
 
 export const followUser = (follower_id, followee_id) => async (dispatch) => {
+  console.log('-------->', follower_id, followee_id, '<------------')
   const res = await fetch("/api/follow/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ follower_id, followee_id }),
+    body: JSON.stringify({ "follower":follower_id, 'followee':followee_id  }),
   });
 
   if (res.ok) {
@@ -69,11 +71,14 @@ export default function reducer(state = {}, action) {
       newState = action.data
       return newState;
     case ADD_FOLLOW:
+      console.log('in action.data', action.data)
       newState = { ...state };
+      console.log('in newState before update', newState)
       if (!(action.data["follower_id"] in newState)) {
-        newState[action.data["follower_id"]] = [];
+        newState[action.data["follower_id"]['id']] = [];
       }
-      newState[action.data["follower_id"]].push(action.data["followee_id"]);
+      newState[action.data["follower_id"]['id']].push(action.data["followee_id"]);
+      console.log('in newState after update', newState)
       return newState;
     case REMOVE_FOLLOW:
       newState = { ...state };

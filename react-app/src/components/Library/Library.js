@@ -6,7 +6,7 @@ import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
 import Profile from '../Profile/Profile';
 import RowSong from '../RowSong/RowSong';
-import { followUser, showFollowing, unfollowUser } from "../../store/follow";
+import { showFollowing } from "../../store/follow";
 import { useParams } from "react-router-dom";
 import Search from '../Search';
 import Follows from "../Follows";
@@ -47,13 +47,6 @@ const Library = () => {
   // console.log(id, 'id BAYBEE') // id is the id of the profile page
   // console.log(user.id, 'user.id BAYBEE') //user.id is the session user
 
-  const followPerson = () => {
-    dispatch(followUser(user.id, id))
-  }
-
-  const unfollowPerson = () => {
-    dispatch(unfollowUser(user.id, id))
-  }
 
   // follow logic ends here
 
@@ -68,8 +61,6 @@ const Library = () => {
     options = (
       <>
         <Profile user={user} urlId={id} followInfo={followInfo}/>
-        <button onClick={()=>followPerson()}>Follow</button>
-        <button onClick={()=>unfollowPerson()}>UnFollow</button>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowExplore urlId={id} currentUserLibrary={currentUserLibrary} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
