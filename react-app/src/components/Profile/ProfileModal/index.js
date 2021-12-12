@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom'
 import { deleteUser } from "../../../store/user";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
-
+import '../Profile.css'
 
 function ProfileModal({currentUser}) {
   const [showModal, setShowModal] = useState(false);

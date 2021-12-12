@@ -79,7 +79,7 @@ tr:hover td {
 }
 
 .fa-heart {
-    color: rgb(11, 150, 11);
+    color: #7678c6;
 }
 
 .thId {
@@ -171,4 +171,10 @@ tr:hover td {
 .dashHeader {
     margin-left: 4vh;
     margin-top: 8vh;
+}
+
+
+/* empty library message */
+.centerText {
+    margin-top: 35vh;
 }
