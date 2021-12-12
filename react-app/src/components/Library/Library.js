@@ -16,6 +16,7 @@ import { getPlaylists } from "../../store/playlist";
 import { getLibrary } from "../../store/playlist_songs";
 import RowPlaylist from "../RowPlaylist";
 import RowExplore from "../RowExplore";
+import { getAllUsers } from "../../store/alluser";
 
 const Library = () => {
   const {id} = useParams()
@@ -30,11 +31,14 @@ const Library = () => {
   let currentUserLibrary = allPlaylists.filter(el => el.owner_id == id && el.playlist_name == 'Library')[0]
   let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
 
+  const everyone = useSelector(state => Object.values(state.alluser))
+
   useEffect(() => {
     dispatch(showFollowing(user.id));
     dispatch(getSongs())
     dispatch(getPlaylists())
     dispatch(getLibrary()) // getLibrary grabs all playlist_song
+    dispatch(getAllUsers())
   }, [dispatch, user.id]);
 
   let options = null;
@@ -76,7 +80,7 @@ const Library = () => {
   } else if (window.location.href.endsWith("social")) {
     options = (
       <div className="library_songs_meta">
-        <Follows />
+        <Follows everyone={everyone}/>
       </div>
     );
   }

@@ -3,15 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { getAllUsers } from "../../store/alluser";
+import './follows.css'
 
 import { showFollowing, unfollowUser, followUser } from "../../store/follow";
 
-const Follows = ({ follower_id, followee_id }) => {
+const Follows = ({ everyone }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const userId = useSelector((state) => state.session.user.id);
 
-  const everyone = useSelector(state => Object.values(state.alluser))
+  const allUsers = useSelector(state => Object.values(state.alluser))
   const followers = useSelector((state) => Object.values(state.follow))[0];
   const followees = useSelector((state) => Object.values(state.follow))[1];
 
@@ -21,15 +22,15 @@ const Follows = ({ follower_id, followee_id }) => {
     dispatch(getAllUsers())
   }, [dispatch, users]);
 
-  const handleDelete = (follower_id) => {
-    dispatch(unfollowUser(follower_id, followee_id));
-  };
-  const handleAddFollower = (id) => {
-    dispatch(followUser(id));
-  };
+  // const handleDelete = (follower_id) => {
+  //   dispatch(unfollowUser(follower_id, followee_id));
+  // };
+  // const handleAddFollower = (id) => {
+  //   dispatch(followUser(id));
+  // };
 
   const showEveryone = () => {
-    setUsers(everyone)
+    setUsers(allUsers)
   }
 
   const showFollowers = () => {
@@ -47,12 +48,14 @@ const Follows = ({ follower_id, followee_id }) => {
       <div className='tablediv'>
         <div className='pageTitle'><div>Social Circle</div></div>
         <div className='subTitle'>Stay connected through music!</div>
-        <button onClick={()=>showEveryone()}>everyone</button><button onClick={()=>showFollowers()}>your followers</button><button onClick={()=>showFollowees()}>people YOU follow</button>
-        <div className="main_row">
+        <button onClick={()=>showEveryone()}>everyone</button>
+        <button onClick={()=>showFollowers()}>your followers</button>
+        <button onClick={()=>showFollowees()}>people YOU follow</button>
+        <div className="main_row1">
           {users.map(individual => (
             <div key={individual.id}>
-              <Link className="sub_row" to={`/users/${individual.id}/dashboard`}>
-                <img className='subsubrow social_image' src={individual.profile_pic} alt='Image Not Found'></img>
+              <Link className="sub_row1" to={`/users/${individual.id}/dashboard`}>
+                <img className='subsubrow1 social_image1' src={individual.profile_pic} alt='Image Not Found'></img>
                 <div>{individual.first_name} {individual.last_name}</div>
               </Link>
             </div>
