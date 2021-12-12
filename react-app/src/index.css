@@ -23,7 +23,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-/* 
+/*
 .showPlayer {
     z-index: 9999;
     position: absolute;
@@ -212,3 +212,15 @@ tr:hover td {
 .playlistBtn {
     margin-left: .5vw;
 }
+
+.addToPlaylistBtn {
+    /* background-color: black; */
+    color: white;
+    padding: 5px 6px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0px
+  }
