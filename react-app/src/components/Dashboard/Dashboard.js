@@ -44,6 +44,7 @@ const Dashboard = () => {
       playlist_pic: 'https://res.cloudinary.com/photofinder/image/upload/v1639179904/music_note_a5ygjq.jpg'
     }))
   }
+  console.log(".")
 
 
   return (
