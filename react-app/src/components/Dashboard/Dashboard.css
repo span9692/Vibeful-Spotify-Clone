@@ -11,9 +11,9 @@
     /* animation: 1s ease-out 0s 1 slideInFromBottom; */
 }
 
-.dashboardDisappear {
+/* .dashboardDisappear {
     animation: 1s linear 0s 1 slideDisappear
-}
+} */
 
 .dashboard-top-navbar {
     min-height: 5vh;
