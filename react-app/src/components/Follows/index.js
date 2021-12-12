@@ -65,23 +65,6 @@ const Follows = ({ everyone }) => {
             </div>
           ))}
         </div>
-        <div>
-          delete everything below later, use as checker for now
-          <h1>FOLLOWING</h1>
-          {followerstate[id].followees.map((followee) => (
-            <div key={followee.id}>
-              {followee.first_name} {followee.last_name}
-            </div>
-          ))}
-        </div>
-        <div>
-          <h1>FOLLOWERS</h1>
-          {followerstate[id].followers.map((follower) => (
-            <div key={follower.id}>
-              {follower.first_name} {follower.last_name}
-            </div>
-          ))}
-        </div>
       </div>
     )
 };

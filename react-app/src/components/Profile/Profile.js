@@ -5,10 +5,12 @@ import "./Profile.css";
 import { editUser, getUser } from "../../store/user";
 import ProfileModal from "../Profile/ProfileModal/index.js";
 import EditProfile from "../Profile/ProfileModal/EditProfile"
+import { useHistory } from "react-router-dom";
 
 
 function Profile({ user, urlId, followInfo }) {
-  // const [info, setInfo] = useState(followInfo)
+
+  const history = useHistory();
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
@@ -23,6 +25,10 @@ function Profile({ user, urlId, followInfo }) {
     else if (12 <= currentHour && currentHour < 18 ) return 'Good afternoon!'
     return 'Good evening!'
   }
+
+    const goSocial = () => {
+      history.push(`/users/${realCurrentUser.id}/social`);
+    };
 
   let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
 
@@ -49,17 +55,14 @@ function Profile({ user, urlId, followInfo }) {
               {realCurrentUser.first_name} {realCurrentUser.last_name}
             </h1>
             <div className="userInfo">
-              <span>{followInfo[urlId].followees?.length} Following</span>
+              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId].followees?.length} Following</span>
               <span>
                 <i class="fas fa-link"></i>
               </span>
-              <span>{followInfo[urlId].followers?.length} Followers </span>
+              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId].followers?.length} Followers </span>
             </div>
           </div>
           <div>
-            <div className="profileVideoContainer">
-              IMAGE BANNER OR SOMETHING
-            </div>
           </div>
         </div>
       </div>
