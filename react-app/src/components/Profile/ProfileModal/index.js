@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditProfile from "./EditProfile"
+import '../Profile.css'
 
 function ProfileModal({currentUser}) {
   const [showModal, setShowModal] = useState(false);
@@ -8,7 +9,7 @@ function ProfileModal({currentUser}) {
   return (
     <>
       <button
-        className="editProfile pointer"
+        className="editProfileBtn pointer"
         onClick={() => setShowModal(true)}
       >
         Edit Profile
