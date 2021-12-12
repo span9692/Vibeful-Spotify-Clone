@@ -91,7 +91,7 @@ input[type=checkbox] {
     z-index: 99;
     top: 0.5vh;;
     left: 13vw;
-    
+    color: white;
 }
 
 .homeLink {
