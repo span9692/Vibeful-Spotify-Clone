@@ -41,6 +41,7 @@ body {
 .libray-container {
     height:83vh;
     overflow-y: auto;
+    border-radius: 20px 0px 0px 0px;
 }
 
 .libray-container::-webkit-scrollbar{

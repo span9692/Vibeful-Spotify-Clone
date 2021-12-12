@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPlaylists, deletePlaylist, updatePlaylist } from '../../store/playlist'
-import SinglePlaylist from '../SinglePlaylist'
 import EditPlaylistForm from '../UpdatePlaylist'
 import { deleteUser } from "../../store/user";
 import { Redirect, useHistory } from 'react-router-dom';
