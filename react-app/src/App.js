@@ -77,6 +77,7 @@ function App() {
         <ProtectedRoute path="/users/:id/library" exact={true}>
           <Dashboard />
         </ProtectedRoute>
+        <Splash/>
       </Switch>
       <Player />
     </BrowserRouter>
