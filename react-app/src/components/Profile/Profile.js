@@ -24,12 +24,14 @@ function Profile({ user, urlId, followInfo }) {
   return (
     <div className="library_profile">
       <div className="library_profile_left">
+        <div className="library_profile_left_user">
         <img
           className="userProfile"
           alt="sample_profile_pic"
           src={currentUser.profile_pic}
         />
         <ProfileModal currentUser={currentUser} />
+        </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">
             <h1>
