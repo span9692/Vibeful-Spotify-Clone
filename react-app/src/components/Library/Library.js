@@ -67,7 +67,8 @@ const Library = () => {
     options = (
       <>
         <Profile user={user} urlId={id} followInfo={followInfo}/>
-        <button onClick={()=>unfollowPerson()}>Follow</button>
+        <button onClick={()=>followPerson()}>Follow</button>
+        <button onClick={()=>unfollowPerson()}>UnFollow</button>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowExplore urlId={id} currentUserLibrary={currentUserLibrary} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
