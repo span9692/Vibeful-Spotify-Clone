@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import SignUpFormModal from '../auth/SignUpFormModal';
 import LoginForm from '../auth/LoginForm';
 import { logout } from '../../store/session';
+import { playMusic } from '../../store/audio';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -13,6 +14,7 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   const onLogout = async (e) => {
+    dispatch(playMusic({}))
     await dispatch(logout());
   };
 
