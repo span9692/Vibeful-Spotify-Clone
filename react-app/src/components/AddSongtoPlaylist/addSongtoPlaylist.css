@@ -67,19 +67,43 @@
     color: rgb(169, 169, 169);
     background-color: rgba(0, 0, 0, 1);
     border-radius: 15px;
-    /* margin-left: 80vw; */
-    text-align: left;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 10px;
+    text-align: center;
   }
+
+  .modal-box::-webkit-scrollbar {
+    background-color:transparent;
+  }
+
+  .modal-box::-webkit-scrollbar-thumb{
+    background-color: rgb(255, 255, 255);
+    border-radius: 40px;
+  }
+
+  .modal-box::-webkit-scrollbar-track{
+    padding: 2px 0;
+    background-color: transparent;
+    border-radius: 40px;
+}
+  
   
   .addTitle {
     color: white;
   }
 
+  .divider {
+    background-color: #fe749c;
+    width: 129px;
+    height: 1px;
+    margin: 0 auto;
+  }
+
   .addtoplaylist {
     inline-size: max-content;
     overflow: hidden;
+    padding-left: 22px;
   }
 
   .addtoplaylist:hover {
