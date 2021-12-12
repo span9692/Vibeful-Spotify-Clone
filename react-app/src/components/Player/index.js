@@ -47,7 +47,7 @@ const Player = () => {
                 autoPlay
                 showSkipControls="False"
                 showFilledVolume="True"
-                src={song.url}
+                src={song?.url}
                 />
             {/* </div> */}
             <div className='playersidecolumn'>
