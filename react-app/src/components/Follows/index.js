@@ -16,7 +16,7 @@ const Follows = ({ follower_id, followee_id }) => {
 
   const everyone = useSelector(state => Object.values(state.alluser))
   const followers = useSelector((state) => Object.values(state.follow))[0];
-  const follows = useSelector((state) => Object.values(state.follow))[1];
+  const followees = useSelector((state) => Object.values(state.follow))[1];
 
   console.log('everyone', everyone)
   // console.log("THIS IS THE follower_ID", follower_id);
@@ -35,28 +35,9 @@ const Follows = ({ follower_id, followee_id }) => {
     dispatch(followUser(id));
   };
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/users/");
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-  //   }
-  //   fetchData();
-  // }, []);
-
-  // const userComponents = users.map((user) => {
-  //   return (
-  //     <li key={user.id}>
-  //       <ul>
-  //         {user.first_name} {user.last_name}{" "}
-  //         <button onClick={() => handleDelete(user.id)}>Unfollow user</button>
-  //         <button onClick={() => handleAddFollower(user.id)}>
-  //           Follow user
-  //         </button>
-  //       </ul>
-  //     </li>
-  //   );
-  // });
+  // everyone is a list of ALL the users
+  // followee is a list of users that YOU follow
+  // followers is a list of users that follow you
 
   return (
       <div className='tablediv'>
@@ -72,25 +53,21 @@ const Follows = ({ follower_id, followee_id }) => {
             </div>
           ))}
         </div>
-
-
-          <div>
-            <h1>User List: </h1>
-            {/* <ul>{userComponents}</ul> */}
-          </div>
+        <div>
           <h1>FOLLOWING</h1>
-          {/* {follows.map((follow) => (
-            <div key={follow.id}>
-              {follow.first_name} {follow.last_name}
+          {followees.map((followee) => (
+            <div key={followee.id}>
+              {followee.first_name} {followee.last_name}
             </div>
-          ))} */}
+          ))}
+        </div>
         <div>
           <h1>FOLLOWERS</h1>
-          {/* {followers.map((follower) => (
+          {followers.map((follower) => (
             <div key={follower.id}>
               {follower.first_name} {follower.last_name}
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     )
