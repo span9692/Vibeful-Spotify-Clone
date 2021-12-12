@@ -15,6 +15,13 @@ def all_follows():
     return followObj
 
 
+@follow_routes.route('/allUsers')
+def all_Users():
+    all = User.query.all()
+    return {'users': [all.to_dict() for all in all]}
+
+
+
 
 @follow_routes.route('/', methods=['POST'])
 def newFollow():
@@ -31,5 +38,3 @@ def deleteFollow():
     db.session.execute(follow_list.delete().where(follow_list.c.follower_id==data['follower_id']).where(follow_list.c.followee_id==data['followee_id']))
     db.session.commit()
     return {"follower_id":data['follower_id'], "followee_id":data['followee_id']}
-
-

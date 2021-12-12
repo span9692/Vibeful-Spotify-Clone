@@ -22,13 +22,16 @@ const SongLibrary = () => {
     // list of song IDs
     let songResult = (playlist_songs[newUserLibrary.id]) ? playlist_songs[newUserLibrary.id] : null
     let songs;
+    let count;
     if (!songResult || songResult.length === 0) {
         songResult = null;
+        songs = []
+        count = 0;
     } else {
         songs = allSongs.filter((el) => songResult.includes(el.id));
+        count = songs.length
     }
 
-    let count = songs.length
 
     useEffect(()=>{
         dispatch(getSongs())
@@ -61,7 +64,7 @@ const SongLibrary = () => {
     const libraryEmpty = (
       <>
         <br></br>
-        <center>Your Library is empty! Add your first song!</center>
+        <center className='centerText'>Your Library is empty! Add your first song!</center>
       </>
     );
     // library table

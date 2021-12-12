@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from sqlalchemy import or_
 from app.models import Song
 
 song_routes = Blueprint('songs', __name__)
@@ -17,5 +18,5 @@ def song(id):
 @song_routes.route('/search', methods=['POST'])
 def search():
     data = request.get_json()
-    songs = Song.query.filter(Song.title.ilike(f'%{data}%')).all()
+    songs = Song.query.filter(or_(Song.title.ilike(f'%{data}%'), Song.artist.ilike(f'%{data}%')))
     return {'songs': [song.to_dict() for song in songs]}

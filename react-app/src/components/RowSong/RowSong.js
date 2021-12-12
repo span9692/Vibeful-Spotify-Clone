@@ -29,10 +29,12 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
     relevantSongs = relevantSongs.slice(0,5)
   }
   // console.log('relevantSongs', relevantSongs)
+  let option;
 
-  return (
-    <>
-      <h2 className='dashHeader'>Liked Songs</h2>
+  if (relevantSongs.length === 0) {
+    option = null
+  } else {
+    option = (
       <div className='tablediv'>
         <table className='tabletable'>
           <tr className='tableHeader'>
@@ -49,6 +51,13 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
       ))}
         </table>
       </div>
+    )
+  }
+
+  return (
+    <>
+      <h2 className='dashHeader'>Liked Songs</h2>
+      {option}
     </>
   );
 }
