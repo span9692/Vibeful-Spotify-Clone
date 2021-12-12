@@ -105,6 +105,10 @@
     background-color: #0d1230;
 }
 
+#deleteContent-btn {
+    background-color: rgb(211, 26, 26);
+}
+
 .signUpLogin {
     color: #0d1230;
 }
