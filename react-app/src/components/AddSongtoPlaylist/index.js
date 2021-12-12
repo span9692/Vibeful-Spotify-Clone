@@ -43,8 +43,8 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <div className='modal-box'>
-                            <center><span className="addTitle">Add to Playlist</span></center>
-                            <br></br>
+                            <span className="addTitle">Add to Playlist</span>
+                            <div className="divider"></div>
                             {usersPlaylist.map(playlist=> (
                                 <div key={playlist.id} className='addtoplaylist' onClick={ () => {addToUserPlaylist(song, playlist.id); setShowModal(false); }}>{playlist.playlist_name}</div>
                             ))}

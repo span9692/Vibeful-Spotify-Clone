@@ -19,14 +19,10 @@ function Profile({ user, urlId, followInfo }) {
 
   const timeNow = () => {
     const currentHour = new Date().getHours()
-    if (currentHour >= 18) return 'Good evening!'
-    else if (12 < currentHour && currentHour < 18 ) return 'Good afternoon!'
-    return 'Good morning!'
+    if (currentHour >= 4 && currentHour < 12) return "Good morning!"; 
+    else if (12 <= currentHour && currentHour < 18 ) return 'Good afternoon!'
+    return 'Good evening!'
   }
-
-  // console.log(timeNow, "<---it is the time now")
-
-
 
   let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
 
@@ -48,7 +44,7 @@ function Profile({ user, urlId, followInfo }) {
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">
-            <h2>{timeNow()}</h2>
+            {currentUser.id == realCurrentUser.id ? <h2>{timeNow()}</h2> : null}
             <h1>
               {realCurrentUser.first_name} {realCurrentUser.last_name}
             </h1>
@@ -62,15 +58,9 @@ function Profile({ user, urlId, followInfo }) {
           </div>
           <div>
             <div className="profileVideoContainer">
-              <video className="profileVideo" autoPlay loop muted>
-                <source
-                  src="https://res.cloudinary.com/dpxlirk9q/video/upload/v1639293102/profile_2531140_gci36y.mp4"
-                  type="video/mp4"
-                />
-              </video>
-              </div>
+              IMAGE BANNER OR SOMETHING
+            </div>
           </div>
-
         </div>
       </div>
     </div>
