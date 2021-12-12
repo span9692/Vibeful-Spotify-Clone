@@ -1,54 +1,30 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { editUserDetail } from "../../../store/user";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/session";
+import { deleteUser } from "../../../store/user"
+import { useHistory } from "react-router-dom";
 
 const DeleteProfile = ({ setShowModal, currentUser, setPage }) => {
-  const [errors, setErrors] = useState([]);
-  const id = currentUser.id;
-  const [firstName, setFirstName] = useState(currentUser.first_name);
-  const [lastName, setLastName] = useState(currentUser.last_name);
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [email, setEmail] = useState(currentUser.email);
-  const [profilePic, setProfilePic] = useState(currentUser.profile_pic);
+  const history = useHistory();
   const [validationErrors, setValidationErrors] = useState([]);
   const dispatch = useDispatch();
 
-  const saveProfile = async (e) => {
-    e.preventDefault();
-    const errors = validate();
-    if (errors.length > 0) return setValidationErrors(errors);
-
-    if (password === repeatPassword) {
-      const data = await dispatch(
-        editUserDetail(id, firstName, lastName, email, profilePic, password)
-      );
-      setShowModal(false);
-      if (data) {
-        setErrors(data);
-      }
-    }
-  };
+  const deleteAccount = async (e) => {
+      e.preventDefault();
+      const errors = validate();
+      if (errors.length > 0 ) return setValidationErrors(errors);
+      await dispatch(deleteUser(currentUser.id))
+      dispatch(logout());
+      history.push('/home')
+  }
 
   const validate = () => {
     const validateErrors = [];
 
-    if (!firstName) validateErrors.push("First name is required");
-    if (!lastName) validateErrors.push("Last name is required");
-    if (
-      !email ||
-      !email
-        .toLocaleLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
-    )
-      validateErrors.push("Please enter a valid e-mail");
-    if (!password) validateErrors.push("Please enter a valid password");
-
+    if (currentUser.first_name === "Demo") validateErrors.push("Can't delete the demo user!");
     return validateErrors;
   };
-
+  
   return (
     <form className="signUpForm">
       <img
@@ -60,12 +36,11 @@ const DeleteProfile = ({ setShowModal, currentUser, setPage }) => {
         <h3>Are you sure?</h3>
         {validationErrors.length > 0 && (
           <div className="validationErrors">
-            The following errors were found:
-            <ul>
-              {validationErrors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
+            {validationErrors.map((error) => (
+              <span key={error}>{error}</span>
+            ))}
+            <br></br>
+            <br></br>
           </div>
         )}
         <div></div>
@@ -84,7 +59,7 @@ const DeleteProfile = ({ setShowModal, currentUser, setPage }) => {
         type="submit"
         id="deleteContent-btn"
         className="signUpContent-btn"
-        onClick={saveProfile}
+        onClick={deleteAccount}
       >
         Yes, I don't pass the vibe check
       </button>
