@@ -1,7 +1,6 @@
 const PLAY_SONG = 'songs/PLAY_SONGS'
 
 export const playMusic = (data) => {
-    console.log('data in the playMusic', data)
     return {
         type: PLAY_SONG,
         data

@@ -4,14 +4,15 @@ import 'react-h5-audio-player/lib/styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToLibrary, removeFromLibrary } from '../../store/playlist_songs';
 import AddToPlaylist from '../AddSongtoPlaylist';
+import audio from '../../store/audio'
 
 const Player = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const song = useSelector(state => state.audio)
     const user = useSelector(state => state.session.user);
 
-    const allPlaylists = useSelector(state => Object.values(state.playlist))
-    const allPlaylistSongs = useSelector(state => state.playlist_song)
+    // const allPlaylists = useSelector(state => Object.values(state.playlist))
+    // const allPlaylistSongs = useSelector(state => state.playlist_song)
 
     // if (user) {
 
