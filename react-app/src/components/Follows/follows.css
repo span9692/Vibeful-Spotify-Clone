@@ -1,25 +1,26 @@
-.main_row2 {
-    width: 100%;
+.main_row1 {
+    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: left;
     flex-wrap: wrap;
-    margin: none;
+    /* margin: auto; */
 }
 
-.sub_row2 {
+.sub_row1 {
     display: flex;
+    width: 10rem;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: white;
-    margin-right: 1.5rem;
+    margin-left: 2.7vw;
 }
 
-.subsubrow2 {
+.subsubrow1 {
     padding-bottom: 2vh;
 }
 
-.social_image {
+.social_image1 {
     width: 15vh;
 }

@@ -6,22 +6,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { addPlaylist, getPlaylists } from "../../store/playlist";
 import { deleteUser } from "../../store/user";
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import "./Dashboard.css"
+import { showFollowing } from "../../store/follow";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {id} = useParams
 
   const sessionUser = useSelector((state) => state.session.user)
+  const allUsers = useSelector(state => Object.values(state.alluser))
+  const follows = useSelector(state => Object.values(state.follow))
+
   useEffect(() => {
     dispatch(getPlaylists())
+    dispatch(showFollowing())
   }, [dispatch])
 
   if(!sessionUser) {
     return <Redirect to="/" />;
   }
-
 
   const goSearch = () => {
     history.push('/search')
@@ -44,6 +49,7 @@ const Dashboard = () => {
       playlist_pic: 'https://res.cloudinary.com/photofinder/image/upload/v1639179904/music_note_a5ygjq.jpg'
     }))
   }
+  console.log(".")
 
 
   return (
