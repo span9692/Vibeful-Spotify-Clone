@@ -2,11 +2,10 @@ const GET_FOLLOWINGS = "follows/GET_FOLLOWINGS";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOWS";
 const ADD_FOLLOW = "follows/ADD_FOLLOWS";
 
-const showFollowings = (data, userarray) => {
+const showFollowings = (data) => {
   return {
     type: GET_FOLLOWINGS,
-    data,
-    userarray,
+    data
   };
 };
 
@@ -24,16 +23,11 @@ const addFollow = (data) => {
   };
 };
 //pass in array of all users
-export const showFollowing = (userarray) => async (dispatch) => {
-  // console.log("THISISTHEID------------------>", id);
-  console.log('userarray in the before thunk', userarray)
+export const showFollowing = () => async (dispatch) => {
   const res = await fetch(`/api/users/yolo/dashboard`);
-  console.log("----------->", res);
   if (res.ok) {
     const data = await res.json();
-    // console.log("THISBEDADADADADATA------------------>", data);
-    console.log('data in the showfollowing back in thunk', data)
-    dispatch(showFollowings(data, userarray));
+    dispatch(showFollowings(data));
   }
 };
 
@@ -72,11 +66,7 @@ export default function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case GET_FOLLOWINGS:
-      console.log("action.data", action.data)
-      console.log("action.id", action.id)
-      newState = { ...state };
-      newState[action.id] = action.data;
-      console.log("newState", newState)
+      newState = action.data
       return newState;
     case ADD_FOLLOW:
       newState = { ...state };

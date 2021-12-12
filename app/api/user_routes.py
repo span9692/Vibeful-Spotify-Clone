@@ -77,24 +77,43 @@ def get_followers():
         temp_followers_list = []
         for foll in follow:
             user_follower = User.query.get(foll.follower_id)
-            temp_followers_list.append(user_follower.to_dict)
+            temp_followers_list.append(user_follower.to_dict())
         final_followers_list.append(temp_followers_list)
 
     for follow in followeeslist:
         temp_followee_list = []
         for foll in follow:
             user_followee = User.query.get(foll.followee_id)
-            temp_followee_list.append(user_followee.to_dict)
+            temp_followee_list.append(user_followee.to_dict())
         final_followee_list.append(temp_followee_list)
 
+    # final_object = {}
+
     final_object = {}
+    # for i in ids:
+    #     final_object.setdefault(i, []).append(final_followers_list)
+
+    # print(final_object)
 
     for id in ids:
         final_object[id] = {"followers":final_followers_list[id-1], 'followees':final_followee_list[id-1]}
 
-    print(final_object, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
+    print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', final_object, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
 
-    return final_object
+    return jsonify(final_object)
+
+
+
+
+# {1: {'followers': [<bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 3>>, <bound method User.to_dict of <User 4>>, <bound method User.to_dict of <User 5>>]}, 2: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 3>>]}, 3: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 4>>], 'followees': [<bound method User.to_dict of <User 4>>]}, 4: {'followers': [<bound method User.to_dict of <User 1>>, <bound method User.to_dict of <User 3>>], 'followees': [<bound method User.to_dict of <User 3>>, <bound method User.to_dict of <User 2>>, <bound method User.to_dict of <User 1>>]}, 5: {'followers': [<bound method User.to_dict of <User 1>>], 'followees': []}}
+
+
+
+
+
+
+
+
 
 
 
