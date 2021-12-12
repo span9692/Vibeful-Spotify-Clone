@@ -9,12 +9,16 @@ const Player = () => {
 
     const userPlayer = (
         <div className='showPlayer'>
-            <AudioPlayer
-                autoPlay
-                showSkipControls="False"
-                showFilledVolume="True"
-                src={song.url}
-            />
+            {/* <div></div> */}
+            {/* <div> */}
+                <AudioPlayer
+                    autoPlay
+                    showSkipControls="False"
+                    showFilledVolume="True"
+                    src={song.url}
+                />
+            {/* </div> */}
+            {/* <div></div> */}
         </div>
     )
 

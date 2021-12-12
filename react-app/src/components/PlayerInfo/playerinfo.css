@@ -1,0 +1,15 @@
+.infowrapper {
+    position: absolute;
+    font-size: 500px;
+    z-index: 9999;
+}
+
+/* .showPlayer {
+    z-index: 9999;
+    position: absolute;
+    bottom: 0;
+    left: 11vw;
+    width: 1500px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+} */
