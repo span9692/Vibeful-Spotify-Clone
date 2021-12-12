@@ -11,12 +11,17 @@ function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
+  const updateFollow = useSelector(state => state.follow)
 
-  console.log(allUsers,'allUsersssssssss')
-  console.log(urlId, 'urlIddddddd')
+  console.log('updateFollow', updateFollow)
 
+  // console.log('MMMMMMMMMMMMM')
+  let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
+  // console.log(realCurrentUser,'realCurrentUser')
+  // console.log(currentUser, 'currentUser')
 
   useEffect(()=> {
+    dispatch(showFollowing(urlId))
     dispatch(getUser(user.id))
   }, [dispatch])
 
@@ -28,16 +33,16 @@ function Profile({ user, urlId, followInfo }) {
         <img
           className="userProfile"
           alt="sample_profile_pic"
-          src={currentUser.profile_pic}
+          src={realCurrentUser.profile_pic}
         />
-        <ProfileModal currentUser={currentUser} />
+        <ProfileModal currentUser={realCurrentUser} />
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">
             <h1>
-              {currentUser.first_name} {currentUser.last_name}
+              {realCurrentUser.first_name} {realCurrentUser.last_name}
             </h1>
-            <div className="userInfo">{currentUser.first_name} {currentUser.last_name}</div>
+            <div className="userInfo">{realCurrentUser.first_name} {realCurrentUser.last_name}</div>
           </div>
           <div className="library_profile_right_b">
             <div className="library_profile_right_b1">

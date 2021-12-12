@@ -2,10 +2,10 @@ import IndivSong from "../Songs/IndivSong";
 import "./RowSong.css";
 
 function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlaylistSongs}) {
-  console.log('urlId', urlId)
-  console.log('allSongs',allSongs)
-  console.log('allPlaylists',allPlaylists)
-  console.log('allPlaylistSongs',allPlaylistSongs) //joins table
+  // console.log('urlId', urlId)
+  // console.log('allSongs',allSongs)
+  // console.log('allPlaylists',allPlaylists)
+  // console.log('allPlaylistSongs',allPlaylistSongs) //joins table
 
   let currentUserLibrary = allPlaylists.filter(el => el.owner_id == urlId && el.playlist_name == 'Library')[0]
   // let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
