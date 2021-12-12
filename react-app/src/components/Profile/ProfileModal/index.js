@@ -8,7 +8,7 @@ import { logout } from "../../../store/session";
 import '../Profile.css'
 import { followUser, showFollowing, unfollowUser } from "../../../store/follow";
 
-function ProfileModal({ currentUser }) {
+function ProfileModal({ currentUser, followInfo }) {
   const [showModal, setShowModal] = useState(false);
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -18,9 +18,32 @@ function ProfileModal({ currentUser }) {
   const follow = useSelector(state => state.follow)
   const userId = sessionUser?.id
 
-  useEffect(()=> {
-    dispatch(showFollowing)
+  console.log("followInfo", followInfo)
+  console.log('followInfo[userId][\'followees\']', followInfo[userId]['followees'])
+  let option;
+  let flag = false;
+
+  followInfo[userId]['followees'].forEach(el => {
+    if (el.id === +id) {
+      flag = true
+    }
   })
+
+  if (userId === +id) {
+    option = (
+      <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
+        Edit Profile
+      </button>
+    )
+  } else if (flag) {
+    option = (
+      <button className='editProfileBtn pointer' onClick={() => unfollowPerson()}>Unfollow</button>
+    )
+  } else {
+    option = (
+      <button className='editProfileBtn pointer' onClick={() => followPerson()}>Follow</button>
+    )
+  }
 
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -32,7 +55,6 @@ function ProfileModal({ currentUser }) {
   }
 
   const followPerson = () => {
-    console.log(everyone[id])
     dispatch(followUser(everyone[userId], everyone[id]))
   }
 
@@ -42,11 +64,12 @@ function ProfileModal({ currentUser }) {
 
   return (
     <>
-      <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
+      {/* <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
         Edit Profile
       </button>
       <button onClick={() => followPerson()}>Follow</button>
-      <button onClick={() => unfollowPerson()}>UnFollow</button>
+      <button onClick={() => unfollowPerson()}>UnFollow</button> */}
+      {option}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditProfile
