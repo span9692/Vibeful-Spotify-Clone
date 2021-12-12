@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-content: left;
     flex-wrap: wrap;
-    /* margin: auto; */
+    margin: 0;
 }
 
 .sub_row1 {
@@ -14,15 +14,16 @@
     align-items: center;
     text-decoration: none;
     color: white;
-    margin-left: 2.7vw;
+    margin-left: 9vw;
+    margin-bottom: 5vh;
 }
 
 .subsubrow1 {
-    padding-bottom: 2vh;
+    padding-bottom: 1vh;
 }
 
 .social_image1 {
-    width: 15vh;
+    width: 20vh;
 }
 
 .followOptions,
@@ -33,7 +34,7 @@
 
 .followOptions:hover {
     text-decoration: rgb(175, 175, 175) underline 1px;
-    color: rgb(243, 243, 243);
+    color: rgb(255, 255, 255);
 }
 
 .optionwrapper {
