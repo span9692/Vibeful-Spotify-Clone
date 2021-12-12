@@ -36,6 +36,7 @@ def newFollow():
 @follow_routes.route('/delete', methods=['DELETE'])
 def deleteFollow():
     data = request.get_json()
-    db.session.execute(follow_list.delete().where(follow_list.c.follower_id==data['follower_id']).where(follow_list.c.followee_id==data['followee_id']))
+    print('mmmmmmmmmmmmmmmmmmmmmmmmmm', data, 'mmmmmmmmmmmmmmmmmmmmmmmmmmm')
+    db.session.execute(follow_list.delete().where(follow_list.c.follower_id==data['follower']['id']).where(follow_list.c.followee_id==data['followee']['id']))
     db.session.commit()
-    return {"follower_id":data['follower_id'], "followee_id":data['followee_id']}
+    return {"follower":data['follower'], "followee":data['followee']}
