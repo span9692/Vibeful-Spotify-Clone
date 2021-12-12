@@ -9,13 +9,8 @@ import './addSongtoPlaylist.css'
 function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
-    // console.log(song)
-    // console.log(playlists)
-    // console.log(currentUserLibrary)
     let userId = currentUserLibrary.owner_id //use this to filter playlists
-    // console.log(userId)
     let usersPlaylist = playlists.filter(el => el.owner_id === userId && el.playlist_name !== 'Library')
-    // console.log(usersPlaylist)
     // usersPlaylist is now a list of the user's array excluding the library
 
     const showPlaylistOptions = () => {
@@ -43,47 +38,19 @@ function AddToPlaylist({ key, song, playlists, currentUserLibrary }) {
     return (
         <>
         <div className='dropdownBtn'>
-            {/* <div onClick={() => showPlaylistOptions()} className='addToPlaylistBtn'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>test</div>
-                <div id='playlistDropdown' className='dropdown-content'>
-                {usersPlaylist.map(playlist=> (
-                    <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
-                ))}
-                </div> */}
-
-
-                {/* <div className='addToPlaylistBtn' onClick={() => showPlaylistOptions()}></div>
-                <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i>
-                    <div id='playlistDropdown' className='dropdown-content'>
-                        {usersPlaylist.map(playlist=> (
-                            <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
-                        ))}
-                    </div>
-                </div> */}
-
                 <div className='addToPlaylistBtn' onClick={() => setShowModal(true)}></div>
                 <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                    <div setShowModal={setShowModal}>
                         <div className='modal-box'>
-                            Add to Playlist
+                            <center><span className="addTitle">Add to Playlist</span></center>
+                            <br></br>
                             {usersPlaylist.map(playlist=> (
                                 <div key={playlist.id} className='addtoplaylist' onClick={ () => {addToUserPlaylist(song, playlist.id); setShowModal(false); }}>{playlist.playlist_name}</div>
                             ))}
                         </div>
-                    </div>
                     </Modal>
                 )}
-                {/* <div className='relative'><i className='addToPlaylistBtn' class="fas fa-plus-circle"></i></div> */}
-                    {/* <div id='playlistDropdown' className='dropdown-content'>
-                        {usersPlaylist.map(playlist=> (
-                            <div key={playlist.id} className='addtoplaylist' onClick={() => addToUserPlaylist(song, playlist.id)}>{playlist.playlist_name}</div>
-                        ))}
-                    </div> */}
-
-
-
-
         </div>
         </>
     )

@@ -7,7 +7,6 @@
 
 html, #root {
     height: 100%;
-
 }
 
 html, body {
@@ -41,8 +40,22 @@ body {
 
 .libray-container {
     height:83vh;
-    overflow: auto;
+    overflow-y: auto;
+}
 
+.libray-container::-webkit-scrollbar{
+    background-color: #0d1230;
+}
+
+.libray-container::-webkit-scrollbar-thumb{
+    background-color: #FFF;
+    border-radius: 40px;
+}
+
+.libray-container::-webkit-scrollbar-track{
+    padding: 2px 0;
+    background-color: #0d1230;
+    border-radius: 40px;
 }
 
 
