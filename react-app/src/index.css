@@ -146,6 +146,7 @@ tr:hover td {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-left: 3vw;
+    padding-bottom: 1vh;
 }
 
 .pageTitleBorder {
@@ -222,7 +223,8 @@ tr:hover td {
     position: absolute;
     width: 18px;
     height: 18px;
-    top: 0px
+    top: 0px;
+
   }
 
 .albumcover {
