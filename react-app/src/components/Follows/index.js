@@ -3,94 +3,82 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { getAllUsers } from "../../store/alluser";
+import './follows.css'
 
 import { showFollowing, unfollowUser, followUser } from "../../store/follow";
 
-const Follows = ({ follower_id, followee_id }) => {
-  // const [users, setUsers] = useState([]);
-  // const [load, setLoad] = useState(false);
-
+const Follows = ({ everyone }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const userId = useSelector((state) => state.session.user.id);
 
-  const everyone = useSelector(state => Object.values(state.alluser))
-  const followers = useSelector((state) => Object.values(state.follow))[0];
-  const follows = useSelector((state) => Object.values(state.follow))[1];
-
-  console.log('everyone', everyone)
-  // console.log("THIS IS THE follower_ID", follower_id);
-  // console.log("THIS IS THE FOLLOWEE_ID", followee_id);
-  // console.log("THISBEDA FOLLOWERS-------------->", followers);
-  // console.log("THISBEDA FOLLOWS-------------->", follows);
+  const allUsers = useSelector(state => Object.values(state.alluser))
+  const followerstate = useSelector((state) =>state.follow);
+  // const followees = useSelector((state) => Object.values(state.follow[userId]))[1];
+// console.log('followerstate[id].followers', followerstate[id].followers)
+// console.log('everyone', everyone)
+  const [users, setUsers] = useState(everyone);
 
   useEffect(() => {
+    dispatch(showFollowing(allUsers))
     dispatch(getAllUsers())
-  }, [dispatch]);
+  }, [dispatch, users]);
 
-  const handleDelete = (follower_id) => {
-    dispatch(unfollowUser(follower_id, followee_id));
-  };
-  const handleAddFollower = (id) => {
-    dispatch(followUser(id));
-  };
+  // const handleDelete = (follower_id) => {
+  //   dispatch(unfollowUser(follower_id, followee_id));
+  // };
+  // const handleAddFollower = (id) => {
+  //   dispatch(followUser(id));
+  // };
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/users/");
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-  //   }
-  //   fetchData();
-  // }, []);
+  const showEveryone = () => {
+    setUsers(allUsers)
+  }
 
-  // const userComponents = users.map((user) => {
-  //   return (
-  //     <li key={user.id}>
-  //       <ul>
-  //         {user.first_name} {user.last_name}{" "}
-  //         <button onClick={() => handleDelete(user.id)}>Unfollow user</button>
-  //         <button onClick={() => handleAddFollower(user.id)}>
-  //           Follow user
-  //         </button>
-  //       </ul>
-  //     </li>
-  //   );
-  // });
+  const showFollowers = () => {
+    setUsers(followerstate[id].followers)
+  }
+
+  const showFollowees = () => {
+    setUsers(followerstate[id].followees)
+  }
+  // everyone is a list of ALL the users
+  // followees is a list of users that YOU follow
+  // followers is a list of users that follow you
 
   return (
       <div className='tablediv'>
         <div className='pageTitle'><div>Social Circle</div></div>
-        <div className='subTitle'>Stay connected through music!</div>
-        <div className="main_row">
-          {everyone.map(individual => (
+        <div className='subTitle'>Stay connected through the music!</div>
+        <button onClick={()=>showEveryone()}>everyone</button>
+        <button onClick={()=>showFollowers()}>your followers</button>
+        <button onClick={()=>showFollowees()}>people YOU follow</button>
+        <div className="main_row1">
+          {users.map(individual => (
             <div key={individual.id}>
-              <Link className="sub_row" to={`/users/${individual.id}/dashboard`}>
-                <img className='subsubrow social_image' src={individual.profile_pic} alt='Image Not Found'></img>
+              <Link className="sub_row1" to={`/users/${individual.id}/dashboard`}>
+                <img className='subsubrow1 social_image1' src={individual.profile_pic} alt='Image Not Found'></img>
                 <div>{individual.first_name} {individual.last_name}</div>
               </Link>
             </div>
           ))}
         </div>
-
-
-          <div>
-            <h1>User List: </h1>
-            {/* <ul>{userComponents}</ul> */}
-          </div>
+        <div>
+          delete everything below later, use as checker for now
           <h1>FOLLOWING</h1>
-          {/* {follows.map((follow) => (
-            <div key={follow.id}>
-              {follow.first_name} {follow.last_name}
+          {followerstate[id].followees.map((followee) => (
+            <div key={followee.id}>
+              {followee.first_name} {followee.last_name}
             </div>
-          ))} */}
+          ))}
+        </div>
         <div>
           <h1>FOLLOWERS</h1>
-          {/* {followers.map((follower) => (
+          {followerstate[id].followers.map((follower) => (
             <div key={follower.id}>
               {follower.first_name} {follower.last_name}
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     )

@@ -6,7 +6,7 @@ import SongList from "../Songs";
 import SinglePlaylist from "../SinglePlaylist";
 import Profile from '../Profile/Profile';
 import RowSong from '../RowSong/RowSong';
-import { showFollowing } from "../../store/follow";
+import { followUser, showFollowing, unfollowUser } from "../../store/follow";
 import { useParams } from "react-router-dom";
 import Search from '../Search';
 import Follows from "../Follows";
@@ -16,10 +16,10 @@ import { getPlaylists } from "../../store/playlist";
 import { getLibrary } from "../../store/playlist_songs";
 import RowPlaylist from "../RowPlaylist";
 import RowExplore from "../RowExplore";
+import { getAllUsers } from "../../store/alluser";
 
 const Library = () => {
   const {id} = useParams()
-
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
@@ -29,15 +29,33 @@ const Library = () => {
   const allPlaylistSongs = useSelector(state => state.playlist_song)
   let currentUserLibrary = allPlaylists.filter(el => el.owner_id == id && el.playlist_name == 'Library')[0]
   let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
+  const everyone = useSelector(state => Object.values(state.alluser))
+
+  console.log('followInfo', followInfo)
 
   useEffect(() => {
-    dispatch(showFollowing(user.id));
+    dispatch(showFollowing());
     dispatch(getSongs())
     dispatch(getPlaylists())
     dispatch(getLibrary()) // getLibrary grabs all playlist_song
+    dispatch(getAllUsers())
   }, [dispatch, user.id]);
 
   let options = null;
+
+  // follow logic starts here
+  // console.log(id, 'id BAYBEE') // id is the id of the profile page
+  // console.log(user.id, 'user.id BAYBEE') //user.id is the session user
+
+  const followPerson = () => {
+    dispatch(followUser(user.id, id))
+  }
+
+  const unfollowPerson = () => {
+    dispatch(unfollowUser(user.id, id))
+  }
+
+  // follow logic ends here
 
   if (window.location.href.endsWith("songs")) {
     options = (
@@ -50,6 +68,8 @@ const Library = () => {
     options = (
       <>
         <Profile user={user} urlId={id} followInfo={followInfo}/>
+        <button onClick={()=>followPerson()}>Follow</button>
+        <button onClick={()=>unfollowPerson()}>UnFollow</button>
         <RowSong urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowPlaylist urlId={id} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
         <RowExplore urlId={id} currentUserLibrary={currentUserLibrary} allSongs={allSongs} currentUserLibraryId={currentUserLibraryId} allPlaylists={allPlaylists} allPlaylistSongs={allPlaylistSongs}/>
@@ -76,7 +96,7 @@ const Library = () => {
   } else if (window.location.href.endsWith("social")) {
     options = (
       <div className="library_songs_meta">
-        <Follows />
+        <Follows everyone={everyone}/>
       </div>
     );
   }
