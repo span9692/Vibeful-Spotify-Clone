@@ -24,3 +24,20 @@
 .social_image1 {
     width: 15vh;
 }
+
+.followOptions,
+.pipe {
+    color: rgb(175, 175, 175);
+    margin-left: 2vw;
+}
+
+.followOptions:hover {
+    text-decoration: rgb(175, 175, 175) underline 1px;
+    color: rgb(243, 243, 243);
+}
+
+.optionwrapper {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 2vw;
+}
