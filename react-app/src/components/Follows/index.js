@@ -19,6 +19,7 @@ const Follows = ({ everyone }) => {
   const [users, setUsers] = useState(everyone);
 
   useEffect(() => {
+    dispatch(showFollowing(id))
     dispatch(getAllUsers())
   }, [dispatch, users]);
 

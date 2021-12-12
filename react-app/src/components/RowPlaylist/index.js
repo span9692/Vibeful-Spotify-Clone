@@ -15,20 +15,31 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
         usersPlaylist = usersPlaylist.slice(0,5)
     }
 
-    return (
-        <div>
-            <h2 className='dashHeader'>Your Playlists</h2>
-            <div className="main_row">
-            {usersPlaylist.map(playlist => (
-                <div key={playlist.id}>
-                    <Link className="sub_row" to={`/playlist/${playlist.id}`}>
-                        <img className='subsubrow' src={playlist.playlist_pic}></img>
-                        <div>{playlist.playlist_name}</div>
-                    </Link>
+    let option;
+    if (usersPlaylist.length > 0) {
+        option = (
+            <div className='tablediv tabletable tableHeader'>
+                <div className="main_row">
+                {usersPlaylist.map(playlist => (
+                    <div key={playlist.id}>
+                        <Link className="sub_row" to={`/playlist/${playlist.id}`}>
+                            <img className='subsubrow' src={playlist.playlist_pic}></img>
+                            <div>{playlist.playlist_name}</div>
+                        </Link>
+                    </div>
+                ))}
                 </div>
-            ))}
             </div>
-        </div>
+        )
+    } else {
+        option = null;
+    }
+
+    return (
+        <>
+            <h2 className='dashHeader'>Your Playlists</h2>
+            {option}
+        </>
     )
 }
 
