@@ -19,11 +19,11 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
     if (usersPlaylist.length > 0) {
         option = (
             <div className='tablediv tabletable tableHeader'>
-                <div className="main_row">
+                <div className="main_row2">
                 {usersPlaylist.map(playlist => (
                     <div key={playlist.id}>
-                        <Link className="sub_row" to={`/playlist/${playlist.id}`}>
-                            <img className='subsubrow' src={playlist.playlist_pic}></img>
+                        <Link className="sub_row2" to={`/playlist/${playlist.id}`}>
+                            <img className='subsubrow2' src={playlist.playlist_pic}></img>
                             <div>{playlist.playlist_name}</div>
                         </Link>
                     </div>

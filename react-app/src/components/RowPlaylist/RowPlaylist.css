@@ -1,22 +1,22 @@
-.main_row {
-    width: 90%;
+.main_row2 {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: left;
     flex-wrap: wrap;
-    /* margin: auto; */
+    margin: none;
 }
 
-.sub_row {
+.sub_row2 {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: white;
-    margin-left: 2.7vw;
+    margin-right: 1.5rem;
 }
 
-.subsubrow {
+.subsubrow2 {
     padding-bottom: 2vh;
 }
 
