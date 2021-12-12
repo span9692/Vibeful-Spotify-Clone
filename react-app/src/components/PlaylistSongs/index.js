@@ -38,7 +38,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
 
     const handleDelete = () => {
         dispatch(deletePlaylist(+playlistId));
-        history.push('/');
+        history.push('/songs');
     };
 
     const asdf = (e) => {
