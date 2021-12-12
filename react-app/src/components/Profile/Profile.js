@@ -13,6 +13,7 @@ function Profile({ user, urlId, followInfo }) {
   const currentUser = useSelector(state => state.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
 
+
   // console.log('followInfo', followInfo)
   // console.log('updateFollow', updateFollow)
 
@@ -30,8 +31,6 @@ function Profile({ user, urlId, followInfo }) {
     dispatch(getUser(user.id))
   }, [dispatch])
 
-  console.log('followInfo.urlId', followInfo.urlId)
-
   return (
     <div className="library_profile">
       <div className="library_profile_left">
@@ -41,7 +40,7 @@ function Profile({ user, urlId, followInfo }) {
             alt="sample_profile_pic"
             src={realCurrentUser.profile_pic}
           />
-          <ProfileModal currentUser={realCurrentUser} />
+          <ProfileModal currentUser={realCurrentUser} followInfo={followInfo} />
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">

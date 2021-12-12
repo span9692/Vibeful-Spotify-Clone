@@ -16,6 +16,8 @@
     display: flex;
     flex-direction: column;
     gap: 1vh;
+    margin-left: 1.3vw;
+    margin-top: 1.3vw;
 }
 
 .library_profile_right {
