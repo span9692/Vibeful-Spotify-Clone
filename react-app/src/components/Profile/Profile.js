@@ -57,9 +57,6 @@ function Profile({ user, urlId, followInfo }) {
             </div>
           </div>
           <div>
-            <div className="profileVideoContainer">
-              IMAGE BANNER OR SOMETHING
-            </div>
           </div>
         </div>
       </div>
