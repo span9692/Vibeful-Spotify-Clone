@@ -16,6 +16,19 @@ const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
 
+    function validURL(str) {
+      var pattern = new RegExp(
+        "^(https?:\\/\\/)?" + // either http or https protcol
+          "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // the domain name
+          "((\\d{1,3}\\.){3}\\d{1,3}))" + // or ip v4 address
+          "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // the port & the path
+          "(\\?[;&a-z\\d%_.~+=-]*)?" + // the query
+          "(\\#[-a-z\\d_]*)?$",
+        "i"
+      ); // fragment locator?
+      return !!pattern.test(str);
+    }
+
     const saveProfile = async (e) => {
         e.preventDefault();
       const errors = validate();
@@ -46,7 +59,12 @@ const EditProfileDetails = ({ setShowModal, currentUser, setPage}) => {
           )
       )
         validateErrors.push("Please enter a valid e-mail");
+        if (!validURL(profilePic))
+          validateErrors.push("The profile pic URL is not valid. Ex: http://....png");
         if (!password) validateErrors.push("Please enter a valid password");
+        if (password !== repeatPassword)
+          validateErrors.push("Password and Confirm Password must match");
+        
 
       return validateErrors;
     };
