@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditProfile from "./EditProfile"
-import './index.css'
 import {useHistory} from 'react-router-dom'
 import { deleteUser } from "../../../store/user";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,19 +25,19 @@ function ProfileModal({currentUser}) {
 
   return (
     <>
-    <div>
-      <button
-        className="edit-account-btn"
-        onClick={() => setShowModal(true)}
-      >
-        Edit Profile
-      </button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <EditProfile setShowModal={setShowModal} currentUser={currentUser} />
-        </Modal>
-      )}
-    </div>
+      <div>
+        <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
+          Edit Profile
+        </button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <EditProfile
+              setShowModal={setShowModal}
+              currentUser={currentUser}
+            />
+          </Modal>
+        )}
+      </div>
     </>
   );
 }
