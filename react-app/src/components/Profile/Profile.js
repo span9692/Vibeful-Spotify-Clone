@@ -14,8 +14,8 @@ function Profile({ user, urlId, followInfo }) {
   const allUsers = useSelector(state => Object.values(state.alluser))
   const updateFollow = useSelector(state => state.follow)
 
-  console.log('followInfo', followInfo)
-  console.log('updateFollow', updateFollow)
+  // console.log('followInfo', followInfo)
+  // console.log('updateFollow', updateFollow)
 
   let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
   // console.log(realCurrentUser,'realCurrentUser')
@@ -52,7 +52,7 @@ function Profile({ user, urlId, followInfo }) {
             <div className="library_profile_right_b2">
               -{followInfo.followers?.length} Followers
             </div>
-            
+
           </div>
         </div>
       </div>
