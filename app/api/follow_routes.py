@@ -18,7 +18,6 @@ def all_follows():
 @follow_routes.route('/allUsers')
 def all_Users():
     all = User.query.all()
-    print('ashkfjkljafjslkfjaklsfjdklsafmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', all)
     return {'users': [all.to_dict() for all in all]}
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllUsers } from "../../store/alluser";
 
 import { showFollowing, unfollowUser, followUser } from "../../store/follow";
@@ -14,7 +14,7 @@ const Follows = ({ follower_id, followee_id }) => {
   const { id } = useParams();
   const userId = useSelector((state) => state.session.user.id);
 
-  const everyone = useSelector(state => state.alluser)
+  const everyone = useSelector(state => Object.values(state.alluser))
   const followers = useSelector((state) => Object.values(state.follow))[0];
   const follows = useSelector((state) => Object.values(state.follow))[1];
 
@@ -62,7 +62,18 @@ const Follows = ({ follower_id, followee_id }) => {
       <div className='tablediv'>
         <div className='pageTitle'><div>Social Circle</div></div>
         <div className='subTitle'>Stay connected through music!</div>
-        <div>
+        <div className="main_row">
+          {everyone.map(individual => (
+            <div key={individual.id}>
+              <Link className="sub_row" to={`/users/${individual.id}/dashboard`}>
+                <img className='subsubrow social_image' src={individual.profile_pic} alt='Image Not Found'></img>
+                <div>{individual.first_name} {individual.last_name}</div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+
           <div>
             <h1>User List: </h1>
             {/* <ul>{userComponents}</ul> */}
@@ -73,7 +84,6 @@ const Follows = ({ follower_id, followee_id }) => {
               {follow.first_name} {follow.last_name}
             </div>
           ))} */}
-        </div>
         <div>
           <h1>FOLLOWERS</h1>
           {/* {followers.map((follower) => (

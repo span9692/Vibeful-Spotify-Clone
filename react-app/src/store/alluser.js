@@ -18,7 +18,6 @@ export default function reducer(state = {}, action) {
     switch (action.type) {
         case GET_ALL_USERS:
             newState = {};
-            console.log('action.data', action.data)
             action.data.users.forEach(user => newState[user.id] = user)
             return newState
         default:

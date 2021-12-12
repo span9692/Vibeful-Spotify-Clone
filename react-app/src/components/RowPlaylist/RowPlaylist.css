@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
+    flex-wrap: wrap;
     /* margin: auto; */
 }
 
@@ -17,4 +18,8 @@
 
 .subsubrow {
     padding-bottom: 2vh;
+}
+
+.social_image {
+    width: 15vh;
 }
