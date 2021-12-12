@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { showFollowing } from "../../store/follow";
 import "./Profile.css";
 import { editUser, getUser } from "../../store/user";
@@ -8,14 +8,15 @@ import EditProfile from "../Profile/ProfileModal/EditProfile"
 
 
 function Profile({ user, urlId, followInfo }) {
+  // const [info, setInfo] = useState(followInfo)
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
   const allUsers = useSelector(state => Object.values(state.alluser))
   const updateFollow = useSelector(state => state.follow)
 
+  console.log('followInfo', followInfo)
   console.log('updateFollow', updateFollow)
 
-  // console.log('MMMMMMMMMMMMM')
   let realCurrentUser = allUsers.filter(el => el.id == urlId)[0]
   // console.log(realCurrentUser,'realCurrentUser')
   // console.log(currentUser, 'currentUser')

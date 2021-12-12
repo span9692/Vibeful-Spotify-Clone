@@ -6,16 +6,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { addPlaylist, getPlaylists } from "../../store/playlist";
 import { deleteUser } from "../../store/user";
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import "./Dashboard.css"
+import { showFollowing } from "../../store/follow";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {id} = useParams
 
   const sessionUser = useSelector((state) => state.session.user)
   useEffect(() => {
     dispatch(getPlaylists())
+    dispatch(showFollowing(id))
   }, [dispatch])
 
   if(!sessionUser) {

@@ -48,7 +48,7 @@ const Follows = ({ everyone }) => {
   return (
       <div className='tablediv'>
         <div className='pageTitle'><div>Social Circle</div></div>
-        <div className='subTitle'>Stay connected through music!</div>
+        <div className='subTitle'>Stay connected through the music!</div>
         <button onClick={()=>showEveryone()}>everyone</button>
         <button onClick={()=>showFollowers()}>your followers</button>
         <button onClick={()=>showFollowees()}>people YOU follow</button>
