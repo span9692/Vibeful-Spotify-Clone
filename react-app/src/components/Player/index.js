@@ -31,7 +31,7 @@ const Player = () => {
     )
 
     return (
-         <>
+    <>
       { user ? userPlayer : null }
     </>
     )

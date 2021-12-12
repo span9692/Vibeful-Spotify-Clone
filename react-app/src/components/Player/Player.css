@@ -11,7 +11,7 @@
 .showPlayer {
     z-index: 9999;
     position: absolute;
-    bottom: 1.5vh;
+    bottom: 1.1vh;
     /* left: 3vw; */
     /*start position of player row*/
     left: 3vw;
@@ -21,6 +21,7 @@
 
 .playerinfo {
     display: flex;
+    width: 100%;
     justify-content: left;
 }
 
@@ -30,6 +31,7 @@
 
 .playerImg {
     height: 5rem;
+    border-left: 3vh;
 }
 
 .playerSongAndArtist {
@@ -37,6 +39,12 @@
     flex-direction: column;
     justify-content: center;
     width: 15vh;
+    margin-left: 1vw;
+}
+.playerTitle,
+.playerTitle {
+    /* margin-top: .1vh;
+    margin-bottom: .1vh; */
 }
 
 .playerTitle {
@@ -45,6 +53,7 @@
 
 .playerArtist {
     color: grey;
+    font-size: .7vw;
 }
 
 .musicPlayer {
