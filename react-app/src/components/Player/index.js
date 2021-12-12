@@ -3,6 +3,7 @@ import './Player.css'
 import 'react-h5-audio-player/lib/styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToLibrary, removeFromLibrary } from '../../store/playlist_songs';
+import AddToPlaylist from '../AddSongtoPlaylist';
 
 const Player = () => {
     const dispatch = useDispatch()
@@ -60,6 +61,7 @@ const Player = () => {
                     ]
                     : <div onClick={() => addLibrarySong(song)}><i class="far fa-heart"></i></div>
                 }
+                <AddToPlaylist key={song.id} song={song} playlists={allPlaylists} currentUserLibrary={usersLibrary} />
             </div>
         </div>
     )
