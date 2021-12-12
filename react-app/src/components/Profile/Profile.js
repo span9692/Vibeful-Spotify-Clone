@@ -6,9 +6,14 @@ import { editUser, getUser } from "../../store/user";
 import ProfileModal from "../Profile/ProfileModal/index.js";
 import EditProfile from "../Profile/ProfileModal/EditProfile"
 
+
 function Profile({ user, urlId, followInfo }) {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user)
+  const allUsers = useSelector(state => Object.values(state.alluser))
+
+  console.log(allUsers,'allUsersssssssss')
+  console.log(urlId, 'urlIddddddd')
 
 
   useEffect(()=> {

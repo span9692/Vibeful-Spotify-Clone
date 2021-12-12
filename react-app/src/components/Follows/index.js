@@ -62,6 +62,7 @@ const Follows = ({ everyone }) => {
           ))}
         </div>
         <div>
+          delete everything below later, use as checker for now
           <h1>FOLLOWING</h1>
           {followees.map((followee) => (
             <div key={followee.id}>
