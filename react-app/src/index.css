@@ -127,6 +127,17 @@ tr:hover td {
 
 
 /* dashboard css */
+.SearchRecolor {
+    background-color: #0e1849;
+}
+.SearchContainer {
+    background: linear-gradient(0deg,#0e1849, 50%, #292ca4);
+}
+
+.tablediv {
+    background-color: transparent;
+}
+
 .pageTitle {
     font-size: 13vh;
     font-weight: bold;
@@ -179,7 +190,7 @@ tr:hover td {
 }
 
 .hideText{
-    color: #0e1849
+    display: none;
 }
 
 .dashHeader {
