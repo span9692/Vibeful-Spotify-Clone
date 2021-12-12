@@ -25,7 +25,6 @@ function ProfileModal({currentUser}) {
 
   return (
     <>
-      <div>
         <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
           Edit Profile
         </button>
@@ -37,7 +36,6 @@ function ProfileModal({currentUser}) {
             />
           </Modal>
         )}
-      </div>
     </>
   );
 }
