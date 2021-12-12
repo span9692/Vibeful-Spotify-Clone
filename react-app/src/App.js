@@ -79,7 +79,6 @@ function App() {
           <Dashboard />
         </ProtectedRoute>
       </Switch>
-      <PlayerInfo />
       <Player />
     </BrowserRouter>
   );

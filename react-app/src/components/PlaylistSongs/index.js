@@ -20,7 +20,7 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
 
     let songsOnThisPlaylist = playlist_song[playlistId]
     let songsToDisplay= songs.filter(el => songsOnThisPlaylist.includes(el.id))
-console.log('songsToDisplay', songsToDisplay)
+
     const play = (song) => {
         dispatch(playMusic(song));
       };
