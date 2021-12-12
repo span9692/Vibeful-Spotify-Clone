@@ -31,9 +31,10 @@ const Library = () => {
   let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
   const everyone = useSelector(state => Object.values(state.alluser))
 
+  console.log('followInfo', followInfo)
 
   useEffect(() => {
-    dispatch(showFollowing(user.id));
+    dispatch(showFollowing(everyone));
     dispatch(getSongs())
     dispatch(getPlaylists())
     dispatch(getLibrary()) // getLibrary grabs all playlist_song

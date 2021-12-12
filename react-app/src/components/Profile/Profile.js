@@ -22,10 +22,11 @@ function Profile({ user, urlId, followInfo }) {
   // console.log(currentUser, 'currentUser')
 
   useEffect(()=> {
-    dispatch(showFollowing(urlId))
+    dispatch(showFollowing(allUsers))
     dispatch(getUser(user.id))
   }, [dispatch])
 
+  console.log('followInfo.urlId', followInfo.urlId)
 
   return (
     <div className="library_profile">
@@ -47,10 +48,10 @@ function Profile({ user, urlId, followInfo }) {
           </div>
           <div className="library_profile_right_b">
             <div className="library_profile_right_b1">
-              {followInfo.following?.length} Following
+              {followInfo.urlId.following?.length} Following
             </div>
             <div className="library_profile_right_b2">
-              -{followInfo.followers?.length} Followers
+              -{followInfo.urlId.followers?.length} Followers
             </div>
 
           </div>

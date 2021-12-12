@@ -13,13 +13,13 @@ const Follows = ({ everyone }) => {
   const userId = useSelector((state) => state.session.user.id);
 
   const allUsers = useSelector(state => Object.values(state.alluser))
-  const followers = useSelector((state) => Object.values(state.follow))[0];
-  const followees = useSelector((state) => Object.values(state.follow))[1];
+  const followers = useSelector((state) => Object.values(state.follow));
+  // const followees = useSelector((state) => Object.values(state.follow[userId]))[1];
 
   const [users, setUsers] = useState(everyone);
 
   useEffect(() => {
-    dispatch(showFollowing(id))
+    dispatch(showFollowing(allUsers))
     dispatch(getAllUsers())
   }, [dispatch, users]);
 
@@ -35,11 +35,11 @@ const Follows = ({ everyone }) => {
   }
 
   const showFollowers = () => {
-    setUsers(followers)
+    // setUsers(followers)
   }
 
   const showFollowees = () => {
-    setUsers(followees)
+    // setUsers(followees)
   }
   // everyone is a list of ALL the users
   // followees is a list of users that YOU follow
@@ -65,19 +65,19 @@ const Follows = ({ everyone }) => {
         <div>
           delete everything below later, use as checker for now
           <h1>FOLLOWING</h1>
-          {followees.map((followee) => (
+          {/* {followees.map((followee) => (
             <div key={followee.id}>
               {followee.first_name} {followee.last_name}
             </div>
-          ))}
+          ))} */}
         </div>
         <div>
           <h1>FOLLOWERS</h1>
-          {followers.map((follower) => (
+          {/* {followers.map((follower) => (
             <div key={follower.id}>
               {follower.first_name} {follower.last_name}
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     )

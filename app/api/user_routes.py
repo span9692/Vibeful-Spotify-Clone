@@ -39,33 +39,82 @@ def delete_user(id):
     db.session.commit()
     return jsonify({'message': f'User {id} has been deleted'}), 200
 
-@user_routes.route('/<int:id>/dashboard')
+@user_routes.route('/yolo/dashboard')
 # @login_required
-def get_followers(id):
-    follows = db.session.query(follow_list).filter_by(followee_id = id).all()
+def get_followers():
 
-    followings = db.session.query(follow_list).filter_by(follower_id = id).all()
+    userIds = User.query.all()
+    ids = [user.id for user in userIds]
+    print(ids)
+#follows = people that follow you (followers)
+#followings = people that you follow (followees)
+    followerslist = []
+    followeeslist = []
+
+    for id in ids:
+        followers = db.session.query(follow_list).filter_by(followee_id = id).all()
+        followerslist.append(followers)
+        print(followerslist)
+
+    for id in ids:
+        followees = db.session.query(follow_list).filter_by(follower_id = id).all()
+        followeeslist.append(followees)
+        print(followeeslist)
+
+
+    # follows = db.session.query(follow_list).filter_by(followee_id = id).all()
+
+    # followings = db.session.query(follow_list).filter_by(follower_id = id).all()
 
     # print("************** FOLLOWS", follows)
     # print("************** FOLLOWING", followings)
 
-    followers_list = []
-    following_list = []
 
-    for follow in follows:
-        user_follower = User.query.get(follow.follower_id)
-        followers_list.append(user_follower.to_dict())
+    final_followers_list = []
+    final_followee_list = []
+
+    for follow in followerslist:
+        temp_followers_list = []
+        for foll in follow:
+            user_follower = User.query.get(foll.follower_id)
+            temp_followers_list.append(user_follower.to_dict)
+        final_followers_list.append(temp_followers_list)
+
+    for follow in followeeslist:
+        temp_followee_list = []
+        for foll in follow:
+            user_followee = User.query.get(foll.followee_id)
+            temp_followee_list.append(user_followee.to_dict)
+        final_followee_list.append(temp_followee_list)
+
+    final_object = {}
+
+    for id in ids:
+        final_object[id] = {"followers":final_followers_list[id-1], 'followees':final_followee_list[id-1]}
+
+    print(final_object, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
+
+    return final_object
+
+
+
+    #   followers_list = []
+    #   followering_list = []
+
+    #   for follow in followers:
+    #     user_follower = User.query.get(follow.follower_id)
+    #     followers_list.append(user_follower.to_dict())
 
     # print("------------> followers_list", followers_list)
 
-    for following in  followings:
-        user_following = User.query.get(following.followee_id)
-        following_list.append(user_following.to_dict())
+    # for following in  followings:
+    #     user_following = User.query.get(following.followee_id)
+    #     following_list.append(user_following.to_dict())
 
     # print("------------> following_list", following_list)
 
-    return {"followers": followers_list, "following": following_list}
-
+    # return {"followers": followers_list, "following": following_list}
+    return {'asdf':'asdf'}
 
 @user_routes.route('/<int:id>/dashboard', methods=['DELETE'])
 @login_required
