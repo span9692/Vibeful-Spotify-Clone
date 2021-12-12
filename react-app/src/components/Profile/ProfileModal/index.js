@@ -45,30 +45,16 @@ function ProfileModal({ currentUser, followInfo }) {
     )
   }
 
-  const onLogout = async (e) => {
-    await dispatch(logout());
-  };
-  const handleDeleteUser = (id) => {
-    onLogout()
-    dispatch(deleteUser(id))
-    history.push('/home')
-  }
-
   const followPerson = () => {
     dispatch(followUser(everyone[userId], everyone[id]))
   }
 
   const unfollowPerson = () => {
-    dispatch(unfollowUser(userId, id))
+    dispatch(unfollowUser(everyone[userId], everyone[id]))
   }
 
   return (
     <>
-      {/* <button className="editProfileBtn pointer" onClick={() => setShowModal(true)}>
-        Edit Profile
-      </button>
-      <button onClick={() => followPerson()}>Follow</button>
-      <button onClick={() => unfollowPerson()}>UnFollow</button> */}
       {option}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

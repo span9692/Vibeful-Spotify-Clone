@@ -33,19 +33,14 @@ export const showFollowing = () => async (dispatch) => {
 };
 
 export const unfollowUser = (follower_id, followee_id) => async (dispatch) => {
-  // console.log("*****----------> follower_id", follower_id);
-  // console.log("*****----------> followee_id", followee_id);
   const res = await fetch("/api/follow/delete", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ follower_id, followee_id }),
+    body: JSON.stringify({ "follower":follower_id, "followee":followee_id }),
   });
-  // console.log("****************res*******************", res);
-  // console.log("****************res.body*******************", res.body);
+
   if (res.ok) {
-    // console.log("****************res.ok*******************", res);
     const data = await res.json();
-    console.log("************DATA**************", data);
     dispatch(removeFollow(data));
   }
 };
@@ -82,14 +77,18 @@ export default function reducer(state = {}, action) {
       return newState;
     case REMOVE_FOLLOW:
       newState = { ...state };
-      let index = newState[action.data["follower_id"]].indexOf(
-        action.data["followee_id"]
+
+      let index = newState[action.data["follower"]["id"]]['followees'].indexOf(
+        action.data["followee"]["id"]
       );
-      newState[action.data["follower_id"]].splice(index, 1);
+      newState[action.data["follower"]["id"]]['followees'].splice(index, 1);
+
+      index = newState[action.data["followee"]["id"]]['followers'].indexOf(
+        action.data["follower"]["id"]
+      );
+      newState[action.data["followee"]["id"]]['followers'].splice(index, 1);
+
       return newState;
-    // newState = { ...state };
-    // delete newState[action.data];
-    // return newState;
     default:
       return state;
   }
