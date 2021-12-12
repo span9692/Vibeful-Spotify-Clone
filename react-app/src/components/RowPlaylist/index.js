@@ -23,7 +23,7 @@ function RowPlaylist({urlId, allSongs, currentUserLibraryId, allPlaylists, allPl
                 {usersPlaylist.map(playlist => (
                     <div key={playlist.id}>
                         <Link className="sub_row2" to={`/playlist/${playlist.id}`}>
-                            <img className='subsubrow2' src={playlist.playlist_pic}></img>
+                            <img className='subsubrow2 albumcover' src={playlist.playlist_pic}></img>
                             <div>{playlist.playlist_name}</div>
                         </Link>
                     </div>

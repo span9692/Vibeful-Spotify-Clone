@@ -224,3 +224,7 @@ tr:hover td {
     height: 18px;
     top: 0px
   }
+
+.albumcover {
+    width: 12.5vw;
+}
