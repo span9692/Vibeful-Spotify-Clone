@@ -69,7 +69,7 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <div className="d-m-leftnav-item">
-                  <i class="fas fa-microphone-alt"></i><span className='pointer' onClick={() => goSocial()}>Social</span>
+                  <i class="fas fa-users"></i><span className='pointer' onClick={() => goSocial()}>Social</span>
                   </div>
                 </li>
                 <li>
