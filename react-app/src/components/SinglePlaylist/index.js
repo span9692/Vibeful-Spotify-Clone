@@ -15,6 +15,7 @@ const SinglePlaylist = () => {
     const playlist = Object.values(playlistState).filter(el => el.id == playlistId)[0]
     const songs = useSelector(state => Object.values(state.song))
     const playlist_song = useSelector(state => state.playlist_song)
+    console.log(playlist)
 
     const userId = useSelector((state) => state.session.user.id);
     const playlists = useSelector((state) => Object.values(state.playlist));
@@ -23,6 +24,7 @@ const SinglePlaylist = () => {
 
     const history = useHistory()
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         dispatch(getPlaylists())
@@ -88,7 +90,7 @@ const SinglePlaylist = () => {
                     Edit Playlist Name
                 </button>
             </div> */}
-            <PlaylistSongs name={playlist.playlist_name} songs={songs} playlist={playlist} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
+            <PlaylistSongs userId={userId} ownerId={playlist.owner_id} name={playlist.playlist_name} songs={songs} playlist={playlist} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
         </div>
     );
 };
