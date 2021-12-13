@@ -9,7 +9,7 @@ import { deletePlaylist, updatePlaylist } from '../../store/playlist';
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"></link>
 
-const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, playlistId, playlist_song }) => {
+const PlaylistSongs = ({ userId, ownerId, name, songs, currentUserLibrary, playlist, playlists, playlistId, playlist_song }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -80,19 +80,40 @@ const PlaylistSongs = ({ name, songs, currentUserLibrary, playlist, playlists, p
         }
     }
 
-    // playlist table
-
-    return (
-        <div className='tablediv'>
-            <span className='pageTitle'>{name}</span>
-            <div className='subTitle'>
+    let option;
+    if (userId === ownerId) {
+        option = (
+            <>
                 <span className='editProfileBtn pointer playlistBtn' onClick={() => handleDelete()}>
                     Delete Playlist
                 </span>
                 <span className='editProfileBtn pointer playlistBtn' onClick={((e) => asdf(e))}>
                     Edit Playlist Name
                 </span>
-                <span> &bull; {count} {count == 1 ? 'song' : 'songs'}</span>
+            </>
+        )
+    } else {
+        option = null
+    }
+
+    let bulletOption;
+    if (userId === ownerId) {
+        bulletOption = `&bull;`
+    }
+    // playlist table
+
+    return (
+        <div className='tablediv'>
+            <span className='pageTitle'>{name}</span>
+            <div className='subTitle'>
+                {/* <span className='editProfileBtn pointer playlistBtn' onClick={() => handleDelete()}>
+                    Delete Playlist
+                </span>
+                <span className='editProfileBtn pointer playlistBtn' onClick={((e) => asdf(e))}>
+                    Edit Playlist Name
+                </span> */}
+                {option}
+                <span>  {count} {count == 1 ? 'song' : 'songs'}</span>
             </div>
 
             <table className='tabletable'>
