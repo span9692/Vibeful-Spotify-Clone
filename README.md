@@ -104,5 +104,5 @@ follow =  {
 > 
 ![image](https://user-images.githubusercontent.com/83468633/145769117-f53b71cd-2172-4524-9817-8e85e28dddc2.png)
 
-> ### Future features
+## Future Features
 > Using the follower/followees feature to implement a "recommendation" for songs, genre, and playlists.
