@@ -28,7 +28,7 @@ const NavBar = () => {
               className="logo"
               src="https://cdn.discordapp.com/attachments/917541871457275925/917759128548569098/vibe_icon.png"
             />
-            <span className="logoText">Vibeful</span>
+            <span className="logoText">Vybze</span>
           </NavLink>
         <NavLink
           to="/home"
@@ -60,7 +60,7 @@ const NavBar = () => {
           className="logo"
           src="https://cdn.discordapp.com/attachments/917541871457275925/917759128548569098/vibe_icon.png"
         />
-        <span className="logoText">Vibeful</span>
+        <span className="logoText">Vybze</span>
       </NavLink>
       <NavLink
         to={`/users/${user?.id}/dashboard`}

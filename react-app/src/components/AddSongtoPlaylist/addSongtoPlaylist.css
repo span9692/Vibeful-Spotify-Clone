@@ -38,7 +38,7 @@
     padding: 0px 6px;
     margin: 0px 6px;
     text-decoration: none;
-    
+
   }
 
   .dropdownBtn p:hover {background-color: #ddd;}
@@ -54,7 +54,7 @@
     width: 18px;
     height: 18px;
     background-color: red;
-    
+
   }
 
   .rel {
@@ -87,14 +87,14 @@
     background-color: transparent;
     border-radius: 40px;
 }
-  
-  
+
+
   .addTitle {
     color: white;
   }
 
   .divider {
-    background-color: #fe749c;
+    background-color: white;
     width: 129px;
     height: 1px;
     margin: 0 auto;
@@ -114,7 +114,3 @@
     margin-left: 60vh;
 
   }
-
-
- 
-  
