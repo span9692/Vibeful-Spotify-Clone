@@ -1,10 +1,10 @@
 # README
 
-## Vibeful
+## Vybze
 
 <img height="400" width="500" src="https://user-images.githubusercontent.com/83468633/145766668-02a4c40d-c6d3-4bb3-a0b1-aaa97ba382cf.png">
 
-[Vibeful](https://vybze.herokuapp.com/) is a clone of [Spotify.com](https://www.spotify.com/). Similar to Spotify, Vibeful is a music streaming application that gives users the ability to signup or log into an account, browse songs, 'like' songs, create playlists, add songs to those playlists, and, of course, play music.
+[Vybze](https://vybze.herokuapp.com/) is a clone of [Spotify.com](https://www.spotify.com/). Similar to Spotify, Vybze is a music streaming application that gives users the ability to signup or log into an account, browse songs, 'like' songs, create playlists, add songs to those playlists, and, of course, play music.
 
 [Live Site](https://vybze.herokuapp.com/)
 
