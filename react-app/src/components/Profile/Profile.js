@@ -44,22 +44,22 @@ function Profile({ user, urlId, followInfo }) {
           <img
             className="userProfile"
             alt="sample_profile_pic"
-            src={realCurrentUser.profile_pic}
+            src={realCurrentUser?.profile_pic}
           />
           <ProfileModal currentUser={realCurrentUser} followInfo={followInfo} />
         </div>
         <div className="library_profile_right">
           <div className="library_profile_right_t">
-            {currentUser.id == realCurrentUser.id ? <h2>{timeNow()}</h2> : null}
+            {currentUser.id == realCurrentUser?.id ? <h2>{timeNow()}</h2> : null}
             <h1>
-              {realCurrentUser.first_name} {realCurrentUser.last_name}
+              {realCurrentUser?.first_name} {realCurrentUser?.last_name}
             </h1>
             <div className="userInfo">
-              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId].followees?.length} Following</span>
+              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId]?.followees?.length} Following</span>
               <span>
                 <i class="fas fa-link"></i>
               </span>
-              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId].followers?.length} Followers </span>
+              <span className="pointer" onClick={() => goSocial()}>{followInfo[urlId]?.followers?.length} Followers </span>
             </div>
           </div>
           <div>

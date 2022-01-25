@@ -10,7 +10,7 @@ function RowSong({urlId, allSongs, currentUserLibraryId, allPlaylists, allPlayli
   let currentUserLibrary = allPlaylists.filter(el => el.owner_id == urlId && el.playlist_name == 'Library')[0]
   // let currentUserLibraryId = currentUserLibrary?.id //just the library 'playlist' id
 
-  let songId = allPlaylistSongs[currentUserLibraryId.toString()]
+  let songId = allPlaylistSongs[currentUserLibraryId?.toString()]
 
   if (!songId) { //if library is empty
     songId = []
