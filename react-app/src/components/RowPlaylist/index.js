@@ -8,7 +8,7 @@ function RowPlaylist({userId, everyone, urlId, allSongs, currentUserLibraryId, a
     // console.log('allPlaylists', allPlaylists) // array of all playlists
     // console.log('allPlaylistSongs', allPlaylistSongs) // dict of playlist:[songs]
     // console.log(everyone)
-    let name = everyone.filter(el => el.id === +urlId)[0].first_name
+    let name = everyone.filter(el => el.id === +urlId)[0]?.first_name
     // console.log(name)
 
     let nameOption;

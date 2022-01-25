@@ -90,7 +90,7 @@ const SinglePlaylist = () => {
                     Edit Playlist Name
                 </button>
             </div> */}
-            <PlaylistSongs userId={userId} ownerId={playlist.owner_id} name={playlist.playlist_name} songs={songs} playlist={playlist} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
+            <PlaylistSongs userId={userId} ownerId={playlist?.owner_id} name={playlist?.playlist_name} songs={songs} playlist={playlist} playlists={playlists} currentUserLibrary={newUserLibrary} playlistId={playlistId} playlist_song={playlist_song}/>
         </div>
     );
 };

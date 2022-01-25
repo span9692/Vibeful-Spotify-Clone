@@ -18,16 +18,19 @@ function ProfileModal({ currentUser, followInfo }) {
   const follow = useSelector(state => state.follow)
   const userId = sessionUser?.id
 
-  console.log("followInfo", followInfo)
-  console.log('followInfo[userId][\'followees\']', followInfo[userId]['followees'])
+  // console.log("followInfo", followInfo)
+  // console.log('followInfo[userId][\'followees\']', followInfo[userId]['followees'])
   let option;
   let flag = false;
-
+  
+  if (followInfo[userId]) {
   followInfo[userId]['followees'].forEach(el => {
     if (el.id === +id) {
       flag = true
     }
   })
+}
+
 
   if (userId === +id) {
     option = (
